@@ -19,8 +19,19 @@ public class PlayerController : MonoBehaviour
     private float pitch = 0f;
     #endregion
 
+    public KeyCode runKey = KeyCode.LeftShift;
+
+    #region Movement Variables
     public bool lockMovement = false;
     public float walkSpeed = 5f;
+    public float runSpeed = 7f;
+
+    public float maxStamina = 500f;
+    public float stamina = 500f;
+
+    readonly float runStaminaDrain = 1f;
+    readonly float runStaminaGain = .5f;
+    #endregion
 
 
     private void Awake()
@@ -54,12 +65,29 @@ public class PlayerController : MonoBehaviour
         if (!lockMovement)
         {
             Vector3 targetVelocity = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
-
-            targetVelocity = transform.TransformDirection(targetVelocity) * walkSpeed;
             
-            Vector3 velocityChange = targetVelocity - rb.velocity;
-            rb.AddForce(velocityChange, ForceMode.VelocityChange);
 
+            if (Input.GetKey(runKey))
+            {
+                targetVelocity = stamina > 0 ? transform.TransformDirection(targetVelocity.normalized) * runSpeed :
+                    transform.TransformDirection(targetVelocity.normalized) * walkSpeed;
+
+                stamina -= runStaminaDrain;
+                
+            }
+            else
+            {
+                targetVelocity = transform.TransformDirection(targetVelocity.normalized) * walkSpeed;
+
+                stamina += runStaminaGain;
+            }
+            stamina = Mathf.Clamp(stamina, 0, maxStamina);
+
+            
+            Vector3 velocityChange = (targetVelocity - rb.velocity);
+            velocityChange.y = 0;
+
+            rb.AddForce(velocityChange, ForceMode.VelocityChange);
         }
     }
 }
