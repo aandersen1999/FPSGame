@@ -6,28 +6,29 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody rb;
 
+    public KeyCode runKey = KeyCode.LeftShift;
+
     #region Camera Variables
     public Camera playerCamera;
 
     public bool lockedCamera = false;
 
+    [Range(60.0f, 100.0f)]
     public float fov = 60f;
     public float mouseSensititvity = 2f;
-    public float maxLookAngle = 50f;
+    public float maxLookAngle = 70f;
 
     private float yaw = 0f;
     private float pitch = 0f;
     #endregion
 
-    public KeyCode runKey = KeyCode.LeftShift;
-
     #region Movement Variables
     public bool lockMovement = false;
-    public float walkSpeed = 5f;
-    public float runSpeed = 7f;
+    public float walkSpeed = 4f;
+    public float runSpeed = 8.5f;
 
-    public float maxStamina = 500f;
-    public float stamina = 500f;
+    public float maxStamina = 300f;
+    public float stamina = 300f;
 
     readonly float runStaminaDrain = 1f;
     readonly float runStaminaGain = .5f;
@@ -39,7 +40,6 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
 
         playerCamera.fieldOfView = fov;
-
     }
 
     private void Start()
@@ -73,7 +73,6 @@ public class PlayerController : MonoBehaviour
                     transform.TransformDirection(targetVelocity.normalized) * walkSpeed;
 
                 stamina -= runStaminaDrain;
-                
             }
             else
             {
