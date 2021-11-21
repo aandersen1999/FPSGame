@@ -7,6 +7,10 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
 
     public KeyCode runKey = KeyCode.LeftShift;
+    public KeyCode attackKey = KeyCode.Mouse0;
+
+    public WeaponBehavior_Melee weapon;
+    public StaminaState staminaState;
 
     #region Camera Variables
     public Camera playerCamera;
@@ -34,12 +38,16 @@ public class PlayerController : MonoBehaviour
     readonly float runStaminaGain = .5f;
     #endregion
 
+    public bool isRecovering;
+
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
 
         playerCamera.fieldOfView = fov;
+
+        weapon.playerController = this;
     }
 
     private void Start()
@@ -49,14 +57,21 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        staminaState = CalculateStaminaState();
+
         if (!lockedCamera)
         {
             yaw = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * mouseSensititvity;
             pitch -= mouseSensititvity * Input.GetAxis("Mouse Y");
             pitch = Mathf.Clamp(pitch, -maxLookAngle, maxLookAngle);
 
-            transform.localEulerAngles = new Vector3(0, yaw, 0);
+            transform.eulerAngles = new Vector3(0, yaw, 0);
             playerCamera.transform.localEulerAngles = new Vector3(pitch, 0, 0);
+        }
+
+        if (Input.GetKeyDown(attackKey))
+        {
+            weapon.attack();
         }
     }
 
@@ -82,6 +97,8 @@ public class PlayerController : MonoBehaviour
             }
             stamina = Mathf.Clamp(stamina, 0, maxStamina);
 
+            if(staminaState == StaminaState.tired) { targetVelocity = targetVelocity * .6f; }
+
             
             Vector3 velocityChange = (targetVelocity - rb.velocity);
             velocityChange.y = 0;
@@ -89,4 +106,15 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(velocityChange, ForceMode.VelocityChange);
         }
     }
+
+    private StaminaState CalculateStaminaState()
+    {
+        float ratio = stamina / maxStamina;
+
+        if(ratio >= .67) { return StaminaState.fine; }
+        else if(ratio >= .33) { return StaminaState.winded; }
+        else { return StaminaState.tired; }
+    }
 }
+
+public enum StaminaState : byte { fine, winded, tired }
