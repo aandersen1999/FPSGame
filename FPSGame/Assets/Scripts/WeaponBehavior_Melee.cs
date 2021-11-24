@@ -17,6 +17,9 @@ public class WeaponBehavior_Melee : MonoBehaviour
     public byte weaponHealth = 10;
 
     public PlayerController playerController;
+    public GameObject meleeHitbox;
+
+    private bool activeHitbox;
 
     private void Awake()
     {
@@ -27,6 +30,10 @@ public class WeaponBehavior_Melee : MonoBehaviour
     {
         anim.SetTrigger("doAttack");
 
+        GameObject hitbox = Instantiate(meleeHitbox, this.transform);
+        hitbox.GetComponent<HitboxBehavior>().damage = damage;
+
         playerController.stamina -= staminaDrain;
     }
+
 }
