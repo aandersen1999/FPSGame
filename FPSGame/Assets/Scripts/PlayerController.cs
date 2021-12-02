@@ -8,6 +8,9 @@ public class PlayerController : MonoBehaviour
 
     public KeyCode runKey = KeyCode.LeftShift;
     public KeyCode attackKey = KeyCode.Mouse0;
+    public KeyCode dropKey = KeyCode.Q;
+    public KeyCode interactKey = KeyCode.E;
+    public KeyCode jumpKey = KeyCode.Space;
 
     public WeaponBehavior_Melee weapon;
     public StaminaState staminaState;
@@ -38,21 +41,22 @@ public class PlayerController : MonoBehaviour
     readonly float runStaminaGain = .5f;
     #endregion
 
+    public float jumpHeight = 5f;
+    public bool inAir = true;
+
     public bool isRecovering;
 
-
+    #region MonoBehavior
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
 
         playerCamera.fieldOfView = fov;
-
-        weapon.playerController = this;
     }
 
     private void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        GameMasterBehavior.GameMaster.playerObject = gameObject;
     }
 
     private void Update()
@@ -69,10 +73,22 @@ public class PlayerController : MonoBehaviour
             playerCamera.transform.localEulerAngles = new Vector3(pitch, 0, 0);
         }
 
-        if (Input.GetKeyDown(attackKey))
+        if (Input.GetKeyDown(jumpKey))
+        {
+            if (!inAir)
+            {
+                rb.AddForce(0f, jumpHeight, 0f, ForceMode.Impulse);
+                inAir = true;
+            }
+        }
+
+        //Activate later
+        /*if (Input.GetKeyDown(attackKey))
         {
             weapon.attack();
         }
+        */
+        CheckForGround();
     }
 
     private void FixedUpdate()
@@ -106,6 +122,7 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(velocityChange, ForceMode.VelocityChange);
         }
     }
+    #endregion
 
     private StaminaState CalculateStaminaState()
     {
@@ -114,6 +131,15 @@ public class PlayerController : MonoBehaviour
         if(ratio >= .67) { return StaminaState.fine; }
         else if(ratio >= .33) { return StaminaState.winded; }
         else { return StaminaState.tired; }
+    }
+
+    private void CheckForGround()
+    {
+        Vector3 origin = new Vector3(transform.position.x, transform.position.y - (transform.localScale.y * .4f), transform.position.z);
+        float distance = .75f;
+        Debug.DrawRay(origin, Vector3.down * distance, Color.red);
+
+        inAir = Physics.Raycast(origin, Vector3.down, out RaycastHit hit, distance) ? false : true;
     }
 }
 

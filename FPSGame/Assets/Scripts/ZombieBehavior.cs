@@ -18,9 +18,9 @@ public class ZombieBehavior : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.GetComponent<WeaponBehavior_Melee>() != null)
+        if(other.GetComponent<HitboxBehavior>() != null)
         {
-            TakeDamage(other.GetComponent<WeaponBehavior_Melee>().damage);
+            TakeDamage(other.GetComponent<HitboxBehavior>().damage);
         }
     }
 

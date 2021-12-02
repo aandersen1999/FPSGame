@@ -5,9 +5,7 @@ using UnityEngine;
 public class WeaponBehavior_Melee : MonoBehaviour
 {
     private Animator anim;
-
-    public string weaponName = "Unknown";
-
+    
     public float staminaDrain = 0f;
     public float recoveryTime = 1f;
     public float damage = 0f;

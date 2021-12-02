@@ -17,7 +17,10 @@ public class HitboxBehavior : MonoBehaviour
 
     private IEnumerator DestroyTime(byte frames)
     {
-        yield return new WaitForUpdateFrames(frames);
+        
+        float seconds = frames * .016f;
+
+        yield return new WaitForSeconds(seconds);
 
         Destroy(gameObject);
     }
