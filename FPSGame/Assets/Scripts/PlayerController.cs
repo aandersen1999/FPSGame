@@ -4,10 +4,17 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public delegate void AttackAction();
+    public static event AttackAction OnAttack;
+
+    public delegate void ReloadAction();
+    public static event ReloadAction OnReload;
+
     private Rigidbody rb;
 
     public KeyCode runKey = KeyCode.LeftShift;
     public KeyCode attackKey = KeyCode.Mouse0;
+    public KeyCode reloadKey = KeyCode.R;
     public KeyCode dropKey = KeyCode.Q;
     public KeyCode interactKey = KeyCode.E;
     public KeyCode jumpKey = KeyCode.Space;
@@ -81,6 +88,10 @@ public class PlayerController : MonoBehaviour
                 inAir = true;
             }
         }
+
+        if (Input.GetKey(attackKey)) { OnAttack?.Invoke(); }
+        if (Input.GetKeyDown(reloadKey)) { OnReload?.Invoke(); }
+
 
         //Activate later
         /*if (Input.GetKeyDown(attackKey))
