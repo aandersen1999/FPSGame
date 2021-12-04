@@ -10,6 +10,9 @@ public class PlayerController : MonoBehaviour
     public delegate void ReloadAction();
     public static event ReloadAction OnReload;
 
+    public delegate void DropAction();
+    public static event DropAction OnDrop;
+
     private Rigidbody rb;
 
     public KeyCode runKey = KeyCode.LeftShift;
@@ -91,14 +94,10 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(attackKey)) { OnAttack?.Invoke(); }
         if (Input.GetKeyDown(reloadKey)) { OnReload?.Invoke(); }
+        if (Input.GetKeyDown(dropKey)) { OnDrop?.Invoke(); }
 
 
-        //Activate later
-        /*if (Input.GetKeyDown(attackKey))
-        {
-            weapon.attack();
-        }
-        */
+        
         CheckForGround();
     }
 
@@ -134,6 +133,12 @@ public class PlayerController : MonoBehaviour
         }
     }
     #endregion
+
+    public void KickBack(float kickBack)
+    {
+        transform.eulerAngles += new Vector3(0, Random.Range(-kickBack, kickBack), 0);
+        playerCamera.transform.localEulerAngles += new Vector3(Random.Range(-kickBack, kickBack), 0, 0);
+    }
 
     private StaminaState CalculateStaminaState()
     {

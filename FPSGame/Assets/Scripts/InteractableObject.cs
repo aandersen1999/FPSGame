@@ -18,6 +18,7 @@ public class InteractableObject : MonoBehaviour
     {
         childObject = transform.GetChild(0).gameObject;
     }
+
     private void FixedUpdate()
     {
         childObject.transform.localEulerAngles += new Vector3(0, spinSpeed);
