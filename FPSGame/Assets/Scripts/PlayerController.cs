@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    #region Events
     public delegate void AttackAction();
     public static event AttackAction OnAttack;
 
@@ -12,6 +13,7 @@ public class PlayerController : MonoBehaviour
 
     public delegate void DropAction();
     public static event DropAction OnDrop;
+    #endregion
 
     private Rigidbody rb;
 
@@ -22,8 +24,9 @@ public class PlayerController : MonoBehaviour
     public KeyCode interactKey = KeyCode.E;
     public KeyCode jumpKey = KeyCode.Space;
 
-    public WeaponBehavior_Melee weapon;
+    public WeaponHandBehavior weaponHand;
     public StaminaState staminaState;
+    public GameObject InteractableObject { get; private set; }
 
     #region Camera Variables
     public Camera playerCamera;
@@ -37,6 +40,8 @@ public class PlayerController : MonoBehaviour
 
     private float yaw = 0f;
     private float pitch = 0f;
+
+    private float checkObjectRange = 1.5f;
     #endregion
 
     #region Movement Variables
@@ -67,6 +72,9 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         GameMasterBehavior.GameMaster.playerObject = gameObject;
+
+        weaponHand = GetComponentInChildren<WeaponHandBehavior>();
+        weaponHand.playerCont = this;
     }
 
     private void Update()
@@ -83,6 +91,7 @@ public class PlayerController : MonoBehaviour
             playerCamera.transform.localEulerAngles = new Vector3(pitch, 0, 0);
         }
 
+
         if (Input.GetKeyDown(jumpKey))
         {
             if (!inAir)
@@ -95,8 +104,16 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(attackKey)) { OnAttack?.Invoke(); }
         if (Input.GetKeyDown(reloadKey)) { OnReload?.Invoke(); }
         if (Input.GetKeyDown(dropKey)) { OnDrop?.Invoke(); }
-
-
+        if (Input.GetKeyDown(interactKey))
+        {
+            if(InteractableObject != null)
+            {
+                if(InteractableObject.GetComponent<InteractableWeapon>() != null)
+                {
+                    InteractableObject.GetComponent<InteractableWeapon>().PickUpWeapon();
+                }
+            }
+        }
         
         CheckForGround();
     }
@@ -131,9 +148,11 @@ public class PlayerController : MonoBehaviour
 
             rb.AddForce(velocityChange, ForceMode.VelocityChange);
         }
+        CheckForObject();
     }
     #endregion
 
+    //Not sure if I'm gonna keep this and rework it, but for now I'm just gonna leave it in here unactivated
     public void KickBack(float kickBack)
     {
         transform.eulerAngles += new Vector3(0, Random.Range(-kickBack, kickBack), 0);
@@ -156,6 +175,19 @@ public class PlayerController : MonoBehaviour
         Debug.DrawRay(origin, Vector3.down * distance, Color.red);
 
         inAir = Physics.Raycast(origin, Vector3.down, out RaycastHit hit, distance) ? false : true;
+    }
+
+    private void CheckForObject()
+    {
+        InteractableObject = null;
+
+        RaycastHit checker;
+
+        Debug.DrawRay(playerCamera.transform.position, playerCamera.transform.TransformDirection(Vector3.forward) * checkObjectRange, Color.yellow);
+        if(Physics.Raycast(playerCamera.transform.position, playerCamera.transform.TransformDirection(Vector3.forward), out checker, checkObjectRange, GameMasterBehavior.ObjectLayer))
+        {
+            InteractableObject = checker.collider.gameObject;
+        }
     }
 }
 

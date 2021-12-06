@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6959810932077384334}
   - component: {fileID: 6959810932077384368}
-  - component: {fileID: 1588870617950559842}
-  m_Layer: 0
+  - component: {fileID: 8765074651434507653}
+  m_Layer: 8
   m_Name: Pistol Object
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,7 +46,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5, z: 0.5}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1588870617950559842
+--- !u!114 &8765074651434507653
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -55,13 +55,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 6959810932077384333}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c4cbc6c5c5819b44b882df0a1f9ec9a, type: 3}
+  m_Script: {fileID: 11500000, guid: 1cf409bf0c4c1dc4da18aaf92584145d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: Pistol
-  currentClip: 17
-  currenctDurability: 100
-  heldItem: {fileID: 0}
+  weaponName: Unknown
+  defaultClip: 17
+  defaultDurability: 100
+  currentClip: 0
+  currentDurability: 100
+  heldWeapon: {fileID: 4492706783021736450, guid: 1b9b504a587bb7d4996a9174c3895c26, type: 3}
 --- !u!1001 &6959810933118035307
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -69,9 +71,61 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6959810932077384334}
     m_Modifications:
+    - target: {fileID: 100000, guid: ec1fca2606f72f5479332d154cd90722, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: ec1fca2606f72f5479332d154cd90722, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: ec1fca2606f72f5479332d154cd90722, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: ec1fca2606f72f5479332d154cd90722, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100008, guid: ec1fca2606f72f5479332d154cd90722, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: ec1fca2606f72f5479332d154cd90722, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 100012, guid: ec1fca2606f72f5479332d154cd90722, type: 3}
       propertyPath: m_Name
       value: Pistol_05
+      objectReference: {fileID: 0}
+    - target: {fileID: 100012, guid: ec1fca2606f72f5479332d154cd90722, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100014, guid: ec1fca2606f72f5479332d154cd90722, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100016, guid: ec1fca2606f72f5479332d154cd90722, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100018, guid: ec1fca2606f72f5479332d154cd90722, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100020, guid: ec1fca2606f72f5479332d154cd90722, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100022, guid: ec1fca2606f72f5479332d154cd90722, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100024, guid: ec1fca2606f72f5479332d154cd90722, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 400012, guid: ec1fca2606f72f5479332d154cd90722, type: 3}
       propertyPath: m_RootOrder

@@ -38,6 +38,11 @@ public class Weapon_Pistol : MonoBehaviour
     }
     #endregion
 
+    public void CreateHeldWeapon(byte _clip, int _durability)
+    {
+        clip = _clip;
+        durability = _durability;
+    }
 
     private void Attack()
     {
@@ -93,7 +98,7 @@ public class Weapon_Pistol : MonoBehaviour
         GameObject droppedWeapon = Instantiate(dropWeapon, GameMasterBehavior.GameMaster.playerObject.transform);
         droppedWeapon.transform.parent = null;
         droppedWeapon.transform.position = new Vector3(droppedWeapon.transform.position.x, .25f, droppedWeapon.transform.position.z);
-        droppedWeapon.GetComponent<InteractablePistol>().CreateWeapon(clip, durability);
+        droppedWeapon.GetComponent<InteractableWeapon>().CreateWeapon("Pistol", clip, durability);
 
         Destroy(gameObject);
     }

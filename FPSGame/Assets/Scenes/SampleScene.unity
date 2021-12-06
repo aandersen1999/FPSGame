@@ -364,7 +364,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!65 &1207087758
 BoxCollider:
@@ -454,9 +454,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11034e51de26d1847b76bd3a7ed057bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
-  walkSpeed: 3
-  zombieAggression: 0
+  health: 1
+  movementSpeed: 3
 --- !u!1 &1446230052
 GameObject:
   m_ObjectHideFlags: 0
@@ -555,6 +554,26 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1834833341 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1386377438, guid: e61663a262644184bba6ec4f66f2f814, type: 3}
+  m_PrefabInstance: {fileID: 5640078419304896615}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1834833344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1834833341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0799dc444efb1c84090aa331b4261711, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventorySize: 3
+  currentWeapon: {fileID: 0}
+  playerCont: {fileID: 0}
 --- !u!850595691 &2027134210
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -623,10 +642,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 295594041, guid: e61663a262644184bba6ec4f66f2f814, type: 3}
-      propertyPath: randomKickBack
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 5640078418770024357, guid: e61663a262644184bba6ec4f66f2f814, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -637,7 +652,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5640078418770024357, guid: e61663a262644184bba6ec4f66f2f814, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5640078418770024357, guid: e61663a262644184bba6ec4f66f2f814, type: 3}
       propertyPath: m_LocalPosition.z
