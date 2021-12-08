@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4492706783021736461}
   - component: {fileID: 4492706783021736463}
-  - component: {fileID: 4492706783021736460}
+  - component: {fileID: 8083739522391307542}
   m_Layer: 0
   m_Name: Pistol Held
   m_TagString: Untagged
@@ -52,7 +52,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &4492706783021736460
+--- !u!114 &8083739522391307542
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -61,9 +61,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4492706783021736450}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9083345e6214174abe0a1f17424dc06, type: 3}
+  m_Script: {fileID: 11500000, guid: 3f73d0094a6ef474395c9abc3a780d33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponName: Pistol
+  defaultDurability: 100
   durability: 100
   clipSize: 17
   clip: 17

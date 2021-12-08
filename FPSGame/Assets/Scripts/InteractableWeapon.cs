@@ -6,11 +6,11 @@ public class InteractableWeapon : MonoBehaviour
 {
     public string weaponName = "Unknown";
 
-    public byte defaultClip = 17;
-    public int defaultDurability = 100;
+    public int defaultDurabilty = 100;
+    public int durabilty = 100;
 
-    public byte currentClip = 0;
-    public int currentDurability = 100;
+    public byte clip = 17;
+    public byte clipSize = 17;
 
     public GameObject heldWeapon;
 
@@ -21,6 +21,12 @@ public class InteractableWeapon : MonoBehaviour
     private void Start()
     {
         model = transform.GetChild(0).gameObject;
+
+        if(transform.parent != null)
+        {
+            transform.parent = null;
+        }
+        transform.position = new Vector3(transform.position.x, .25f, transform.position.z);
     }
 
     private void FixedUpdate()
@@ -28,18 +34,22 @@ public class InteractableWeapon : MonoBehaviour
         model.transform.localEulerAngles += new Vector3(0, spinSpeed);
     }
 
-    public void CreateWeapon(string name, byte clip, int durability)
+    public void CreateWeapon(string _name, byte _clip, byte _clipSize, int _durability, int _defaultDurability)
     {
-        weaponName = name;
-        currentClip = clip;
-        currentDurability = durability;
+        weaponName = _name;
+        clip = _clip;
+        clipSize = _clipSize;
+        durabilty = _durability;
+        defaultDurabilty = _defaultDurability;
     }
 
     public void PickUpWeapon()
     {
         GameObject createdWeapon = Instantiate(heldWeapon, GameMasterBehavior.GameMaster.playerObject.GetComponent<PlayerController>().weaponHand.transform);
 
-        createdWeapon.GetComponent<Weapon_Pistol>().CreateHeldWeapon(currentClip, currentDurability);
+        createdWeapon.GetComponent<HeldWeapon>().CreateHeldWeapon(weaponName, clip, clipSize, durabilty, defaultDurabilty);
+
+        GameMasterBehavior.GameMaster.playerObject.GetComponent<PlayerController>().weaponHand.PickUpWeapon(ref createdWeapon);
         Destroy(gameObject);
     }
 }

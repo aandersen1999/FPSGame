@@ -102,6 +102,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1386377439}
   - component: {fileID: 1834833343}
+  - component: {fileID: 1834833344}
   m_Layer: 0
   m_Name: WeaponHand
   m_TagString: Untagged
@@ -143,6 +144,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1834833344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1386377438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0799dc444efb1c84090aa331b4261711, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventorySize: 3
+  currentWeapon: {fileID: 0}
+  inventory: []
+  playerCont: {fileID: 0}
 --- !u!1 &5640078418770024409
 GameObject:
   m_ObjectHideFlags: 0
@@ -380,7 +397,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8083739522391307542, guid: 1b9b504a587bb7d4996a9174c3895c26, type: 3}
+      propertyPath: dropWeapon
+      value: 
+      objectReference: {fileID: 6959810932077384333, guid: f624b23c1f55ce048955359ffe386613, type: 3}
+    m_RemovedComponents:
+    - {fileID: 4492706783021736460, guid: 1b9b504a587bb7d4996a9174c3895c26, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1b9b504a587bb7d4996a9174c3895c26, type: 3}
 --- !u!4 &295594040 stripped
 Transform:

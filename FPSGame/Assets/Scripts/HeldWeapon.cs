@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Weapon_Pistol : MonoBehaviour
+public class HeldWeapon : MonoBehaviour
 {
+    public string weaponName = "Unknown";
+
+    public int defaultDurability = 100;
     public int durability = 100;
+
     public byte clipSize = 17;
     public byte clip = 17;
 
@@ -38,24 +42,35 @@ public class Weapon_Pistol : MonoBehaviour
     }
     #endregion
 
-    public void CreateHeldWeapon(byte _clip, int _durability)
+    public void CreateHeldWeapon(string _name, byte _clip, byte _clipSize, int _durability, int _defaultDurability)
     {
+        weaponName = _name;
         clip = _clip;
+        clipSize = _clipSize;
         durability = _durability;
+        defaultDurability = _defaultDurability;
+    }
+
+    public void DropWeapon()
+    {
+        GameObject droppedWeapon = Instantiate(dropWeapon, GameMasterBehavior.GameMaster.playerObject.transform);
+
+        droppedWeapon.GetComponent<InteractableWeapon>().CreateWeapon(weaponName, clip, clipSize, durability, defaultDurability);
+
+        Destroy(gameObject);
     }
 
     private void Attack()
     {
-        if (clip > 0)
+        if (canFire)
         {
-            if (canFire)
+            if(clip > 0)
             {
                 anim.SetTrigger("Fire");
+
                 clip--;
+
                 BreakWeapon();
-
-                //GameMasterBehavior.GameMaster.playerObject.GetComponent<PlayerController>().KickBack(randomKickBack);
-
                 StartCoroutine(FireRateWait());
             }
         }
@@ -63,14 +78,15 @@ public class Weapon_Pistol : MonoBehaviour
 
     private void ReloadStart()
     {
-        if (clip < clipSize)
+        if(clip < clipSize)
         {
             anim.SetTrigger("Reload");
-            
+
             clip = 0;
             canFire = false;
         }
     }
+
 
     private void ReloadEnd()
     {
@@ -78,29 +94,23 @@ public class Weapon_Pistol : MonoBehaviour
         canFire = true;
     }
 
-
     private void BreakWeapon()
     {
         durability--;
-        if(durability <= 0) { Destroy(gameObject); }
+        if(durability <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
+
 
     private void BreakWeapon(int damage)
     {
         durability -= damage;
-        if (durability <= 0) { Destroy(gameObject); }
-    }
-
-
-
-    private void DropWeapon()
-    {
-        GameObject droppedWeapon = Instantiate(dropWeapon, GameMasterBehavior.GameMaster.playerObject.transform);
-        droppedWeapon.transform.parent = null;
-        droppedWeapon.transform.position = new Vector3(droppedWeapon.transform.position.x, .25f, droppedWeapon.transform.position.z);
-        //droppedWeapon.GetComponent<InteractableWeapon>().CreateWeapon("Pistol", clip, durability);
-
-        Destroy(gameObject);
+        if(durability <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private IEnumerator FireRateWait()
