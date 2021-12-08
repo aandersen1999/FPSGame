@@ -58,11 +58,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cf409bf0c4c1dc4da18aaf92584145d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponName: Unknown
-  defaultClip: 17
-  defaultDurability: 100
-  currentClip: 0
-  currentDurability: 100
+  weaponName: Pistol
+  defaultDurabilty: 100
+  durabilty: 100
+  clip: 17
+  clipSize: 17
   heldWeapon: {fileID: 4492706783021736450, guid: 1b9b504a587bb7d4996a9174c3895c26, type: 3}
 --- !u!1001 &6959810933118035307
 PrefabInstance:

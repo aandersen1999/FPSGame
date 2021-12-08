@@ -25,23 +25,15 @@ public class WeaponHandBehavior : MonoBehaviour
     private void OnEnable()
     {
         PlayerController.OnDrop += DropWeapon;
+        PlayerController.OnNext += NextWeapon;
+        PlayerController.OnPrev += PrevWeapon;
     }
 
     private void OnDisable()
     {
         PlayerController.OnDrop -= DropWeapon;
-    }
-
-    private void Update()
-    {
-        if(Input.GetAxisRaw("Mouse ScrollWheel") > 0f)
-        {
-            Debug.Log("Scroll Up");
-        }
-        if(Input.GetAxisRaw("Mouse ScrollWheel") < 0f)
-        {
-            Debug.Log("Scroll Down");
-        }
+        PlayerController.OnNext -= NextWeapon;
+        PlayerController.OnPrev -= PrevWeapon;
     }
     #endregion
 
@@ -74,12 +66,36 @@ public class WeaponHandBehavior : MonoBehaviour
     {
         if(currentWeapon != null)
         {
-            inventory.Remove(currentWeapon);
+            GameObject storeCurrent = currentWeapon;
+
+            if(inventory.Count > 1) { NextWeapon(); }
+            inventory.Remove(storeCurrent);
         }
     }
     
-    private void SwapCurrentWeapon()
+    private void SwapCurrentWeapon(int index)
     {
+        GameObject storeCurrent = currentWeapon;
 
+        currentWeapon = inventory[index];
+
+        storeCurrent.SetActive(false);
+        currentWeapon.SetActive(true);
+    }
+
+    private void NextWeapon()
+    {
+        int nextWeaponIndex = inventory.IndexOf(currentWeapon) + 1;
+
+        if(nextWeaponIndex >= inventory.Count) { SwapCurrentWeapon(0); }
+        else { SwapCurrentWeapon(nextWeaponIndex); }
+    }
+
+    private void PrevWeapon()
+    {
+        int prevWeaponIndex = inventory.IndexOf(currentWeapon) - 1;
+
+        if(prevWeaponIndex < 0) { SwapCurrentWeapon(inventory.Count - 1); }
+        else { SwapCurrentWeapon(prevWeaponIndex); }
     }
 }

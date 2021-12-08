@@ -3,10 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Thought I was gonna use this... Guess not.
 public class WaitForUpdateFrames : CustomYieldInstruction
 {
-    int currentFrame = 0;
-    int duration;
+    private int currentFrame = 0;
+    private int duration;
 
     public override bool keepWaiting
     {

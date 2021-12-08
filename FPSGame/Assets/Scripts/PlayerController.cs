@@ -13,6 +13,12 @@ public class PlayerController : MonoBehaviour
 
     public delegate void DropAction();
     public static event DropAction OnDrop;
+
+    public delegate void WeaponNextAction();
+    public static event WeaponNextAction OnNext;
+
+    public delegate void WeaponPrevAction();
+    public static event WeaponPrevAction OnPrev;
     #endregion
 
     private Rigidbody rb;
@@ -90,8 +96,7 @@ public class PlayerController : MonoBehaviour
             transform.eulerAngles = new Vector3(0, yaw, 0);
             playerCamera.transform.localEulerAngles = new Vector3(pitch, 0, 0);
         }
-
-
+        
         if (Input.GetKeyDown(jumpKey))
         {
             if (!inAir)
@@ -113,6 +118,12 @@ public class PlayerController : MonoBehaviour
                     InteractableObject.GetComponent<InteractableWeapon>().PickUpWeapon();
                 }
             }
+        }
+
+        if(Input.GetAxisRaw("Mouse ScrollWheel") != 0)
+        {
+            if(Input.GetAxisRaw("Mouse ScrollWheel") < 0) { OnNext?.Invoke(); }
+            else { OnPrev?.Invoke(); }
         }
         
         CheckForGround();
