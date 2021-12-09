@@ -61,6 +61,13 @@ public class WeaponHandBehavior : MonoBehaviour
         }
     }
 
+    public void OnBreakWeapon()
+    {
+        GameObject storeCurrent = currentWeapon;
+
+        if (inventory.Count > 1) { NextWeapon(); }
+        inventory.Remove(storeCurrent);
+    }
 
     private void DropWeapon()
     {
@@ -85,17 +92,23 @@ public class WeaponHandBehavior : MonoBehaviour
 
     private void NextWeapon()
     {
-        int nextWeaponIndex = inventory.IndexOf(currentWeapon) + 1;
+        if (inventory.Count != 0)
+        {
+            int nextWeaponIndex = inventory.IndexOf(currentWeapon) + 1;
 
-        if(nextWeaponIndex >= inventory.Count) { SwapCurrentWeapon(0); }
-        else { SwapCurrentWeapon(nextWeaponIndex); }
+            if (nextWeaponIndex >= inventory.Count) { SwapCurrentWeapon(0); }
+            else { SwapCurrentWeapon(nextWeaponIndex); }
+        }
     }
 
     private void PrevWeapon()
     {
-        int prevWeaponIndex = inventory.IndexOf(currentWeapon) - 1;
+        if (inventory.Count != 0)
+        {
+            int prevWeaponIndex = inventory.IndexOf(currentWeapon) - 1;
 
-        if(prevWeaponIndex < 0) { SwapCurrentWeapon(inventory.Count - 1); }
-        else { SwapCurrentWeapon(prevWeaponIndex); }
+            if (prevWeaponIndex < 0) { SwapCurrentWeapon(inventory.Count - 1); }
+            else { SwapCurrentWeapon(prevWeaponIndex); }
+        }
     }
 }

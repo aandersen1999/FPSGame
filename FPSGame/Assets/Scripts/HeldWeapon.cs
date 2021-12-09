@@ -22,7 +22,7 @@ public class HeldWeapon : MonoBehaviour
     private Animator anim;
 
     #region MonoBehavior
-    private void Start()
+    private void Awake()
     {
         anim = GetComponent<Animator>();
     }
@@ -32,6 +32,9 @@ public class HeldWeapon : MonoBehaviour
         PlayerController.OnAttack += Attack;
         PlayerController.OnReload += ReloadStart;
         PlayerController.OnDrop += DropWeapon;
+
+        canFire = false;
+        anim.SetTrigger("Swapped");
     }
 
     private void OnDisable()
@@ -94,11 +97,15 @@ public class HeldWeapon : MonoBehaviour
         canFire = true;
     }
 
+    private void SwapAnimEnd() => canFire = true;
+    
+
     private void BreakWeapon()
     {
         durability--;
         if(durability <= 0)
         {
+            GameMasterBehavior.GameMaster.playerObject.GetComponent<PlayerController>().weaponHand.OnBreakWeapon();
             Destroy(gameObject);
         }
     }
@@ -109,6 +116,7 @@ public class HeldWeapon : MonoBehaviour
         durability -= damage;
         if(durability <= 0)
         {
+            GameMasterBehavior.GameMaster.playerObject.GetComponent<PlayerController>().weaponHand.OnBreakWeapon();
             Destroy(gameObject);
         }
     }
