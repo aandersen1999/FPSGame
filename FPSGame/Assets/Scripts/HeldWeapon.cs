@@ -14,8 +14,10 @@ public class HeldWeapon : MonoBehaviour
 
     public float fireRate = .5f;
     public float randomKickBack = 3f;
+    public float muzzleFlashIntensity = 5.0f;
 
     public GameObject dropWeapon;
+    public Light muzzleFlash;
 
     private bool canFire = true;
 
@@ -75,6 +77,7 @@ public class HeldWeapon : MonoBehaviour
 
                 BreakWeapon();
                 StartCoroutine(FireRateWait());
+                StartCoroutine(MuzzleFlash());
             }
         }
     }
@@ -126,5 +129,18 @@ public class HeldWeapon : MonoBehaviour
         canFire = false;
         yield return new WaitForSeconds(fireRate);
         canFire = true;
+    }
+
+    private IEnumerator MuzzleFlash()
+    {
+        float lightDegrade = .4f;
+
+        muzzleFlash.intensity = muzzleFlashIntensity;
+
+        while(muzzleFlash.intensity > 0)
+        {
+            muzzleFlash.intensity -= lightDegrade;
+            yield return new WaitForSeconds(.017f);
+        }
     }
 }
