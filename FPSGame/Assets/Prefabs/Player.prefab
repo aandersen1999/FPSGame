@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1054286737}
   - component: {fileID: 1054286736}
   m_Layer: 0
-  m_Name: Point Light
+  m_Name: Eye Sight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,12 +44,12 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
-  m_Range: 10
+  m_Range: 7
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: 3
     m_CustomResolution: -1
     m_Strength: 1
@@ -232,10 +232,12 @@ MonoBehaviour:
   weaponHand: {fileID: 0}
   staminaState: 0
   playerCamera: {fileID: 5640078419596131086}
+  EyeSight: {fileID: 1054286736}
   lockedCamera: 0
   fov: 60
   mouseSensititvity: 2
   maxLookAngle: 70
+  eyeSightRange: 7
   lockMovement: 0
   walkSpeed: 4
   runSpeed: 8.5
@@ -397,12 +399,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8083739522391307542, guid: 1b9b504a587bb7d4996a9174c3895c26, type: 3}
-      propertyPath: dropWeapon
-      value: 
-      objectReference: {fileID: 6959810932077384333, guid: f624b23c1f55ce048955359ffe386613, type: 3}
-    m_RemovedComponents:
-    - {fileID: 4492706783021736460, guid: 1b9b504a587bb7d4996a9174c3895c26, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b9b504a587bb7d4996a9174c3895c26, type: 3}
 --- !u!4 &295594040 stripped
 Transform:
