@@ -32,11 +32,10 @@ public class PlayerController : MonoBehaviour
 
     public WeaponHandBehavior weaponHand;
     public StaminaState staminaState;
-    public GameObject InteractableObject;
+    public GameObject InteractableObject { get; private set; }
 
     #region Camera Variables
     public Camera playerCamera;
-    public Light EyeSight;
 
     public bool lockedCamera = false;
 
@@ -44,7 +43,6 @@ public class PlayerController : MonoBehaviour
     public float fov = 60f;
     public float mouseSensititvity = 2f;
     public float maxLookAngle = 70f;
-    public float eyeSightRange = 7.0f;
 
     private float yaw = 0f;
     private float pitch = 0f;
@@ -83,7 +81,6 @@ public class PlayerController : MonoBehaviour
 
         weaponHand = GetComponentInChildren<WeaponHandBehavior>();
         weaponHand.playerCont = this;
-        EyeSight.range = eyeSightRange;
     }
 
     private void Update()
