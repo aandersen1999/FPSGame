@@ -231,6 +231,7 @@ MonoBehaviour:
   jumpKey: 32
   weaponHand: {fileID: 0}
   staminaState: 0
+  InteractableObject: {fileID: 0}
   playerCamera: {fileID: 5640078419596131086}
   EyeSight: {fileID: 1054286736}
   lockedCamera: 0

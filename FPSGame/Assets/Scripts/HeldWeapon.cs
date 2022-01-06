@@ -75,9 +75,9 @@ public class HeldWeapon : MonoBehaviour
 
                 clip--;
 
-                BreakWeapon();
                 StartCoroutine(FireRateWait());
                 StartCoroutine(MuzzleFlash());
+                BreakWeapon();
             }
         }
     }

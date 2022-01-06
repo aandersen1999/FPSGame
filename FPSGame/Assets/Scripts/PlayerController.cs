@@ -99,7 +99,7 @@ public class PlayerController : MonoBehaviour
             transform.eulerAngles = new Vector3(0, yaw, 0);
             playerCamera.transform.localEulerAngles = new Vector3(pitch, 0, 0);
         }
-        
+
         if (Input.GetKeyDown(jumpKey))
         {
             if (!inAir)
@@ -114,21 +114,21 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(dropKey)) { OnDrop?.Invoke(); }
         if (Input.GetKeyDown(interactKey))
         {
-            if(InteractableObject != null)
+            if (InteractableObject != null)
             {
-                if(InteractableObject.GetComponent<InteractableWeapon>() != null)
+                if (InteractableObject.GetComponent<InteractableWeapon>() != null)
                 {
                     InteractableObject.GetComponent<InteractableWeapon>().PickUpWeapon();
                 }
             }
         }
 
-        if(Input.GetAxisRaw("Mouse ScrollWheel") != 0)
+        if (Input.GetAxisRaw("Mouse ScrollWheel") != 0)
         {
-            if(Input.GetAxisRaw("Mouse ScrollWheel") < 0) { OnNext?.Invoke(); }
+            if (Input.GetAxisRaw("Mouse ScrollWheel") < 0) { OnNext?.Invoke(); }
             else { OnPrev?.Invoke(); }
         }
-        
+
         CheckForGround();
     }
 
@@ -137,7 +137,7 @@ public class PlayerController : MonoBehaviour
         if (!lockMovement)
         {
             Vector3 targetVelocity = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
-            
+
 
             if (Input.GetKey(runKey))
             {
@@ -154,9 +154,9 @@ public class PlayerController : MonoBehaviour
             }
             stamina = Mathf.Clamp(stamina, 0, maxStamina);
 
-            if(staminaState == StaminaState.tired) { targetVelocity = targetVelocity * .6f; }
+            if (staminaState == StaminaState.tired) { targetVelocity = targetVelocity * .6f; }
 
-            
+
             Vector3 velocityChange = (targetVelocity - rb.velocity);
             velocityChange.y = 0;
 
@@ -177,8 +177,8 @@ public class PlayerController : MonoBehaviour
     {
         float ratio = stamina / maxStamina;
 
-        if(ratio >= .67) { return StaminaState.fine; }
-        else if(ratio >= .33) { return StaminaState.winded; }
+        if (ratio >= .67) { return StaminaState.fine; }
+        else if (ratio >= .33) { return StaminaState.winded; }
         else { return StaminaState.tired; }
     }
 
@@ -198,7 +198,7 @@ public class PlayerController : MonoBehaviour
         RaycastHit checker;
 
         Debug.DrawRay(playerCamera.transform.position, playerCamera.transform.TransformDirection(Vector3.forward) * checkObjectRange, Color.yellow);
-        if(Physics.Raycast(playerCamera.transform.position, playerCamera.transform.TransformDirection(Vector3.forward), out checker, checkObjectRange, GameMasterBehavior.ObjectLayer))
+        if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.TransformDirection(Vector3.forward), out checker, checkObjectRange, GameMasterBehavior.ObjectLayer))
         {
             InteractableObject = checker.collider.gameObject;
         }
