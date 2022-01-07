@@ -164,7 +164,7 @@ MonoBehaviour:
   clip: 17
   fireRate: 0.5
   randomKickBack: 3
-  muzzleFlashIntensity: 2
+  muzzleFlashIntensity: 1
   dropWeapon: {fileID: 6959810932077384333, guid: f624b23c1f55ce048955359ffe386613, type: 3}
   muzzleFlash: {fileID: 1663492997}
 --- !u!1001 &8078569827053461816

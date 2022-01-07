@@ -133,7 +133,7 @@ public class HeldWeapon : MonoBehaviour
 
     private IEnumerator MuzzleFlash()
     {
-        float lightDegrade = .4f;
+        float lightDegrade = muzzleFlashIntensity / 10.0f;
 
         muzzleFlash.intensity = muzzleFlashIntensity;
 
