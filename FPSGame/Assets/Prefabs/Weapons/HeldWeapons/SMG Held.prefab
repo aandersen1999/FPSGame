@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8420749098989672973}
   - component: {fileID: 8932272543068890280}
-  - component: {fileID: 2479078872997252757}
+  - component: {fileID: 3176607478069434779}
   m_Layer: 0
   m_Name: SMG Held
   m_TagString: Untagged
@@ -53,7 +53,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &2479078872997252757
+--- !u!114 &3176607478069434779
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -62,17 +62,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 8420749098989672974}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f73d0094a6ef474395c9abc3a780d33, type: 3}
+  m_Script: {fileID: 11500000, guid: 416fb27eb2061254c8ddd4c58e0a1e23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: SMG
   defaultDurability: 200
-  durability: 200
   clipSize: 25
-  clip: 25
   fireRate: 0.1
   randomKickBack: 3
   muzzleFlashIntensity: 1
+  durability: 200
+  clip: 25
+  currentState: 0
   dropWeapon: {fileID: 740996154649526180, guid: d0613520cc734ec4cad08b41269ef2b2, type: 3}
   muzzleFlash: {fileID: 2926034002169699917}
 --- !u!1 &9149481399193909832

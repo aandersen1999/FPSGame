@@ -167,6 +167,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerObject: {fileID: 0}
+--- !u!1 &91581533 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 295594039, guid: e61663a262644184bba6ec4f66f2f814, type: 3}
+  m_PrefabInstance: {fileID: 5640078419304896615}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &91581535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 91581533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 416fb27eb2061254c8ddd4c58e0a1e23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponName: Unknown
+  defaultDurability: 100
+  clipSize: 17
+  fireRate: 0.5
+  randomKickBack: 3
+  muzzleFlashIntensity: 1
+  durability: 100
+  clip: 17
+  currentState: 0
+  dropWeapon: {fileID: 6959810932077384333, guid: f624b23c1f55ce048955359ffe386613, type: 3}
+  muzzleFlash: {fileID: 1702587929}
 --- !u!1 &304114002
 GameObject:
   m_ObjectHideFlags: 0
@@ -554,6 +582,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!108 &1702587929 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 4492706784922249648, guid: e61663a262644184bba6ec4f66f2f814, type: 3}
+  m_PrefabInstance: {fileID: 5640078419304896615}
+  m_PrefabAsset: {fileID: 0}
 --- !u!850595691 &2027134210
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -844,7 +877,8 @@ PrefabInstance:
       propertyPath: muzzleFlashIntensity
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5653841897966976803, guid: e61663a262644184bba6ec4f66f2f814, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e61663a262644184bba6ec4f66f2f814, type: 3}
 --- !u!1001 &6959810932314980112
 PrefabInstance:

@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3372711739839985511}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2, y: 0.25, z: -2}
+  m_LocalPosition: {x: 0, y: 0.25, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 3372711740152508491}
@@ -46,10 +46,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: Rifle
-  defaultDurabilty: 80
-  durabilty: 80
-  clip: 5
-  clipSize: 5
+  defaultDurabilty: 75
+  durabilty: 75
+  clip: 6
+  clipSize: 6
   heldWeapon: {fileID: 6387096788822204603, guid: 6189216576e3ab14a9781ac413947172, type: 3}
 --- !u!65 &3372711739839985508
 BoxCollider:
