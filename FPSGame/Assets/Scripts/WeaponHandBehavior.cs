@@ -14,12 +14,7 @@ public class WeaponHandBehavior : MonoBehaviour
     #region Monobehavior
     private void Start()
     {
-        if(transform.GetChild(0) != null)
-        {
-            currentWeapon = transform.GetChild(0).gameObject;
-
-            inventory.Add(currentWeapon);
-        }
+        
     }
 
     private void OnEnable()

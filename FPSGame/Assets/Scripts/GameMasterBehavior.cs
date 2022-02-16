@@ -8,6 +8,7 @@ public class GameMasterBehavior : MonoBehaviour
     public static LayerMask ObjectLayer { get; private set; }
 
     public GameObject playerObject;
+    public PlayerController playerController;
 
     private void Awake()
     {
