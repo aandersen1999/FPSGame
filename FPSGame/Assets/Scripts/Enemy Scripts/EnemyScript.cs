@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyScript : ScriptableObject
+public class EnemyScript : MonoBehaviour
 {
     public bool active = true;
     public bool canTakeDamage = true;
@@ -24,11 +24,22 @@ public class EnemyScript : ScriptableObject
         {
             health -= damage;
 
-            if(health < 0)
+            if(health < 0.0f)
             {
-                if(OnDeath != null) { OnDeath(); }
-                else {  }
+                if(OnDeath != null) 
+                { 
+                    OnDeath(); 
+                }
+                else 
+                { 
+                    Destroy(gameObject);
+                    Debug.LogWarning("No event present for death.");
+                }
             }
+        }
+        if (takesKnockback)
+        {
+            //Will add code later
         }
     }
 }

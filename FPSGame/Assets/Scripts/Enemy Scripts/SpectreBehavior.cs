@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class SpectreBehavior : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private EnemyScript script;
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        
+        script = GetComponent<EnemyScript>();
     }
 }

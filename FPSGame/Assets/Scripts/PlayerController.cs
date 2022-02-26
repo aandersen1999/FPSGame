@@ -109,7 +109,7 @@ public class PlayerController : MonoBehaviour
                 inAir = true;
             }
         }
-
+        
         if (Input.GetKey(attackKey)) { OnAttack?.Invoke(); }
         if (Input.GetKeyDown(reloadKey)) { OnReload?.Invoke(); }
         if (Input.GetKeyDown(dropKey)) { OnDrop?.Invoke(); }

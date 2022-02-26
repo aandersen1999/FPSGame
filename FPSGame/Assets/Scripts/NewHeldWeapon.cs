@@ -107,7 +107,7 @@ public class NewHeldWeapon : MonoBehaviour
         durability--;
         if (durability == 0)
         {
-            GameMasterBehavior.GameMaster.playerObject.GetComponent<PlayerController>().weaponHand.OnBreakWeapon();
+            GameMasterBehavior.GameMaster.playerController.weaponHand.OnBreakWeapon();
             Destroy(gameObject);
         }
     }
@@ -117,7 +117,7 @@ public class NewHeldWeapon : MonoBehaviour
         durability -= damage;
         if (durability <= 0)
         {
-            GameMasterBehavior.GameMaster.playerObject.GetComponent<PlayerController>().weaponHand.OnBreakWeapon();
+            GameMasterBehavior.GameMaster.playerController.weaponHand.OnBreakWeapon();
             Destroy(gameObject);
         }
     }

@@ -26,7 +26,7 @@ public class GameMasterBehavior : MonoBehaviour
         
         if(playerObject != null) 
         { 
-            EnemyBehavior.playerPosition = playerObject.transform.position;
+            EnemyScript.playerPosition = playerObject.transform.position;
         }
     }
 }
