@@ -23,9 +23,10 @@ public class GameMasterBehavior : MonoBehaviour
 
     private void Update()
     {
-        if(EnemyBehavior.playerPoistion != null)
-        {
-            EnemyBehavior.playerPoistion = playerObject.transform;
+        
+        if(playerObject != null) 
+        { 
+            EnemyBehavior.playerPosition = playerObject.transform.position;
         }
     }
 }

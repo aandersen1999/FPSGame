@@ -48,7 +48,7 @@ public class WeaponHandBehavior : MonoBehaviour
         {
             GameObject temp;
 
-            currentWeapon.GetComponent<HeldWeapon>().DropWeapon();
+            currentWeapon.GetComponent<NewHeldWeapon>().DropWeapon();
 
             temp = currentWeapon;
             currentWeapon = weapon;
