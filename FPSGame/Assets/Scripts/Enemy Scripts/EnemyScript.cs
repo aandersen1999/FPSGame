@@ -18,6 +18,18 @@ public class EnemyScript : MonoBehaviour
     public delegate void DeathAction();
     public event DeathAction OnDeath;
 
+    #region Monobehavior
+    private void Awake()
+    {
+        playerPosition = GameMasterBehavior.GameMaster.playerObject.transform.position;
+    }
+
+    private void Update()
+    {
+        playerPosition = GameMasterBehavior.GameMaster.playerObject.transform.position;
+    }
+    #endregion
+
     public void TakeDamage(float damage)
     {
         if (canTakeDamage)
