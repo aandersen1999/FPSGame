@@ -1060,7 +1060,7 @@ GameObject:
   - component: {fileID: 2767171391819522585}
   - component: {fileID: 2767171391828544959}
   - component: {fileID: 3780578529748644879}
-  - component: {fileID: 8989176607596247126}
+  - component: {fileID: 6244780286304534849}
   - component: {fileID: 6745583420455062707}
   m_Layer: 0
   m_Name: Spectre
@@ -1131,7 +1131,7 @@ MonoBehaviour:
   secondsBetweenSwap: 0.5
   animate: 1
   randomAnimate: 1
---- !u!114 &8989176607596247126
+--- !u!114 &6244780286304534849
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

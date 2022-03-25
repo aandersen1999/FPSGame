@@ -19,14 +19,12 @@ public class EnemyScript : MonoBehaviour
     public event DeathAction OnDeath;
 
     #region Monobehavior
-    private void Awake()
+    private void OnEnable()
     {
-        playerPosition = GameMasterBehavior.GameMaster.playerObject.transform.position;
     }
 
     private void Update()
     {
-        playerPosition = GameMasterBehavior.GameMaster.playerObject.transform.position;
     }
     #endregion
 
@@ -36,14 +34,14 @@ public class EnemyScript : MonoBehaviour
         {
             health -= damage;
 
-            if(health < 0.0f)
+            if (health < 0.0f)
             {
-                if(OnDeath != null) 
-                { 
-                    OnDeath(); 
+                if (OnDeath != null)
+                {
+                    OnDeath();
                 }
-                else 
-                { 
+                else
+                {
                     Destroy(gameObject);
                     Debug.LogWarning("No event present for death.");
                 }
