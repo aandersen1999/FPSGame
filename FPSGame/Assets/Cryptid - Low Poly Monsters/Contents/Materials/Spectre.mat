@@ -10,7 +10,7 @@ Material:
   m_Name: Spectre
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _ALPHABLEND_ON _EMISSION
-  m_LightmapFlags: 1
+  m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: 3000
@@ -122,3 +122,4 @@ Material:
     - _GrassTrample: {r: 0, g: 0, b: 0, a: 0}
     - _TranslucentColor: {r: 1, g: 1, b: 1, a: 1}
     - _WindColor: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []
