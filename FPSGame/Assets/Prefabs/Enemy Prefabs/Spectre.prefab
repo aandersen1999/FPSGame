@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1812225874
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1812225875}
+  m_Layer: 0
+  m_Name: HurtBox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1812225875
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1812225874}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2767171391819522585}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2767171391819169281
 GameObject:
   m_ObjectHideFlags: 0
@@ -1088,6 +1118,7 @@ Transform:
   - {fileID: 2767171391819522571}
   - {fileID: 3780578529877134818}
   - {fileID: 3780578529615794559}
+  - {fileID: 1812225875}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -1146,7 +1177,7 @@ MonoBehaviour:
   active: 1
   canTakeDamage: 1
   takesKnockback: 1
-  health: 10
+  health: 100
   strength: 1
   poise: 10
 --- !u!114 &6745583420455062707
@@ -1161,6 +1192,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eb764935812d4a4dae9f22c4124b037, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultMovementSpeed: 0.01
+  lightIntensity: 0
+  ghostLight: {fileID: 3780578529615794556}
 --- !u!1 &2767171391819169337
 GameObject:
   m_ObjectHideFlags: 0
@@ -7454,7 +7488,7 @@ ParticleSystem:
           m_PostInfinity: 2
           m_RotationOrder: 4
   EmissionModule:
-    enabled: 1
+    enabled: 0
     serializedVersion: 4
     rateOverTime:
       serializedVersion: 2
@@ -11571,7 +11605,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3780578529877134818
 Transform:
   m_ObjectHideFlags: 0

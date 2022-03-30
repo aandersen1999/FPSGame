@@ -11,6 +11,9 @@ public class GhostAnimate : MonoBehaviour
 
     private short currentMeshIndex;
 
+    private float opacity;
+    private const float opacityPerSecond = .75f / 5.0f;
+
     private void Awake()
     {
         currentMeshIndex = 0;
@@ -31,12 +34,26 @@ public class GhostAnimate : MonoBehaviour
 
     private void OnEnable()
     {
+        opacity = 0.0f;
         StartCoroutine(Animate());
     }
 
     private void OnDisable()
     {
         StopCoroutine(Animate());
+    }
+
+    private void Update()
+    {
+        if(meshes != null)
+        {
+            opacity += opacityPerSecond * Time.deltaTime;
+            opacity = Mathf.Min(opacity, .75f);
+
+            var col = meshes[currentMeshIndex].GetComponent<Renderer>().material.color;
+            col.a = opacity;
+            meshes[currentMeshIndex].GetComponent<Renderer>().material.color = col;
+        }
     }
 
     private IEnumerator Animate()

@@ -102,6 +102,7 @@ public class NewHeldWeapon : MonoBehaviour
             currentState = WeaponState.Reload;
         }
     }
+
     private void BreakWeapon()
     {
         durability--;
@@ -150,6 +151,7 @@ public class NewHeldWeapon : MonoBehaviour
         }
     }
 }
+
 
 public enum WeaponState : byte
 {

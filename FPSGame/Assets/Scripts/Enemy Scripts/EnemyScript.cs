@@ -25,6 +25,7 @@ public class EnemyScript : MonoBehaviour
 
     private void Update()
     {
+        
     }
     #endregion
 

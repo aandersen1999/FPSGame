@@ -23,10 +23,10 @@ public class GameMasterBehavior : MonoBehaviour
 
     private void Update()
     {
-        
-        if(playerObject != null) 
-        { 
-            EnemyScript.playerPosition = playerObject.transform.position;
+        if (playerObject != null)
+        {
+            EnemyScript.playerPosition = playerObject.transform.position + Vector3.down;
         }
+
     }
 }
