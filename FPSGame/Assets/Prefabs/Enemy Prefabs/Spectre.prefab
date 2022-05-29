@@ -1193,7 +1193,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultMovementSpeed: 0.01
-  lightIntensity: 0
+  lightIntensity: 2
   ghostLight: {fileID: 3780578529615794556}
 --- !u!1 &2767171391819169337
 GameObject:
@@ -11605,7 +11605,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3780578529877134818
 Transform:
   m_ObjectHideFlags: 0

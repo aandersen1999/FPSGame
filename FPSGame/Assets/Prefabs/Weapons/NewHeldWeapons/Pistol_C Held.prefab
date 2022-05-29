@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2208932607752853814}
   - component: {fileID: 2208932607752853833}
   - component: {fileID: 2208932607752853832}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: Pistol_C Held
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,6 +83,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2208932607752853814}
     m_Modifications:
+    - target: {fileID: -8953265987459359552, guid: 6fd8d38ef0df16f44879a379b9a1cef0, type: 3}
+      propertyPath: m_Layer
+      value: 31
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6fd8d38ef0df16f44879a379b9a1cef0, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -127,14 +131,74 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7790631781730865560, guid: 6fd8d38ef0df16f44879a379b9a1cef0, type: 3}
+      propertyPath: m_Layer
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: -7574191099696261489, guid: 6fd8d38ef0df16f44879a379b9a1cef0, type: 3}
+      propertyPath: m_Layer
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: -7562732859027298831, guid: 6fd8d38ef0df16f44879a379b9a1cef0, type: 3}
+      propertyPath: m_Layer
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: -5245630528511213724, guid: 6fd8d38ef0df16f44879a379b9a1cef0, type: 3}
+      propertyPath: m_Layer
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: -4574236998790288090, guid: 6fd8d38ef0df16f44879a379b9a1cef0, type: 3}
+      propertyPath: m_Layer
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: -3895851905710559024, guid: 6fd8d38ef0df16f44879a379b9a1cef0, type: 3}
+      propertyPath: m_Layer
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: -2601982548895600708, guid: 6fd8d38ef0df16f44879a379b9a1cef0, type: 3}
+      propertyPath: m_Layer
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: -1870615362569560995, guid: 6fd8d38ef0df16f44879a379b9a1cef0, type: 3}
+      propertyPath: m_Layer
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 50270895270687305, guid: 6fd8d38ef0df16f44879a379b9a1cef0, type: 3}
+      propertyPath: m_Layer
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 156537088809150781, guid: 6fd8d38ef0df16f44879a379b9a1cef0, type: 3}
+      propertyPath: m_Layer
+      value: 31
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6fd8d38ef0df16f44879a379b9a1cef0, type: 3}
       propertyPath: m_Name
       value: Pistol_Compact_West
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6fd8d38ef0df16f44879a379b9a1cef0, type: 3}
+      propertyPath: m_Layer
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 4542473654129847303, guid: 6fd8d38ef0df16f44879a379b9a1cef0, type: 3}
+      propertyPath: m_Layer
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 4926715695486059067, guid: 6fd8d38ef0df16f44879a379b9a1cef0, type: 3}
+      propertyPath: m_Layer
+      value: 31
       objectReference: {fileID: 0}
     - target: {fileID: 7347934001329320193, guid: 6fd8d38ef0df16f44879a379b9a1cef0, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e7855fec1cfc72146be46d3ab4b224c3, type: 2}
+    - target: {fileID: 7476898052093138885, guid: 6fd8d38ef0df16f44879a379b9a1cef0, type: 3}
+      propertyPath: m_Layer
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 7646581488260871446, guid: 6fd8d38ef0df16f44879a379b9a1cef0, type: 3}
+      propertyPath: m_Layer
+      value: 31
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6fd8d38ef0df16f44879a379b9a1cef0, type: 3}
 --- !u!4 &1814121607682965717 stripped
@@ -152,6 +216,10 @@ PrefabInstance:
     - target: {fileID: 5648615528054286264, guid: 8cdc877946252a94cb454629ec465d6c, type: 3}
       propertyPath: m_Name
       value: Muzzle Flash
+      objectReference: {fileID: 0}
+    - target: {fileID: 5648615528054286264, guid: 8cdc877946252a94cb454629ec465d6c, type: 3}
+      propertyPath: m_Layer
+      value: 31
       objectReference: {fileID: 0}
     - target: {fileID: 6847896285950279198, guid: 8cdc877946252a94cb454629ec465d6c, type: 3}
       propertyPath: m_RootOrder

@@ -8,6 +8,7 @@ public class SpectreBehavior : MonoBehaviour
     private float movementSpeed;
 
     public float lightIntensity = 2.0f;
+    public SpectreState state = SpectreState.Approach;
 
     private EnemyScript script;
     public Light ghostLight;
@@ -22,8 +23,16 @@ public class SpectreBehavior : MonoBehaviour
     }
     private void OnEnable()
     {
+        EventManager.AIEventTrigger += DecisionTree;
+
         movementSpeed = defaultMovementSpeed * EnemyScript.hordeAgression;
         StartCoroutine(GhostLightSpawn());
+
+    }
+
+    private void OnDisable()
+    {
+        EventManager.AIEventTrigger -= DecisionTree;
     }
 
     private void Update()
@@ -33,7 +42,76 @@ public class SpectreBehavior : MonoBehaviour
 
     private void FixedUpdate()
     {
-        transform.position += transform.TransformDirection(Vector3.forward) * movementSpeed;
+        switch (state)
+        {
+            case SpectreState.Approach:
+                transform.position += transform.TransformDirection(Vector3.forward) * movementSpeed;
+                break;
+            case SpectreState.StrafingLeft:
+                transform.position += transform.TransformDirection(Vector3.left) * movementSpeed;
+                break;
+            case SpectreState.StrafingRight:
+                transform.position += transform.TransformDirection(Vector3.left) * movementSpeed;
+                break;
+            case SpectreState.Teleport:
+                Teleport();
+                break;
+            
+            default:
+                break;
+        }
+        
+    }
+    #endregion
+
+    private void DecisionTree()
+    {
+        if (Vector3.Distance(EnemyScript.playerPosition, transform.position) > 4.0f)
+        {
+            if(Random.value > .05f)
+            {
+                state = SpectreState.Approach;
+            }
+            else
+            {
+                state = SpectreState.Teleport;
+            }
+        }
+        else
+        {
+            if(state == SpectreState.StrafingLeft)
+            {
+                if(Random.value < .1f)
+                {
+                    state = SpectreState.StrafingRight;
+                }
+            }
+            else if(state == SpectreState.StrafingRight)
+            {
+                if (Random.value < .1f)
+                {
+                    state = SpectreState.StrafingLeft;
+                }
+            }
+            else
+            {
+                if(Random.value > .5f)
+                {
+                    state = SpectreState.StrafingRight;
+                }
+                else
+                {
+                    state = SpectreState.StrafingLeft;
+                }
+            }
+        }
+    }
+
+    #region Decisions
+    private void Teleport()
+    {
+        transform.position = EnemyScript.playerPosition;
+        state = SpectreState.Idle;
     }
     #endregion
 
@@ -51,4 +129,14 @@ public class SpectreBehavior : MonoBehaviour
             yield return null;
         }
     }
+}
+
+public enum SpectreState : byte
+{
+    Idle,
+    Approach,
+    StrafingLeft,
+    StrafingRight,
+    Teleport,
+    Attacking
 }
