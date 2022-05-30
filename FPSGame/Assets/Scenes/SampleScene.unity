@@ -197,7 +197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fdf74c9794eaee498911ab8f9a3abcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AI_EventTriggerOn: 1
+  AI_LongEventTriggerOn: 1
 --- !u!4 &222025025
 Transform:
   m_ObjectHideFlags: 0

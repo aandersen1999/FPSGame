@@ -23,7 +23,7 @@ public class SpectreBehavior : MonoBehaviour
     }
     private void OnEnable()
     {
-        EventManager.AIEventTrigger += DecisionTree;
+        EventManager.AIEventLongTrigger += DecisionTree;
 
         movementSpeed = defaultMovementSpeed * EnemyScript.hordeAgression;
         StartCoroutine(GhostLightSpawn());
@@ -32,7 +32,7 @@ public class SpectreBehavior : MonoBehaviour
 
     private void OnDisable()
     {
-        EventManager.AIEventTrigger -= DecisionTree;
+        EventManager.AIEventLongTrigger -= DecisionTree;
     }
 
     private void Update()

@@ -49,9 +49,9 @@ MonoBehaviour:
   weaponName: Rifle
   defaultDurability: 75
   clipSize: 10
-  fireRate: 0.5
+  fireRate: 0.583
   randomKickBack: 3
-  muzzleFlashIntensity: 1
+  muzzleFlashIntensity: 1.5
   durability: 75
   clip: 10
   currentState: 0

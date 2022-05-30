@@ -5,28 +5,29 @@ using UnityEngine;
 public class EventManager : MonoBehaviour
 {
     public delegate void Handler();
-    public static event Handler AIEventTrigger;
+    public static event Handler AIEventLongTrigger;
 
-    public bool AI_EventTriggerOn = true;
+    public bool AI_LongEventTriggerOn = true;
 
-    private const float Long_Timer = .35f;
+    private const float Short_Timer = .35f;
+    private const float Long_Timer = .7f;
 
     private void OnEnable()
     {
-        StartCoroutine(ActivateTimer());
+        StartCoroutine(ActivateLongTimer());
     }
 
     private void OnDisable()
     {
-        StopCoroutine(ActivateTimer());
+        StopCoroutine(ActivateLongTimer());
     }
 
-    private IEnumerator ActivateTimer()
+    private IEnumerator ActivateLongTimer()
     {
-        while (AI_EventTriggerOn)
+        while (AI_LongEventTriggerOn)
         {
             yield return new WaitForSeconds(Long_Timer);
-            AIEventTrigger?.Invoke();
+            AIEventLongTrigger?.Invoke();
         }
     }
 }
