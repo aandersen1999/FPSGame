@@ -19,16 +19,16 @@ public class WeaponHandBehavior : MonoBehaviour
 
     private void OnEnable()
     {
-        PlayerController.OnDrop += DropWeapon;
-        PlayerController.OnNext += NextWeapon;
-        PlayerController.OnPrev += PrevWeapon;
+        PlayerController.OnPressDrop += DropWeapon;
+        PlayerController.OnPressNext += NextWeapon;
+        PlayerController.OnPressPrev += PrevWeapon;
     }
 
     private void OnDisable()
     {
-        PlayerController.OnDrop -= DropWeapon;
-        PlayerController.OnNext -= NextWeapon;
-        PlayerController.OnPrev -= PrevWeapon;
+        PlayerController.OnPressDrop -= DropWeapon;
+        PlayerController.OnPressNext -= NextWeapon;
+        PlayerController.OnPressPrev -= PrevWeapon;
     }
     #endregion
 

@@ -5,20 +5,12 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     #region Events
-    public delegate void AttackAction();
-    public static event AttackAction OnAttack;
-
-    public delegate void ReloadAction();
-    public static event ReloadAction OnReload;
-
-    public delegate void DropAction();
-    public static event DropAction OnDrop;
-
-    public delegate void WeaponNextAction();
-    public static event WeaponNextAction OnNext;
-
-    public delegate void WeaponPrevAction();
-    public static event WeaponPrevAction OnPrev;
+    public delegate void Action();
+    public static event Action OnPressAttack;
+    public static event Action OnPressReload;
+    public static event Action OnPressDrop;
+    public static event Action OnPressNext;
+    public static event Action OnPressPrev;
     #endregion
 
     private Rigidbody rb;
@@ -110,9 +102,9 @@ public class PlayerController : MonoBehaviour
             }
         }
         
-        if (Input.GetKey(attackKey)) { OnAttack?.Invoke(); }
-        if (Input.GetKeyDown(reloadKey)) { OnReload?.Invoke(); }
-        if (Input.GetKeyDown(dropKey)) { OnDrop?.Invoke(); }
+        if (Input.GetKey(attackKey)) { OnPressAttack?.Invoke(); }
+        if (Input.GetKeyDown(reloadKey)) { OnPressReload?.Invoke(); }
+        if (Input.GetKeyDown(dropKey)) { OnPressDrop?.Invoke(); }
         if (Input.GetKeyDown(interactKey))
         {
             if (InteractableObject != null)
@@ -126,8 +118,8 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetAxisRaw("Mouse ScrollWheel") != 0)
         {
-            if (Input.GetAxisRaw("Mouse ScrollWheel") < 0) { OnNext?.Invoke(); }
-            else { OnPrev?.Invoke(); }
+            if (Input.GetAxisRaw("Mouse ScrollWheel") < 0) { OnPressNext?.Invoke(); }
+            else { OnPressPrev?.Invoke(); }
         }
 
         CheckForGround();

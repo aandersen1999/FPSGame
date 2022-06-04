@@ -25,16 +25,16 @@ public class Weapon_Pistol : MonoBehaviour
 
     private void OnEnable()
     {
-        PlayerController.OnAttack += Attack;
-        PlayerController.OnReload += ReloadStart;
-        PlayerController.OnDrop += DropWeapon;
+        PlayerController.OnPressAttack += Attack;
+        PlayerController.OnPressReload += ReloadStart;
+        PlayerController.OnPressDrop += DropWeapon;
     }
 
     private void OnDisable()
     {
-        PlayerController.OnAttack -= Attack;
-        PlayerController.OnReload -= ReloadStart;
-        PlayerController.OnDrop -= DropWeapon;
+        PlayerController.OnPressAttack -= Attack;
+        PlayerController.OnPressReload -= ReloadStart;
+        PlayerController.OnPressDrop -= DropWeapon;
     }
     #endregion
 

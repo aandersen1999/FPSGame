@@ -38,30 +38,10 @@ public class SpectreBehavior : MonoBehaviour
     private void Update()
     {
         transform.LookAt(EnemyScript.playerPosition);
-    }
-
-    private void FixedUpdate()
-    {
-        switch (state)
-        {
-            case SpectreState.Approach:
-                transform.position += transform.TransformDirection(Vector3.forward) * movementSpeed;
-                break;
-            case SpectreState.StrafingLeft:
-                transform.position += transform.TransformDirection(Vector3.left) * movementSpeed;
-                break;
-            case SpectreState.StrafingRight:
-                transform.position += transform.TransformDirection(Vector3.left) * movementSpeed;
-                break;
-            case SpectreState.Teleport:
-                Teleport();
-                break;
-            
-            default:
-                break;
-        }
         
     }
+
+    
     #endregion
 
     private void DecisionTree()

@@ -31,6 +31,7 @@ Transform:
   m_Children:
   - {fileID: 1814121607682965717}
   - {fileID: 7153512705905258265}
+  - {fileID: 7778241832539492776}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -57,6 +58,7 @@ MonoBehaviour:
   currentState: 0
   dropWeapon: {fileID: 718221663589988858, guid: ae858f5187043014185cba25029d5e9b, type: 3}
   muzzleFlash: {fileID: 2964883759898022791}
+  bulletSpawner: {fileID: 0}
 --- !u!95 &2208932607752853832
 Animator:
   serializedVersion: 3
@@ -76,6 +78,36 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &8702062486991861032
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7778241832539492776}
+  m_Layer: 31
+  m_Name: Bullet Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7778241832539492776
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8702062486991861032}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.009, z: -0.169}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2208932607752853814}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2208932608055748414
 PrefabInstance:
   m_ObjectHideFlags: 0

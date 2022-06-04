@@ -1,9 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class NewHeldWeapon : MonoBehaviour
 {
+    public delegate void FireAction(GameObject weaponObject, FireWeaponEventArgs e);
+    public static event FireAction OnFireAction;
+
     #region stats variables
     public string weaponName = "Unknown";
 
@@ -13,6 +17,8 @@ public class NewHeldWeapon : MonoBehaviour
     public float fireRate = .5f;
     public float randomKickBack = 3f;
     public float muzzleFlashIntensity = 1.0f;
+    public float damage = 1.0f;
+    public float knockBack = 0.0f;
     #endregion
 
     public int durability = 100;
@@ -33,9 +39,9 @@ public class NewHeldWeapon : MonoBehaviour
 
     private void OnEnable()
     {
-        PlayerController.OnAttack += Attack;
-        PlayerController.OnReload += ReloadStart;
-        PlayerController.OnDrop += DropWeapon;
+        PlayerController.OnPressAttack += Attack;
+        PlayerController.OnPressReload += ReloadStart;
+        PlayerController.OnPressDrop += DropWeapon;
 
         currentState = WeaponState.Swapping;
         anim.SetTrigger("Swapped");
@@ -43,9 +49,9 @@ public class NewHeldWeapon : MonoBehaviour
 
     private void OnDisable()
     {
-        PlayerController.OnAttack -= Attack;
-        PlayerController.OnReload -= ReloadStart;
-        PlayerController.OnDrop -= DropWeapon;
+        PlayerController.OnPressAttack -= Attack;
+        PlayerController.OnPressReload -= ReloadStart;
+        PlayerController.OnPressDrop -= DropWeapon;
     }
 
     private void Update()
@@ -159,4 +165,10 @@ public enum WeaponState : byte
     Fire,
     Reload,
     Swapping
+}
+
+public class FireWeaponEventArgs : EventArgs
+{
+    public float Damage { get; set; }
+    public float KnockBack { get; set; }
 }
