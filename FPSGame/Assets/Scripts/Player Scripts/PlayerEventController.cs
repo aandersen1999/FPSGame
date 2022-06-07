@@ -14,7 +14,7 @@ public class PlayerEventController : MonoBehaviour
     public event Action OnPressRun;
     public event Action OnPressJump;
     public event Action OnPressNext;
-    public event Action OnPressPrev;
+    //public event Action OnPressPrev;
     public event Action OnPressInteract;
 
     public event MoveAction OnMove;
@@ -27,6 +27,8 @@ public class PlayerEventController : MonoBehaviour
     public KeyCode dropKey = KeyCode.Q;
     public KeyCode interactKey = KeyCode.E;
     public KeyCode jumpKey = KeyCode.Space;
+    //Temporary key
+    public KeyCode nextKey = KeyCode.Tab;
     #endregion
 
     private void Update()
@@ -38,7 +40,6 @@ public class PlayerEventController : MonoBehaviour
         if (Input.GetKeyDown(jumpKey)) { OnPressJump?.Invoke(); }
         if (Input.GetKeyDown(dropKey)) { OnPressDrop?.Invoke(); }
         if (Input.GetKeyDown(interactKey)) { OnPressInteract?.Invoke(); }
-
-        
+        if (Input.GetKeyDown(nextKey)) { OnPressNext?.Invoke(); }
     }
 }
