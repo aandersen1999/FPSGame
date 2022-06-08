@@ -5,11 +5,13 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public float health = 100.0f;
+    public WeaponHandBehavior weaponHand;
+    public GameObject InteractableObject;
 
     #region Camera
     public Camera cam;
     public Light eyeSight;
-    public WeaponHandBehavior weaponHand;
+    
 
     public bool lockCamera = false;
     public bool lockMovement = false;
@@ -53,12 +55,14 @@ public class Player : MonoBehaviour
 
     private void OnEnable()
     {
-        
+        pec.OnPressInteract += InteractObject;
+        pec.OnPressJump += Jump;
     }
 
     private void OnDisable()
     {
-        
+        pec.OnPressInteract -= InteractObject;
+        pec.OnPressJump -= Jump;
     }
 
     private void Update()
@@ -71,7 +75,60 @@ public class Player : MonoBehaviour
 
             transform.eulerAngles = new Vector3(0, yaw, 0);
             cam.transform.localEulerAngles = new Vector3(pitch, 0, 0);
+
+            CheckForObject();
+        }
+        if (!lockMovement)
+        {
+            CheckForGround();
         }
     }
     #endregion
+
+    private void Jump()
+    {
+        if (!inAir)
+        {
+            rb.AddForce(0f, jumpHeight, 0f, ForceMode.Impulse);
+            inAir = true;
+        }
+    }
+
+    private void InteractObject()
+    {
+        if(InteractableObject != null)
+        {
+            if (InteractableObject.GetComponent<InteractableWeapon>() != null)
+            {
+                InteractableObject.GetComponent<InteractableWeapon>().PickUpWeapon();
+            }
+        }
+    }
+
+    private void CheckForObject()
+    {
+        InteractableObject = null;
+
+        RaycastHit checker;
+
+        Debug.DrawRay(cam.transform.position, cam.transform.TransformDirection(Vector3.forward) * checkObjectRange, Color.yellow);
+        if (Physics.Raycast(cam.transform.position, cam.transform.TransformDirection(Vector3.forward), out checker, checkObjectRange, GameMasterBehavior.ObjectLayer))
+        {
+            InteractableObject = checker.collider.gameObject;
+        }
+    }
+
+    private void CheckForGround()
+    {
+        Vector3 origin = new Vector3(transform.position.x, transform.position.y + (transform.localScale.y * .1f), transform.position.z);
+        float distance = .75f;
+        Debug.DrawRay(origin, Vector3.down * distance, Color.red);
+
+        inAir = Physics.Raycast(origin, Vector3.down, out RaycastHit hit, distance) ? false : true;
+    }
+
+    private void MoveCharacter(float xAxis, float yAxis)
+    {
+
+    }
 }

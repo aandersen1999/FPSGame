@@ -6,7 +6,7 @@ public class PlayerEventController : MonoBehaviour
 {
     #region Events
     public delegate void Action();
-    public delegate void MoveAction(Vector3 direction);
+    public delegate void MoveAction(float x, float y);
 
     public event Action OnPressAttack;
     public event Action OnPressReload;
