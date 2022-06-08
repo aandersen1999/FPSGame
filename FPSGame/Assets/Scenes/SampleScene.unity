@@ -364,7 +364,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8761812002566894209, guid: 44b87965c2bb185438868b27c26a865a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.316
+      value: -0.184
       objectReference: {fileID: 0}
     - target: {fileID: 8761812002566894209, guid: 44b87965c2bb185438868b27c26a865a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -510,7 +510,7 @@ Transform:
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1278363680
 GameObject:
@@ -690,7 +690,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1370335184}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 216381654}
@@ -933,9 +933,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  weaponHand: {fileID: 353364372}
+  InteractableObject: {fileID: 0}
   cam: {fileID: 216381656}
   eyeSight: {fileID: 1278363681}
-  weaponHand: {fileID: 353364372}
   lockCamera: 0
   lockMovement: 0
   fov: 60
@@ -1071,7 +1072,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3122086142387799231, guid: 3e81d73a6bfce3340bf70a98a0750d0d, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3122086142387799231, guid: 3e81d73a6bfce3340bf70a98a0750d0d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1128,7 +1129,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4148208581979189139, guid: 38b4ba2dfff36454b9c754007b22d2ab, type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4148208581979189139, guid: 38b4ba2dfff36454b9c754007b22d2ab, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1233,7 +1234,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3780578529615794556, guid: bab0ab58417aba340a5368efb7c23df7, type: 3}
       propertyPath: m_DrawHalo
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3780578529615794558, guid: bab0ab58417aba340a5368efb7c23df7, type: 3}
       propertyPath: m_IsActive
@@ -1254,7 +1255,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8366949913905407928, guid: e68328be56baca24db9b4c3ea1efb68f, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8366949913905407928, guid: e68328be56baca24db9b4c3ea1efb68f, type: 3}
       propertyPath: m_LocalPosition.x
