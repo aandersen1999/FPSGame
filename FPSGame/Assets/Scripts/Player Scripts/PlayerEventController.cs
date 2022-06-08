@@ -6,7 +6,6 @@ public class PlayerEventController : MonoBehaviour
 {
     #region Events
     public delegate void Action();
-    public delegate void MoveAction(float x, float y);
 
     public event Action OnPressAttack;
     public event Action OnPressReload;
@@ -17,7 +16,6 @@ public class PlayerEventController : MonoBehaviour
     //public event Action OnPressPrev;
     public event Action OnPressInteract;
 
-    public event MoveAction OnMove;
     #endregion
 
     #region Keys

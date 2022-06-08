@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
     private float yaw = 0.0f;
     private float pitch = 0.0f;
 
-    private readonly float checkObjectRange = 1.5f;
+    private readonly float checkObjectRange = 3.0f;
     #endregion
 
     #region Movement
@@ -80,8 +80,24 @@ public class Player : MonoBehaviour
         }
         if (!lockMovement)
         {
+            
+
             CheckForGround();
         }
+    }
+
+    private void FixedUpdate()
+    {
+        if (!lockMovement)
+        {
+            Vector3 targetVelocity = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+            targetVelocity = transform.TransformDirection(targetVelocity.normalized) * walkSpeed;
+
+            Vector3 velocityChange = targetVelocity - rb.velocity;
+            velocityChange.y = 0;
+            rb.AddForce(velocityChange, ForceMode.VelocityChange);
+        }
+        
     }
     #endregion
 
@@ -125,10 +141,5 @@ public class Player : MonoBehaviour
         Debug.DrawRay(origin, Vector3.down * distance, Color.red);
 
         inAir = Physics.Raycast(origin, Vector3.down, out RaycastHit hit, distance) ? false : true;
-    }
-
-    private void MoveCharacter(float xAxis, float yAxis)
-    {
-
     }
 }
