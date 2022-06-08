@@ -34,11 +34,14 @@ public class Player : MonoBehaviour
     #endregion
 
     private Rigidbody rb;
+    private PlayerEventController pec;
 
     #region Monobehavior
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        pec = GetComponent<PlayerEventController>();
+
         cam.fieldOfView = fov;
     }
 
