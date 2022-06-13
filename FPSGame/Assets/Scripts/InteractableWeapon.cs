@@ -47,7 +47,7 @@ public class InteractableWeapon : MonoBehaviour
     {
         GameObject createdWeapon = Instantiate(heldWeapon, GameMasterBehavior.GameMaster.playerController.weaponHand.transform);
 
-        createdWeapon.GetComponent<NewHeldWeapon>().CreateHeldWeapon(weaponName, clip, clipSize, durabilty, defaultDurabilty);
+        createdWeapon.GetComponent<HeldWeapon>().CreateHeldWeapon(weaponName, clip, clipSize, durabilty, defaultDurabilty);
 
         GameMasterBehavior.GameMaster.playerController.weaponHand.PickUpWeapon(ref createdWeapon);
         Destroy(gameObject);

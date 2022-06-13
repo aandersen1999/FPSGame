@@ -12,7 +12,6 @@ public class Player : MonoBehaviour
     public Camera cam;
     public Light eyeSight;
     
-
     public bool lockCamera = false;
     public bool lockMovement = false;
 

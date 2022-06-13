@@ -9,12 +9,12 @@ public class WeaponHandBehavior : MonoBehaviour
     public GameObject currentWeapon;
     public List<GameObject> inventory;
 
-    public PlayerController playerCont;
+    public Player currentPlayer;
 
     #region Monobehavior
     private void Start()
     {
-        
+
     }
 
     private void OnEnable()
@@ -48,7 +48,7 @@ public class WeaponHandBehavior : MonoBehaviour
         {
             GameObject temp;
 
-            currentWeapon.GetComponent<NewHeldWeapon>().DropWeapon();
+            currentWeapon.GetComponent<HeldWeapon>().DropWeapon();
 
             temp = currentWeapon;
             currentWeapon = weapon;

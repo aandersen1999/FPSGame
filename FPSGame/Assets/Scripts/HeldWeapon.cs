@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewHeldWeapon : MonoBehaviour
+public class HeldWeapon : MonoBehaviour
 {
     public delegate void FireAction(GameObject weaponObject, FireWeaponEventArgs e);
     public static event FireAction OnFireAction;
@@ -39,9 +39,9 @@ public class NewHeldWeapon : MonoBehaviour
 
     private void OnEnable()
     {
-        PlayerController.OnPressAttack += Attack;
-        PlayerController.OnPressReload += ReloadStart;
-        PlayerController.OnPressDrop += DropWeapon;
+        EventManager.instance.PEC.OnPressAttack += Attack;
+        EventManager.instance.PEC.OnPressReload += ReloadStart;
+        EventManager.instance.PEC.OnPressDrop += DropWeapon;
 
         currentState = WeaponState.Swapping;
         anim.SetTrigger("Swapped");
@@ -49,9 +49,9 @@ public class NewHeldWeapon : MonoBehaviour
 
     private void OnDisable()
     {
-        PlayerController.OnPressAttack -= Attack;
-        PlayerController.OnPressReload -= ReloadStart;
-        PlayerController.OnPressDrop -= DropWeapon;
+        EventManager.instance.PEC.OnPressAttack -= Attack;
+        EventManager.instance.PEC.OnPressReload -= ReloadStart;
+        EventManager.instance.PEC.OnPressDrop -= DropWeapon;
     }
 
     private void Update()

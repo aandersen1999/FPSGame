@@ -74,7 +74,6 @@ public class PlayerController : MonoBehaviour
         GameMasterBehavior.GameMaster.playerObject = gameObject;
 
         weaponHand = GetComponentInChildren<WeaponHandBehavior>();
-        weaponHand.playerCont = this;
         EyeSight.range = eyeSightRange;
     }
 

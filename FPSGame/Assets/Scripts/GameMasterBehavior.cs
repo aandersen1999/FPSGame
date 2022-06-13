@@ -10,8 +10,6 @@ public class GameMasterBehavior : MonoBehaviour
     public GameObject playerObject;
     public Player playerController;
 
-    public EventManager eventManager;
-
 
     private void Awake()
     {
