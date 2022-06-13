@@ -283,6 +283,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fdf74c9794eaee498911ab8f9a3abcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PEC: {fileID: 0}
   AI_LongEventTriggerOn: 1
 --- !u!4 &222025025
 Transform:
@@ -296,7 +297,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &304114002
 GameObject:
@@ -614,7 +615,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5640078418770024357, guid: e61663a262644184bba6ec4f66f2f814, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5640078418770024357, guid: e61663a262644184bba6ec4f66f2f814, type: 3}
       propertyPath: m_LocalPosition.x
@@ -938,6 +939,7 @@ MonoBehaviour:
   InteractableObject: {fileID: 0}
   cam: {fileID: 216381656}
   eyeSight: {fileID: 1278363681}
+  camTransfrom: {fileID: 0}
   lockCamera: 0
   lockMovement: 0
   fov: 60
@@ -1192,6 +1194,18 @@ PrefabInstance:
     - target: {fileID: 2767171391819522585, guid: bab0ab58417aba340a5368efb7c23df7, type: 3}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2767171391819522585, guid: bab0ab58417aba340a5368efb7c23df7, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2767171391819522585, guid: bab0ab58417aba340a5368efb7c23df7, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2767171391819522585, guid: bab0ab58417aba340a5368efb7c23df7, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 2767171391819522585, guid: bab0ab58417aba340a5368efb7c23df7, type: 3}
       propertyPath: m_LocalPosition.x
