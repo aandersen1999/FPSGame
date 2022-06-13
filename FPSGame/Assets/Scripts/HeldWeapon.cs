@@ -5,9 +5,6 @@ using UnityEngine;
 
 public class HeldWeapon : MonoBehaviour
 {
-    public delegate void FireAction(GameObject weaponObject, FireWeaponEventArgs e);
-    public static event FireAction OnFireAction;
-
     #region stats variables
     public string weaponName = "Unknown";
 

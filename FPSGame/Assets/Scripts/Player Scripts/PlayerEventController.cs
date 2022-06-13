@@ -43,7 +43,10 @@ public class PlayerEventController : MonoBehaviour
         if (Input.GetKeyDown(reloadKey)) { OnPressReload?.Invoke(); }
         if (Input.GetKeyDown(jumpKey)) { OnPressJump?.Invoke(); }
         if (Input.GetKeyDown(dropKey)) { OnPressDrop?.Invoke(); }
-        if (Input.GetKeyDown(interactKey)) { OnPressInteract?.Invoke(); }
+        if (Input.GetKeyDown(interactKey)) 
+        { 
+            OnPressInteract?.Invoke();
+        }
         if (Input.GetKeyDown(nextKey)) { OnPressNext?.Invoke(); }
     }
 }

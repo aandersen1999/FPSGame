@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     #region Camera
     public Camera cam;
     public Light eyeSight;
+    public Transform camTransfrom;
     
     public bool lockCamera = false;
     public bool lockMovement = false;
@@ -49,6 +50,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         GameMasterBehavior.GameMaster.playerObject = gameObject;
+        GameMasterBehavior.GameMaster.playerController = this;
         eyeSight.range = eyeSightRange;
     }
 
