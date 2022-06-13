@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class EventManager : MonoBehaviour
 {
+    public static EventManager instance;
+    public PlayerEventController PEC;
+
     public delegate void Handler();
     public static event Handler AIEventLongTrigger;
 
@@ -11,6 +14,11 @@ public class EventManager : MonoBehaviour
 
     private const float Short_Timer = .35f;
     private const float Long_Timer = .7f;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     private void OnEnable()
     {

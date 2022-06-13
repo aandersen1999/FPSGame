@@ -72,7 +72,6 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         GameMasterBehavior.GameMaster.playerObject = gameObject;
-        GameMasterBehavior.GameMaster.playerController = this;
 
         weaponHand = GetComponentInChildren<WeaponHandBehavior>();
         weaponHand.playerCont = this;

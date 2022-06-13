@@ -29,6 +29,12 @@ public class PlayerEventController : MonoBehaviour
     public KeyCode nextKey = KeyCode.Tab;
     #endregion
 
+
+    private void Start()
+    {
+        EventManager.instance.PEC = this;
+    }
+
     private void Update()
     {
         if (Input.GetKey(attackKey)) { OnPressAttack?.Invoke(); }
