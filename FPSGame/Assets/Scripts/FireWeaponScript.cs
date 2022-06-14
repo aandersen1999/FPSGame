@@ -12,9 +12,6 @@ public class FireWeaponScript : MonoBehaviour
 
     private void Update()
     {
-        if(GameMasterBehavior.GameMaster.playerController != null)
-        {
-            bulletSpawn = GameMasterBehavior.GameMaster.playerController.cam.transform.position;
-        }
+        
     }
 }

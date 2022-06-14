@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     #region Camera
     public Camera cam;
     public Light eyeSight;
-    public Transform camTransfrom;
+    public Transform camTransform;
     
     public bool lockCamera = false;
     public bool lockMovement = false;
@@ -45,6 +45,7 @@ public class Player : MonoBehaviour
         pec = GetComponent<PlayerEventController>();
 
         cam.fieldOfView = fov;
+        camTransform = cam.transform;
     }
 
     private void Start()

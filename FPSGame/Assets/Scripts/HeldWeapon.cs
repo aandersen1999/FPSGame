@@ -14,8 +14,11 @@ public class HeldWeapon : MonoBehaviour
     public float fireRate = .5f;
     public float randomKickBack = 3f;
     public float muzzleFlashIntensity = 1.0f;
-    public float damage = 1.0f;
+
+    public float damage = 20.0f;
     public float knockBack = 0.0f;
+    public float bloom = 0.0f;
+    public byte bulletsPerShot = 1;
     #endregion
 
     public int durability = 100;
@@ -27,11 +30,17 @@ public class HeldWeapon : MonoBehaviour
     public Light muzzleFlash;
 
     private Animator anim;
+    private Transform camTransRef;
 
     #region Monobehavior
     private void Awake()
     {
         anim = GetComponent<Animator>();
+    }
+
+    private void Start()
+    {
+        camTransRef = GameMasterBehavior.GameMaster.playerController.camTransform;
     }
 
     private void OnEnable()
@@ -91,7 +100,17 @@ public class HeldWeapon : MonoBehaviour
                 StartCoroutine(FireRateWait());
                 StartCoroutine(MuzzleFlash());
                 BreakWeapon();
+
+                FireWeapon();
             }
+        }
+    }
+
+    private void FireWeapon()
+    {
+        if (Physics.Raycast(camTransRef.position, camTransRef.forward, out RaycastHit hit))
+        {
+            Debug.Log("Success");
         }
     }
 
