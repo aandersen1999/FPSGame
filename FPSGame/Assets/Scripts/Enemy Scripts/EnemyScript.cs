@@ -8,7 +8,7 @@ public class EnemyScript : MonoBehaviour
     public bool canTakeDamage = true;
     public bool takesKnockback = true;
 
-    public float health = 10.0f;
+    public float health = 100.0f;
     public float strength = 1.0f;
     public float poise = 10.0f;
 
@@ -44,7 +44,7 @@ public class EnemyScript : MonoBehaviour
                 else
                 {
                     Destroy(gameObject);
-                    Debug.LogWarning("No event present for death.");
+                    Debug.LogWarning("No event present for death: " + gameObject.ToString());
                 }
             }
         }

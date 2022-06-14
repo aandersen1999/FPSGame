@@ -62,7 +62,7 @@ public class HeldWeapon : MonoBehaviour
 
     private void Update()
     {
-        if(clip <= 0)
+        if(clip <= 0 && currentState == WeaponState.Idle)
         {
             ReloadStart();
         }
@@ -101,16 +101,18 @@ public class HeldWeapon : MonoBehaviour
                 StartCoroutine(MuzzleFlash());
                 BreakWeapon();
 
-                FireWeapon();
+                if (Physics.Raycast(camTransRef.position, camTransRef.forward, out RaycastHit hit))
+                {
+                    if (hit.transform.parent != null)
+                    {
+                        if (hit.transform.parent.TryGetComponent(out EnemyScript inst))
+                        {
+                            inst.TakeDamage(damage);
+                            Debug.Log("Test");
+                        }
+                    }
+                }
             }
-        }
-    }
-
-    private void FireWeapon()
-    {
-        if (Physics.Raycast(camTransRef.position, camTransRef.forward, out RaycastHit hit))
-        {
-            Debug.Log("Success");
         }
     }
 
