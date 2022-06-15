@@ -46,16 +46,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 416fb27eb2061254c8ddd4c58e0a1e23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bloomOn: 1
   weaponName: Shotgun
   defaultDurability: 50
   clipSize: 10
   fireRate: 1
   randomKickBack: 3
-  muzzleFlashIntensity: 2
-  damage: 20
+  muzzleFlashIntensity: 2.5
+  damage: 12
   knockBack: 0
-  bloom: 0
-  bulletsPerShot: 1
+  bloom: 3
+  bulletsPerShot: 9
   durability: 50
   clip: 10
   currentState: 0

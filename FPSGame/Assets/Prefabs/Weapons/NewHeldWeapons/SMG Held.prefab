@@ -46,12 +46,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 416fb27eb2061254c8ddd4c58e0a1e23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bloomOn: 1
   weaponName: SMG
   defaultDurability: 150
   clipSize: 25
   fireRate: 0.1333
   randomKickBack: 3
   muzzleFlashIntensity: 0.7
+  damage: 20
+  knockBack: 0
+  bloom: 2.5
+  bulletsPerShot: 1
   durability: 150
   clip: 25
   currentState: 0

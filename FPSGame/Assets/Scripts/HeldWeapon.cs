@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class HeldWeapon : MonoBehaviour
 {
+    public bool bloomOn = true;
+
     #region stats variables
     public string weaponName = "Unknown";
 
@@ -101,17 +103,22 @@ public class HeldWeapon : MonoBehaviour
                 StartCoroutine(MuzzleFlash());
                 BreakWeapon();
 
-                if (Physics.Raycast(camTransRef.position, camTransRef.forward, out RaycastHit hit))
+                for(byte i = 0; i < bulletsPerShot; i++)
                 {
-                    if (hit.transform.parent != null)
+                    if (Physics.Raycast(camTransRef.position, GetBloom(camTransRef), out RaycastHit hit))
                     {
-                        if (hit.transform.parent.TryGetComponent(out EnemyScript inst))
+
+                        if (hit.transform.parent != null)
                         {
-                            inst.TakeDamage(damage);
-                            Debug.Log("Test");
+                            if (hit.transform.parent.TryGetComponent(out EnemyScript inst))
+                            {
+                                inst.TakeDamage(damage);
+                                Debug.Log("Test");
+                            }
                         }
                     }
                 }
+                
             }
         }
     }
@@ -145,6 +152,15 @@ public class HeldWeapon : MonoBehaviour
             GameMasterBehavior.GameMaster.playerController.weaponHand.OnBreakWeapon();
             Destroy(gameObject);
         }
+    }
+
+    private Vector3 GetBloom(Transform transRef)
+    {
+        Transform dummy = transRef;
+        dummy.eulerAngles += new Vector3(UnityEngine.Random.Range(-bloom, bloom), UnityEngine.Random.Range(-bloom, bloom), 0.0f);
+        Debug.DrawRay(dummy.position, dummy.forward * 10, Color.red, 5.0f);
+        return dummy.forward;
+        
     }
 
     private void ReloadEnd()

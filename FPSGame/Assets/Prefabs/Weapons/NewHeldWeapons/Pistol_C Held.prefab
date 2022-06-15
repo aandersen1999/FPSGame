@@ -47,18 +47,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 416fb27eb2061254c8ddd4c58e0a1e23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bloomOn: 1
   weaponName: Compact Pistol
   defaultDurability: 75
   clipSize: 8
   fireRate: 0.283
   randomKickBack: 3
   muzzleFlashIntensity: 0.7
+  damage: 20
+  knockBack: 0
+  bloom: 0.1
+  bulletsPerShot: 1
   durability: 75
   clip: 8
   currentState: 0
   dropWeapon: {fileID: 718221663589988858, guid: ae858f5187043014185cba25029d5e9b, type: 3}
   muzzleFlash: {fileID: 2964883759898022791}
-  bulletSpawner: {fileID: 0}
 --- !u!95 &2208932607752853832
 Animator:
   serializedVersion: 3
