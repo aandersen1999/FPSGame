@@ -55,7 +55,7 @@ MonoBehaviour:
   muzzleFlashIntensity: 0.7
   damage: 20
   knockBack: 0
-  bloom: 2.5
+  bloom: 1.25
   bulletsPerShot: 1
   durability: 150
   clip: 25
