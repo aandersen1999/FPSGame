@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerEventController : MonoBehaviour
 {
+    public bool toggleCrouch = false;
     #region Events
     public delegate void Action();
 
@@ -12,6 +13,7 @@ public class PlayerEventController : MonoBehaviour
     public event Action OnPressDrop;
     public event Action OnPressRun;
     public event Action OnPressJump;
+    public event Action OnPressCrouch;
     public event Action OnPressNext;
     //public event Action OnPressPrev;
     public event Action OnPressInteract;
@@ -25,10 +27,10 @@ public class PlayerEventController : MonoBehaviour
     public KeyCode dropKey = KeyCode.Q;
     public KeyCode interactKey = KeyCode.E;
     public KeyCode jumpKey = KeyCode.Space;
+    public KeyCode crouchKey = KeyCode.LeftControl;
     //Temporary key
     public KeyCode nextKey = KeyCode.Tab;
     #endregion
-
 
     private void Start()
     {
@@ -48,5 +50,24 @@ public class PlayerEventController : MonoBehaviour
             OnPressInteract?.Invoke();
         }
         if (Input.GetKeyDown(nextKey)) { OnPressNext?.Invoke(); }
+
+        if (toggleCrouch)
+        {
+            if (Input.GetKeyDown(crouchKey))
+            {
+                OnPressCrouch?.Invoke();
+            }
+        }
+        else
+        {
+            if (Input.GetKeyDown(crouchKey))
+            {
+                OnPressCrouch?.Invoke();
+            }
+            if (Input.GetKeyUp(crouchKey))
+            {
+                OnPressCrouch?.Invoke();
+            }
+        }
     }
 }

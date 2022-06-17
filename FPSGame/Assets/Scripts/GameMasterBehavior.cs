@@ -13,7 +13,6 @@ public class GameMasterBehavior : MonoBehaviour
     private void Awake()
     {
         GameMaster = this;
-        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void Start()

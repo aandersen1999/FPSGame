@@ -35,7 +35,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Debug Layer
   - HeldWeapon
   m_SortingLayers:
   - name: Default

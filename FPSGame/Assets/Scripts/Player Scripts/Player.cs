@@ -29,6 +29,8 @@ public class Player : MonoBehaviour
     #endregion
 
     #region Movement
+    public bool crouched;
+
     public float walkSpeed = 4.0f;
     public float jumpHeight = 5.0f;
 
@@ -50,6 +52,7 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
         GameMasterBehavior.GameMaster.playerObject = gameObject;
         GameMasterBehavior.GameMaster.playerController = this;
         eyeSight.range = eyeSightRange;
@@ -59,12 +62,14 @@ public class Player : MonoBehaviour
     {
         pec.OnPressInteract += InteractObject;
         pec.OnPressJump += Jump;
+        pec.OnPressCrouch += Crouch;
     }
 
     private void OnDisable()
     {
         pec.OnPressInteract -= InteractObject;
         pec.OnPressJump -= Jump;
+        pec.OnPressCrouch -= Crouch;
     }
 
     private void Update()
@@ -82,8 +87,6 @@ public class Player : MonoBehaviour
         }
         if (!lockMovement)
         {
-            
-
             CheckForGround();
         }
     }
@@ -103,12 +106,27 @@ public class Player : MonoBehaviour
     }
     #endregion
 
+    #region controls
     private void Jump()
     {
         if (!inAir)
         {
             rb.AddForce(0f, jumpHeight, 0f, ForceMode.Impulse);
             inAir = true;
+        }
+    }
+
+    private void Crouch()
+    {
+        if (!crouched)
+        {
+            Debug.Log("Crouch");
+            crouched = true;
+        }
+        else
+        {
+            Debug.Log("Stand");
+            crouched = false;
         }
     }
 
@@ -122,6 +140,7 @@ public class Player : MonoBehaviour
             }
         }
     }
+    #endregion
 
     private void CheckForObject()
     {
