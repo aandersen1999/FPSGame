@@ -31,7 +31,7 @@ public class Player : MonoBehaviour
     #region Movement
     public bool crouched;
 
-    public float walkSpeed = 4.0f;
+    public float walkSpeed = 1.0f;
     public float jumpHeight = 5.0f;
 
     private bool inAir = true;

@@ -145,6 +145,7 @@ MonoBehaviour:
   mouseSensitivity: 2
   maxLookAngle: 70
   eyeSightRange: 7
+  crouched: 0
   walkSpeed: 4
   jumpHeight: 5
 --- !u!114 &3860539775795584874
@@ -159,12 +160,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1397886cf6999524e890dd3d204354b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  toggleCrouch: 0
   runKey: 304
   attackKey: 323
   reloadKey: 114
   dropKey: 113
   interactKey: 101
   jumpKey: 32
+  crouchKey: 306
   nextKey: 9
 --- !u!54 &3860539775795584875
 Rigidbody:
@@ -176,10 +179,10 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 1
 --- !u!65 &3860539775795584872
@@ -189,12 +192,12 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3860539775795584878}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: bce33100ddd8e5d4fa8708f732a4552e, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 2, z: 1}
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Size: {x: 1, y: 2.5, z: 1}
+  m_Center: {x: 0, y: 1.25, z: 0}
 --- !u!1 &3860539775969674069
 GameObject:
   m_ObjectHideFlags: 0
