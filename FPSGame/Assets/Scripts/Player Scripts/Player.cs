@@ -35,16 +35,21 @@ public class Player : MonoBehaviour
     public float jumpHeight = 5.0f;
 
     private bool inAir = true;
+    private bool canStand = true;
     #endregion
 
     private Rigidbody rb;
     private PlayerEventController pec;
+    private CapsuleCollider box;
+
+    private bool WTU_Running = false;
 
     #region Monobehavior
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         pec = GetComponent<PlayerEventController>();
+        box = GetComponent<CapsuleCollider>();
 
         cam.fieldOfView = fov;
         camTransform = cam.transform;
@@ -88,6 +93,7 @@ public class Player : MonoBehaviour
         if (!lockMovement)
         {
             CheckForGround();
+            CheckAboveHead();
         }
     }
 
@@ -120,13 +126,24 @@ public class Player : MonoBehaviour
     {
         if (!crouched)
         {
-            Debug.Log("Crouch");
+            box.center = new Vector3(0, .625f, 0);
+            box.height = 1.25f;
+            cam.transform.localPosition = new Vector3(0, 1, 0);
             crouched = true;
         }
         else
         {
-            Debug.Log("Stand");
-            crouched = false;
+            if (canStand)
+            {
+                box.center = new Vector3(0, 1.25f, 0);
+                box.height = 2.5f;
+                cam.transform.localPosition = new Vector3(0, 2, 0);
+                crouched = false;
+            }
+            else if (!WTU_Running)
+            {
+                StartCoroutine(WaitToUncrouch());
+            }
         }
     }
 
@@ -142,6 +159,7 @@ public class Player : MonoBehaviour
     }
     #endregion
 
+    #region raycast checks
     private void CheckForObject()
     {
         InteractableObject = null;
@@ -162,5 +180,26 @@ public class Player : MonoBehaviour
         Debug.DrawRay(origin, Vector3.down * distance, Color.red);
 
         inAir = Physics.Raycast(origin, Vector3.down, out RaycastHit hit, distance) ? false : true;
+    }
+    
+    //checks above head to see if you should be able to uncrouch
+    private void CheckAboveHead()
+    {
+        float distance = 1.5f;
+
+        Debug.DrawRay(cam.transform.position, Vector3.up * distance, Color.green);
+        canStand = Physics.Raycast(cam.transform.position, Vector3.up, out RaycastHit hit, distance) ? false : true;
+    }
+    #endregion
+
+    private IEnumerator WaitToUncrouch()
+    {
+        WTU_Running = true;
+        while (!canStand)
+        {
+            yield return null;
+        }
+        Crouch();
+        WTU_Running = false;
     }
 }
