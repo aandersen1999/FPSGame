@@ -19,16 +19,12 @@ public class WeaponHandBehavior : MonoBehaviour
 
     private void OnEnable()
     {
-        PlayerController.OnPressDrop += DropWeapon;
-        PlayerController.OnPressNext += NextWeapon;
-        PlayerController.OnPressPrev += PrevWeapon;
+        EventManager.instance.PEC.OnPressDrop += DropWeapon;
     }
 
     private void OnDisable()
     {
-        PlayerController.OnPressDrop -= DropWeapon;
-        PlayerController.OnPressNext -= NextWeapon;
-        PlayerController.OnPressPrev -= PrevWeapon;
+        EventManager.instance.PEC.OnPressDrop -= DropWeapon;
     }
     #endregion
 
@@ -62,6 +58,7 @@ public class WeaponHandBehavior : MonoBehaviour
 
         if (inventory.Count > 1) { NextWeapon(); }
         inventory.Remove(storeCurrent);
+        inventory.TrimExcess();
     }
 
     private void DropWeapon()
@@ -72,6 +69,7 @@ public class WeaponHandBehavior : MonoBehaviour
 
             if(inventory.Count > 1) { NextWeapon(); }
             inventory.Remove(storeCurrent);
+            inventory.TrimExcess();
         }
     }
     

@@ -32,7 +32,7 @@ public class PlayerEventController : MonoBehaviour
     public KeyCode nextKey = KeyCode.Tab;
     #endregion
 
-    private void Start()
+    private void Awake()
     {
         EventManager.instance.PEC = this;
     }
