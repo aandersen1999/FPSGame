@@ -53,13 +53,14 @@ public class Player : MonoBehaviour
 
         cam.fieldOfView = fov;
         camTransform = cam.transform;
+
+        GameMasterBehavior.GameMaster.playerObject = gameObject;
+        GameMasterBehavior.GameMaster.playerController = this;
     }
 
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        GameMasterBehavior.GameMaster.playerObject = gameObject;
-        GameMasterBehavior.GameMaster.playerController = this;
         eyeSight.range = eyeSightRange;
     }
 
