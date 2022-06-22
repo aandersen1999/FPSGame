@@ -34,22 +34,28 @@ public class Player : MonoBehaviour
     public float walkSpeed = 1.0f;
     public float jumpHeight = 5.0f;
 
+    private float verticalVelocity;
+    private const float gravity = -15.0f;
+    private const float terminalVelocity = -100.0f;
+
     private bool inAir = true;
     private bool canStand = true;
     #endregion
 
-    private Rigidbody rb;
     private PlayerEventController pec;
-    private CapsuleCollider box;
+    private CharacterController cc;
+    //private CapsuleCollider box;
+    //private Rigidbody rb;
 
     private bool WTU_Running = false;
 
     #region Monobehavior
     private void Awake()
     {
-        rb = GetComponent<Rigidbody>();
         pec = GetComponent<PlayerEventController>();
-        box = GetComponent<CapsuleCollider>();
+        cc = GetComponent<CharacterController>();
+        //box = GetComponent<CapsuleCollider>();
+        //rb = GetComponent<Rigidbody>();
 
         cam.fieldOfView = fov;
         camTransform = cam.transform;
@@ -80,6 +86,10 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        inAir = !cc.isGrounded;
+
+        CheckAboveHead();
+
         if (!lockCamera)
         {
             yaw = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * mouseSensitivity;
@@ -93,22 +103,23 @@ public class Player : MonoBehaviour
         }
         if (!lockMovement)
         {
-            CheckForGround();
-            CheckAboveHead();
+            //Vector3 movement = (!inAir) ? new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")) :
+            //new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+            Vector3 movement = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+            if (inAir)
+            {
+                verticalVelocity += gravity * Time.deltaTime;
+                verticalVelocity = Mathf.Clamp(verticalVelocity, terminalVelocity, -terminalVelocity);
+            }
+            movement = transform.TransformDirection(movement.normalized);
+            cc.Move(movement * Time.deltaTime * walkSpeed);
+            cc.Move(new Vector3(0, verticalVelocity * Time.deltaTime, 0));
         }
     }
 
     private void FixedUpdate()
     {
-        if (!lockMovement)
-        {
-            Vector3 targetVelocity = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
-            targetVelocity = transform.TransformDirection(targetVelocity.normalized) * walkSpeed;
 
-            Vector3 velocityChange = targetVelocity - rb.velocity;
-            velocityChange.y = 0;
-            rb.AddForce(velocityChange, ForceMode.VelocityChange);
-        }
         
     }
     #endregion
@@ -118,8 +129,7 @@ public class Player : MonoBehaviour
     {
         if (!inAir)
         {
-            rb.AddForce(0f, jumpHeight, 0f, ForceMode.Impulse);
-            inAir = true;
+            verticalVelocity = jumpHeight;
         }
     }
 
@@ -127,8 +137,8 @@ public class Player : MonoBehaviour
     {
         if (!crouched)
         {
-            box.center = new Vector3(0, .625f, 0);
-            box.height = 1.25f;
+            cc.center = new Vector3(0, .625f, 0);
+            cc.height = 1.25f;
             cam.transform.localPosition = new Vector3(0, 1, 0);
             crouched = true;
         }
@@ -136,8 +146,8 @@ public class Player : MonoBehaviour
         {
             if (canStand)
             {
-                box.center = new Vector3(0, 1.25f, 0);
-                box.height = 2.5f;
+                cc.center = new Vector3(0, 1.25f, 0);
+                cc.height = 2.5f;
                 cam.transform.localPosition = new Vector3(0, 2, 0);
                 crouched = false;
             }
@@ -174,14 +184,14 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void CheckForGround()
+    /*private void CheckForGround()
     {
         Vector3 origin = new Vector3(transform.position.x, transform.position.y + (transform.localScale.y * .1f), transform.position.z);
         float distance = .75f;
         Debug.DrawRay(origin, Vector3.down * distance, Color.red);
 
         inAir = Physics.Raycast(origin, Vector3.down, out RaycastHit hit, distance) ? false : true;
-    }
+    }*/
     
     //checks above head to see if you should be able to uncrouch
     private void CheckAboveHead()
