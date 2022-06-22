@@ -20,11 +20,13 @@ public class WeaponHandBehavior : MonoBehaviour
     private void OnEnable()
     {
         EventManager.instance.PEC.OnPressDrop += DropWeapon;
+        EventManager.instance.PEC.OnPressNext += NextWeapon;
     }
 
     private void OnDisable()
     {
         EventManager.instance.PEC.OnPressDrop -= DropWeapon;
+        EventManager.instance.PEC.OnPressNext -= NextWeapon;
     }
     #endregion
 

@@ -86,6 +86,10 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if(inAir && cc.isGrounded)
+        {
+            verticalVelocity = 0;
+        }
         inAir = !cc.isGrounded;
 
         CheckAboveHead();
