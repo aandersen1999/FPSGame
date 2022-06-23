@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerEventController : MonoBehaviour
 {
     public bool toggleCrouch = false;
+    public bool toggleRun = false;
     #region Events
     public delegate void Action();
 
@@ -40,7 +41,6 @@ public class PlayerEventController : MonoBehaviour
     private void Update()
     {
         if (Input.GetKey(attackKey)) { OnPressAttack?.Invoke(); }
-        if (Input.GetKey(runKey)) { OnPressRun?.Invoke(); }
 
         if (Input.GetKeyDown(reloadKey)) { OnPressReload?.Invoke(); }
         if (Input.GetKeyDown(jumpKey)) { OnPressJump?.Invoke(); }
@@ -67,6 +67,24 @@ public class PlayerEventController : MonoBehaviour
             if (Input.GetKeyUp(crouchKey))
             {
                 OnPressCrouch?.Invoke();
+            }
+        }
+        if (toggleRun)
+        {
+            if (Input.GetKeyDown(runKey))
+            {
+                OnPressRun?.Invoke();
+            }
+        }
+        else
+        {
+            if (Input.GetKeyDown(runKey))
+            {
+                OnPressRun?.Invoke();
+            }
+            if (Input.GetKeyUp(runKey))
+            {
+                OnPressRun?.Invoke();
             }
         }
     }

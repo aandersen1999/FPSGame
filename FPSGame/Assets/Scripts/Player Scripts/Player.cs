@@ -30,13 +30,20 @@ public class Player : MonoBehaviour
 
     #region Movement
     public bool crouched;
+    public bool runActive;
+    private bool isSupposedToCrouch = false;
 
-    public float walkSpeed = 1.0f;
+    public float walkSpeed = 4.0f;
+    public float runSpeed = 6.0f;
     public float jumpHeight = 5.0f;
+    public float stamina = 100.0f;
+    public float staminaDrain = 14.0f;
+    public float staminaGain = 7.0f;
+    public float crouchModifier = .5f;
 
     private float verticalVelocity;
     private const float gravity = -15.0f;
-    private const float terminalVelocity = -100.0f;
+    private const float terminalVelocity = -15.0f;
 
     private bool inAir = true;
     private bool canStand = true;
@@ -46,8 +53,6 @@ public class Player : MonoBehaviour
     private CharacterController cc;
     //private CapsuleCollider box;
     //private Rigidbody rb;
-
-    private bool WTU_Running = false;
 
     #region Monobehavior
     private void Awake()
@@ -74,22 +79,25 @@ public class Player : MonoBehaviour
     {
         pec.OnPressInteract += InteractObject;
         pec.OnPressJump += Jump;
-        pec.OnPressCrouch += Crouch;
+        pec.OnPressCrouch += ToggleCrouch;
+        pec.OnPressRun += ToggleRun;
     }
 
     private void OnDisable()
     {
         pec.OnPressInteract -= InteractObject;
         pec.OnPressJump -= Jump;
-        pec.OnPressCrouch -= Crouch;
+        pec.OnPressCrouch -= ToggleCrouch;
+        pec.OnPressRun -= ToggleRun;
     }
 
     private void Update()
     {
         if(inAir && cc.isGrounded)
         {
-            verticalVelocity = 0;
+            //verticalVelocity = 0.01f;
         }
+        Debug.Log(cc.isGrounded);
         inAir = !cc.isGrounded;
 
         CheckAboveHead();
@@ -115,9 +123,13 @@ public class Player : MonoBehaviour
                 verticalVelocity += gravity * Time.deltaTime;
                 verticalVelocity = Mathf.Clamp(verticalVelocity, terminalVelocity, -terminalVelocity);
             }
-            movement = transform.TransformDirection(movement.normalized);
-            cc.Move(movement * Time.deltaTime * walkSpeed);
+            cc.Move(calcMovement(movement) * Time.deltaTime);
             cc.Move(new Vector3(0, verticalVelocity * Time.deltaTime, 0));
+
+            if(crouched != isSupposedToCrouch)
+            {
+                Crouch();
+            }
         }
     }
 
@@ -134,6 +146,26 @@ public class Player : MonoBehaviour
         if (!inAir)
         {
             verticalVelocity = jumpHeight;
+        }
+    }
+
+    private void ToggleCrouch()
+    {
+        isSupposedToCrouch = !isSupposedToCrouch;
+    }
+
+    private void ToggleRun()
+    {
+        if (runActive)
+        {
+            runActive = false;
+        }
+        else
+        {
+            if(stamina >= 10.0f)
+            {
+                runActive = true;
+            }
         }
     }
 
@@ -155,10 +187,7 @@ public class Player : MonoBehaviour
                 cam.transform.localPosition = new Vector3(0, 2, 0);
                 crouched = false;
             }
-            else if (!WTU_Running)
-            {
-                StartCoroutine(WaitToUncrouch());
-            }
+            
         }
     }
 
@@ -171,6 +200,25 @@ public class Player : MonoBehaviour
                 InteractableObject.GetComponent<InteractableWeapon>().PickUpWeapon();
             }
         }
+    }
+
+    private Vector3 calcMovement(Vector3 inputs)
+    {
+        Vector3 output = transform.TransformDirection(inputs.normalized);
+        CalculateStamina(inputs.x, inputs.z);
+
+        if(runActive && stamina > 0)
+        {
+            output = output * runSpeed;
+        }
+        else
+        {
+            output = output * walkSpeed;
+        }
+
+        output = (crouched) ? output * crouchModifier : output;
+
+        return output;
     }
     #endregion
 
@@ -207,7 +255,40 @@ public class Player : MonoBehaviour
     }
     #endregion
 
-    private IEnumerator WaitToUncrouch()
+    private void CalculateStamina(float x, float z)
+    {
+        if (runActive)
+        {
+            if(z != 0.0f || x != 0.0f)
+            {
+                stamina -= staminaDrain * Time.deltaTime;
+            }
+            else
+            {
+                stamina += staminaGain * Time.deltaTime;
+            }
+        }
+        else
+        {
+            if (z != 0.0f || x != 0.0f)
+            {
+                stamina += (staminaGain * .5f) * Time.deltaTime;
+            }
+            else
+            {
+                stamina += staminaGain * Time.deltaTime;
+            }
+        }
+
+        stamina = Mathf.Clamp(stamina, 0.0f, 100.0f);
+
+        if(stamina == 0.0f)
+        {
+            runActive = false;
+        }
+    }
+
+    /*private IEnumerator WaitToUncrouch()
     {
         WTU_Running = true;
         while (!canStand)
@@ -216,5 +297,5 @@ public class Player : MonoBehaviour
         }
         Crouch();
         WTU_Running = false;
-    }
+    }*/
 }

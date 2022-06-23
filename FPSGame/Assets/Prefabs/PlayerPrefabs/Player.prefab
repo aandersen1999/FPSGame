@@ -59,8 +59,14 @@ MonoBehaviour:
   maxLookAngle: 90
   eyeSightRange: 7
   crouched: 0
+  runActive: 0
   walkSpeed: 4
+  runSpeed: 7
   jumpHeight: 6
+  stamina: 100
+  staminaDrain: 14
+  staminaGain: 7
+  crouchModifier: 0.5
 --- !u!114 &3100821189919631806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74,6 +80,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toggleCrouch: 0
+  toggleRun: 0
   runKey: 304
   attackKey: 323
   reloadKey: 114
