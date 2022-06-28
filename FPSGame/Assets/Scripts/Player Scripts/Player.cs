@@ -51,16 +51,12 @@ public class Player : MonoBehaviour
 
     private PlayerEventController pec;
     private CharacterController cc;
-    //private CapsuleCollider box;
-    //private Rigidbody rb;
 
     #region Monobehavior
     private void Awake()
     {
         pec = GetComponent<PlayerEventController>();
         cc = GetComponent<CharacterController>();
-        //box = GetComponent<CapsuleCollider>();
-        //rb = GetComponent<Rigidbody>();
 
         cam.fieldOfView = fov;
         camTransform = cam.transform;
@@ -93,11 +89,6 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if(inAir && cc.isGrounded)
-        {
-            //verticalVelocity = 0.01f;
-        }
-        Debug.Log(cc.isGrounded);
         inAir = !cc.isGrounded;
 
         CheckAboveHead();
@@ -115,8 +106,6 @@ public class Player : MonoBehaviour
         }
         if (!lockMovement)
         {
-            //Vector3 movement = (!inAir) ? new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")) :
-            //new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
             Vector3 movement = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
             if (inAir)
             {
@@ -235,15 +224,6 @@ public class Player : MonoBehaviour
             InteractableObject = checker.collider.gameObject;
         }
     }
-
-    /*private void CheckForGround()
-    {
-        Vector3 origin = new Vector3(transform.position.x, transform.position.y + (transform.localScale.y * .1f), transform.position.z);
-        float distance = .75f;
-        Debug.DrawRay(origin, Vector3.down * distance, Color.red);
-
-        inAir = Physics.Raycast(origin, Vector3.down, out RaycastHit hit, distance) ? false : true;
-    }*/
     
     //checks above head to see if you should be able to uncrouch
     private void CheckAboveHead()
@@ -287,15 +267,4 @@ public class Player : MonoBehaviour
             runActive = false;
         }
     }
-
-    /*private IEnumerator WaitToUncrouch()
-    {
-        WTU_Running = true;
-        while (!canStand)
-        {
-            yield return null;
-        }
-        Crouch();
-        WTU_Running = false;
-    }*/
 }
