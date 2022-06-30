@@ -10,9 +10,14 @@ public class GameMasterBehavior : MonoBehaviour
     public GameObject playerObject;
     public Player playerController;
 
+    public List<string> quotes;
+
+    public bool quotesFound = false;
+
     private void Awake()
     {
         GameMaster = this;
+        quotesFound = HandleTextFile.GetQuotes(out quotes);
     }
 
     private void Start()
