@@ -32,6 +32,7 @@ public class Player : MonoBehaviour
     public bool crouched;
     public bool runActive;
     private bool isSupposedToCrouch = false;
+    private bool wantsToRun = false;
 
     public float walkSpeed = 4.0f;
     public float runSpeed = 6.0f;
@@ -106,6 +107,8 @@ public class Player : MonoBehaviour
         }
         if (!lockMovement)
         {
+            Run(wantsToRun);
+
             Vector3 movement = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
             if (inAir)
             {
@@ -145,7 +148,7 @@ public class Player : MonoBehaviour
 
     private void ToggleRun()
     {
-        if (runActive)
+        /*if (runActive)
         {
             runActive = false;
         }
@@ -155,7 +158,8 @@ public class Player : MonoBehaviour
             {
                 runActive = true;
             }
-        }
+        }*/
+        wantsToRun = !wantsToRun;
     }
 
     private void Crouch()
@@ -177,6 +181,21 @@ public class Player : MonoBehaviour
                 crouched = false;
             }
             
+        }
+    }
+
+    private void Run(bool trigger)
+    {
+        if (trigger)
+        {
+            if(stamina >= 10.0f)
+            {
+                runActive = true;
+            }
+        }
+        else
+        {
+            runActive = false;
         }
     }
 
