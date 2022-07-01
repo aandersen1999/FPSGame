@@ -57,11 +57,11 @@ MonoBehaviour:
   fov: 60
   mouseSensitivity: 2
   maxLookAngle: 90
-  eyeSightRange: 7
+  eyeSightRange: 10
   crouched: 0
   runActive: 0
   walkSpeed: 4
-  runSpeed: 7
+  runSpeed: 9
   jumpHeight: 6
   stamina: 100
   staminaDrain: 14
@@ -311,7 +311,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 2
-  m_Range: 7
+  m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
