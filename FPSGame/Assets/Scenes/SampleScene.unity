@@ -311,22 +311,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 707135029, guid: 2961a772b49b5794b9fd8e8ccb225b47, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 1066.6665
-      objectReference: {fileID: 0}
-    - target: {fileID: 707135029, guid: 2961a772b49b5794b9fd8e8ccb225b47, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 200.5165
-      objectReference: {fileID: 0}
-    - target: {fileID: 707135029, guid: 2961a772b49b5794b9fd8e8ccb225b47, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 707135029, guid: 2961a772b49b5794b9fd8e8ccb225b47, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 124449347338178306, guid: 2961a772b49b5794b9fd8e8ccb225b47, type: 3}
       propertyPath: m_Name
       value: GUI
@@ -1045,6 +1029,14 @@ PrefabInstance:
     - target: {fileID: 3100821189919631807, guid: 951d95b5b3b948f48ad879220a9e94a7, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3100821189933624149, guid: 951d95b5b3b948f48ad879220a9e94a7, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 2147483680
+      objectReference: {fileID: 0}
+    - target: {fileID: 3100821191167732713, guid: 951d95b5b3b948f48ad879220a9e94a7, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 791
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 951d95b5b3b948f48ad879220a9e94a7, type: 3}
