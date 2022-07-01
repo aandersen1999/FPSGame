@@ -21,9 +21,13 @@ public class EventManager : MonoBehaviour
     private const float Short_Timer = .35f;
     private const float Long_Timer = .7f;
 
+    public List<string> quotes;
+    public bool quotesFound = false;
+
     private void Awake()
     {
         instance = this;
+        quotesFound = HandleTextFile.GetQuotes(out quotes);
     }
 
     private void OnEnable()
@@ -36,9 +40,18 @@ public class EventManager : MonoBehaviour
         StopCoroutine(ActivateLongTimer());
     }
 
-    public static void TriggerQuoteEvent(string s)
+    public void TriggerQuoteEvent()
     {
-        UpQuotes?.Invoke(s);
+        if (quotesFound)
+        {
+            string returnQuote = quotes[Random.Range(0, quotes.Count)];
+
+            UpQuotes?.Invoke(returnQuote);
+        }
+        else
+        {
+            Debug.LogWarning("No Quotes to display");
+        }
     }
 
     private IEnumerator ActivateLongTimer()
