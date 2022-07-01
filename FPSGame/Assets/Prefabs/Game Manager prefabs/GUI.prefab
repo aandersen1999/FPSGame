@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 707135031}
   - component: {fileID: 707135030}
   - component: {fileID: 707135032}
+  - component: {fileID: 707135033}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Quote
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,7 +80,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: Quote
 --- !u!114 &707135032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -95,6 +96,20 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
   m_EffectDistance: {x: 2, y: -2}
   m_UseGraphicAlpha: 1
+--- !u!114 &707135033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 707135028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94decbde53391ca4c82acf1a5689a6b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  opacityLossPS: 0.35
+  secondsBeforeFade: 4
 --- !u!1 &124449347002289306
 GameObject:
   m_ObjectHideFlags: 0
@@ -179,6 +194,7 @@ GameObject:
   - component: {fileID: 124449347338178305}
   - component: {fileID: 124449347338178304}
   - component: {fileID: 124449347338178307}
+  - component: {fileID: 582935634}
   m_Layer: 5
   m_Name: GUI
   m_TagString: Untagged
@@ -243,7 +259,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1920, y: 1080}
+  m_ReferenceResolution: {x: 1600, y: 900}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -267,3 +283,15 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &582935634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124449347338178306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26a8cdcf7a204734baea3a1b182d39d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

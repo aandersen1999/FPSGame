@@ -215,42 +215,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 33
   m_LocalEulerAnglesHint: {x: -57.307, y: -143.486, z: -188.067}
---- !u!1 &582935629 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 124449347338178306, guid: 2961a772b49b5794b9fd8e8ccb225b47, type: 3}
-  m_PrefabInstance: {fileID: 124449348647696166}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &582935634
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 582935629}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26a8cdcf7a204734baea3a1b182d39d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1 &707135028 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 707135028, guid: 2961a772b49b5794b9fd8e8ccb225b47, type: 3}
-  m_PrefabInstance: {fileID: 124449348647696166}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &707135033
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 707135028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94decbde53391ca4c82acf1a5689a6b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  opacityLossPS: 0.35
-  secondsBeforeFade: 4
 --- !u!1 &1120389403 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 490116208712651214, guid: 96c025725463ec34a9b0a651237e2756, type: 3}
@@ -439,22 +403,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 707135028, guid: 2961a772b49b5794b9fd8e8ccb225b47, type: 3}
-      propertyPath: m_Name
-      value: Quote
-      objectReference: {fileID: 0}
-    - target: {fileID: 707135030, guid: 2961a772b49b5794b9fd8e8ccb225b47, type: 3}
-      propertyPath: m_Text
-      value: Quote
-      objectReference: {fileID: 0}
-    - target: {fileID: 124449347338178304, guid: 2961a772b49b5794b9fd8e8ccb225b47, type: 3}
-      propertyPath: m_ReferenceResolution.x
-      value: 1600
-      objectReference: {fileID: 0}
-    - target: {fileID: 124449347338178304, guid: 2961a772b49b5794b9fd8e8ccb225b47, type: 3}
-      propertyPath: m_ReferenceResolution.y
-      value: 900
-      objectReference: {fileID: 0}
     - target: {fileID: 124449347338178306, guid: 2961a772b49b5794b9fd8e8ccb225b47, type: 3}
       propertyPath: m_Name
       value: GUI
