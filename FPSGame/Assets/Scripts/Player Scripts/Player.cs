@@ -70,6 +70,8 @@ public class Player : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         eyeSight.range = eyeSightRange;
+
+        GUIScript.instance.TriggerHealth(health, CheckIfDead());
     }
 
     private void OnEnable()
@@ -148,17 +150,7 @@ public class Player : MonoBehaviour
 
     private void ToggleRun()
     {
-        /*if (runActive)
-        {
-            runActive = false;
-        }
-        else
-        {
-            if(stamina >= 10.0f)
-            {
-                runActive = true;
-            }
-        }*/
+        
         wantsToRun = !wantsToRun;
     }
 
@@ -208,6 +200,20 @@ public class Player : MonoBehaviour
                 InteractableObject.GetComponent<InteractableWeapon>().PickUpWeapon();
             }
         }
+    }
+
+    public void TakeDamage(float damage)
+    {
+        health -= damage;
+
+        health = Mathf.Clamp(health, 0.0f, 100.0f);
+
+        GUIScript.instance.TriggerHealth(health, CheckIfDead());
+    }
+
+    private bool CheckIfDead()
+    {
+        return (health < 1.0) ? true : false;
     }
 
     private Vector3 calcMovement(Vector3 inputs)

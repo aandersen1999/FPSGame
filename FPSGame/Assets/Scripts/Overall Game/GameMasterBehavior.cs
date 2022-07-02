@@ -29,7 +29,11 @@ public class GameMasterBehavior : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.N))
         {
-            EventManager.instance.TriggerQuoteEvent();
+            GUIScript.instance.TriggerQuoteEvent();
+        }
+        if (Input.GetKeyUp(KeyCode.P))
+        {
+            playerController.TakeDamage(.5f);
         }
     }
 }

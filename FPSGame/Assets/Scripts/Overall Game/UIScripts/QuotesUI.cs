@@ -25,19 +25,19 @@ public class QuotesUI : MonoBehaviour
 
     private void OnEnable()
     {
-        EventManager.UpQuotes += DisplayQuote;
+        GUIScript.UpdateQuotes += DisplayQuote;
     }
 
     private void OnDisable()
     {
-        EventManager.UpQuotes -= DisplayQuote;
+        GUIScript.UpdateQuotes -= DisplayQuote;
     }
 
-    private void DisplayQuote(string s)
+    private void DisplayQuote(QuotesEventArgs e)
     {
-        if (!isActive && s != null)
+        if (!isActive && e.quote != null)
         {
-            textAsset.text = s;
+            textAsset.text = e.quote;
             StartCoroutine(Display());
         }
     }
