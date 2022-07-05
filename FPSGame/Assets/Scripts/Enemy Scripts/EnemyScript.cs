@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,6 +18,8 @@ public class EnemyScript : MonoBehaviour
 
     public delegate void DeathAction();
     public event DeathAction OnDeath;
+
+    public Type EnemyType;
 
     #region Monobehavior
     private void OnEnable()

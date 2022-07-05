@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class EventManager : MonoBehaviour
 {
-    
-
     public static EventManager instance;
     public PlayerEventController PEC;
 
     public delegate void Handler();
+
     public static event Handler AIEventLongTrigger;
+    public static event Handler StartWave;
+    public static event Handler StopWave;
 
     public bool AI_LongEventTriggerOn = true;
 

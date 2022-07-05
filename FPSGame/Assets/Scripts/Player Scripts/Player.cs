@@ -125,6 +125,10 @@ public class Player : MonoBehaviour
                 Crouch();
             }
         }
+
+        Debug.DrawRay(transform.position, new Vector3(transform.forward.x * transform.forward.x,
+            transform.forward.y * transform.forward.y,
+            transform.forward.z * transform.forward.z) * 10, Color.yellow);
     }
 
     private void FixedUpdate()

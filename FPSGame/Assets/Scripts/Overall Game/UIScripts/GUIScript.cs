@@ -29,6 +29,16 @@ public class GUIScript : MonoBehaviour
 
     }
 
+    private void OnEnable()
+    {
+        EventManager.StartWave += TriggerQuoteEvent;
+    }
+
+    private void OnDisable()
+    {
+        EventManager.StartWave -= TriggerQuoteEvent;
+    }
+
     public void TriggerQuoteEvent()
     {
         if (quotesFound)

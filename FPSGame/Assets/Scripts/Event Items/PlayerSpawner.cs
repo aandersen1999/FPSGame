@@ -2,17 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spawner : MonoBehaviour
+public class PlayerSpawner : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject playerRefrence;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        if (GameMasterBehavior.GameMaster.playerObject == null)
+        {
+            Instantiate(playerRefrence);
+        }
     }
 }
