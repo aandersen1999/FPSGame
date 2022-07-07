@@ -45,9 +45,9 @@ public class HeadGlitchy : MonoBehaviour
             //Quaternion inst = new Quaternion();
             //inst.Set(0, Random.Range(-RotationYLimit, RotationYLimit), Random.Range(-RotationZLimit, RotationZLimit), 1);
 
-            transform.localPosition = new Vector3(Random.Range(-PositionLimit, PositionLimit),
-                                                  Random.Range(-PositionLimit, PositionLimit), 
-                                                  defaultPosition.z);
+            //transform.localPosition = new Vector3(Random.Range(-PositionLimit, PositionLimit),
+            //                                      Random.Range(-PositionLimit, PositionLimit), 
+            //                                      defaultPosition.z);
             //transform.localEulerAngles = inst.eulerAngles;
             transform.localRotation = Quaternion.Euler(Random.Range(-RotationLimit + 90, RotationLimit + 90),
                                                        Random.Range(-RotationLimit, RotationLimit),
