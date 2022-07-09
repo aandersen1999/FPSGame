@@ -31,12 +31,12 @@ public class GUIScript : MonoBehaviour
 
     private void OnEnable()
     {
-        EventManager.StartWave += TriggerQuoteEvent;
+        EventManager.WaveWarmUp += TriggerQuoteEvent;
     }
 
     private void OnDisable()
     {
-        EventManager.StartWave -= TriggerQuoteEvent;
+        EventManager.WaveWarmUp -= TriggerQuoteEvent;
     }
 
     public void TriggerQuoteEvent()

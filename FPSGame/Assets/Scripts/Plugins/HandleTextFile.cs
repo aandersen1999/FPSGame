@@ -14,7 +14,7 @@ public static class HandleTextFile
 
         try
         {
-            using(StreamReader file = new StreamReader("Assets/Resources/" + FILE_NAME))
+            using(StreamReader file = new StreamReader("Resources/" + FILE_NAME))
             {
                 string line;
                 while((line = file.ReadLine()) != null)

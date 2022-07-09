@@ -5,7 +5,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637929411790582001
+      ticks: 637929439085092746
     m_Hash: 3670018741
   m_LockFileStatus:
     m_FilePath: C:/Users/Bralex/Documents/GitHub/FPSGame/FPSGame/Packages/packages-lock.json
@@ -13,7 +13,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637929411790587011
+      ticks: 637929439085092746
     m_Hash: 1935382850
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}

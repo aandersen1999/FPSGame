@@ -28,19 +28,21 @@ public class Effigy : MonoBehaviour
     private void OnEnable()
     {
         StartCoroutine(Flicker());
-        EventManager.StartWave += ToggleEffigy;
+        EventManager.WaveWarmUp += ToggleEffigy;
+        EventManager.StopWave += ToggleEffigy;
     }
 
     private void OnDisable()
     {
         StopAllCoroutines();
-        EventManager.StartWave -= ToggleEffigy;
+        EventManager.WaveWarmUp -= ToggleEffigy;
+        EventManager.StopWave -= ToggleEffigy;
     }
 
     private void Update()
     {
-        
-        
+
+
     }
 
     private void ToggleEffigy()
@@ -66,7 +68,7 @@ public class Effigy : MonoBehaviour
 
     private IEnumerator ChangeColor()
     {
-        
+
         midTransition = true;
         if (!isActive)
         {
@@ -86,7 +88,7 @@ public class Effigy : MonoBehaviour
         {
             for (float timeReference = 0.0f; timeReference < transitionTime; timeReference += Time.deltaTime)
             {
-                    
+
                 float timeRatio = timeReference / transitionTime;
                 Color refrenceColor = Color.Lerp(TriggeredFire, NormalFire, timeRatio);
 

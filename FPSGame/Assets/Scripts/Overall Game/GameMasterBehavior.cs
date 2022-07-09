@@ -10,6 +10,7 @@ public class GameMasterBehavior : MonoBehaviour
     public GameObject playerObject;
     public Player playerController;
 
+
     private void Awake()
     {
         GameMaster = this;
@@ -27,13 +28,9 @@ public class GameMasterBehavior : MonoBehaviour
             EnemyScript.playerPosition = playerObject.transform.position + Vector3.down;
         }
 
-        if (Input.GetKeyUp(KeyCode.N))
+        if (Input.GetKeyDown(KeyCode.V))
         {
-            GUIScript.instance.TriggerQuoteEvent();
-        }
-        if (Input.GetKeyUp(KeyCode.P))
-        {
-            playerController.TakeDamage(.5f);
+            EventManager.instance.StartWaveTrigger();
         }
     }
 }

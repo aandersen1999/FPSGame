@@ -10,6 +10,7 @@ public class EventManager : MonoBehaviour
     public delegate void Handler();
 
     public static event Handler AIEventLongTrigger;
+    public static event Handler WaveWarmUp;
     public static event Handler StartWave;
     public static event Handler StopWave;
 
@@ -18,12 +19,14 @@ public class EventManager : MonoBehaviour
     private const float Short_Timer = .35f;
     private const float Long_Timer = .7f;
 
-    
+    public bool waveActive = false;
+
+    private bool warmUpActive = false;
 
     private void Awake()
     {
         instance = this;
-        
+
     }
 
     private void OnEnable()
@@ -33,10 +36,30 @@ public class EventManager : MonoBehaviour
 
     private void OnDisable()
     {
-        StopCoroutine(ActivateLongTimer());
+        StopAllCoroutines();
     }
 
-    
+    private void Update()
+    {
+
+    }
+
+    public void StartWaveTrigger()
+    {
+        if (!waveActive && !warmUpActive)
+        {
+            WaveWarmUp?.Invoke();
+            StartCoroutine(WarmUpTransition());
+        }
+    }
+
+    public void StopWaveTrigger()
+    {
+        if (waveActive)
+        {
+            StopWave?.Invoke();
+        }
+    }
 
     private IEnumerator ActivateLongTimer()
     {
@@ -46,4 +69,16 @@ public class EventManager : MonoBehaviour
             AIEventLongTrigger?.Invoke();
         }
     }
+
+    private IEnumerator WarmUpTransition()
+    {
+        warmUpActive = true;
+
+        yield return new WaitForSeconds(5.0f);
+        StartWave?.Invoke();
+        waveActive = true;
+
+        warmUpActive = false;
+    }
+
 }
