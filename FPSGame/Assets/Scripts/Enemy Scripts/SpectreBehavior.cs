@@ -37,7 +37,7 @@ public class SpectreBehavior : MonoBehaviour
 
     private void Update()
     {
-        transform.LookAt(EnemyScript.playerPosition);
+        //transform.LookAt(EnemyScript.playerPosition);
         
     }
 
