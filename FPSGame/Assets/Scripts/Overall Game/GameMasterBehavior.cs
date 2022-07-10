@@ -10,6 +10,7 @@ public class GameMasterBehavior : MonoBehaviour
     public GameObject playerObject;
     public Player playerController;
 
+    
 
     private void Awake()
     {
@@ -34,3 +35,6 @@ public class GameMasterBehavior : MonoBehaviour
         }
     }
 }
+
+
+
