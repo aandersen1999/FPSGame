@@ -95,7 +95,7 @@ public class Weapon_Pistol : MonoBehaviour
 
     private void DropWeapon()
     {
-        GameObject droppedWeapon = Instantiate(dropWeapon, GameMasterBehavior.GameMaster.playerObject.transform);
+        GameObject droppedWeapon = Instantiate(dropWeapon, GameMasterBehavior.Instance.playerObject.transform);
         droppedWeapon.transform.parent = null;
         droppedWeapon.transform.position = new Vector3(droppedWeapon.transform.position.x, .25f, droppedWeapon.transform.position.z);
         //droppedWeapon.GetComponent<InteractableWeapon>().CreateWeapon("Pistol", clip, durability);

@@ -62,8 +62,8 @@ public class Player : MonoBehaviour
         cam.fieldOfView = fov;
         camTransform = cam.transform;
 
-        GameMasterBehavior.GameMaster.playerObject = gameObject;
-        GameMasterBehavior.GameMaster.playerController = this;
+        GameMasterBehavior.Instance.playerObject = gameObject;
+        GameMasterBehavior.Instance.playerController = this;
     }
 
     private void Start()

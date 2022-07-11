@@ -21,7 +21,7 @@ public class InteractText : MonoBehaviour
 
     private void Update()
     {
-        ToggleText(GameMasterBehavior.GameMaster.playerController.InteractableObject != null);
+        ToggleText(GameMasterBehavior.Instance.playerController.InteractableObject != null);
     }
 
     private void ToggleText(bool toggle)

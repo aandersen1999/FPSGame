@@ -14,6 +14,6 @@ public class StaminaUI : MonoBehaviour
 
     private void Update()
     {
-        meter.value = GameMasterBehavior.GameMaster.playerController.stamina;
+        meter.value = GameMasterBehavior.Instance.playerController.stamina;
     }
 }

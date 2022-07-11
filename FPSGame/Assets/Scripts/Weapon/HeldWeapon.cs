@@ -42,7 +42,7 @@ public class HeldWeapon : MonoBehaviour
 
     private void Start()
     {
-        camTransRef = GameMasterBehavior.GameMaster.playerController.camTransform;
+        camTransRef = GameMasterBehavior.Instance.playerController.camTransform;
     }
 
     private void OnEnable()
@@ -82,7 +82,7 @@ public class HeldWeapon : MonoBehaviour
 
     public void DropWeapon()
     {
-        GameObject droppedWeapon = Instantiate(dropWeapon, GameMasterBehavior.GameMaster.playerObject.transform);
+        GameObject droppedWeapon = Instantiate(dropWeapon, GameMasterBehavior.Instance.playerObject.transform);
 
         droppedWeapon.GetComponent<InteractableWeapon>().CreateWeapon(weaponName, clip, clipSize, durability, defaultDurability);
 
@@ -139,7 +139,7 @@ public class HeldWeapon : MonoBehaviour
         durability--;
         if (durability == 0)
         {
-            GameMasterBehavior.GameMaster.playerController.weaponHand.OnBreakWeapon();
+            GameMasterBehavior.Instance.playerController.weaponHand.OnBreakWeapon();
             Destroy(gameObject);
         }
     }
@@ -149,7 +149,7 @@ public class HeldWeapon : MonoBehaviour
         durability -= damage;
         if (durability <= 0)
         {
-            GameMasterBehavior.GameMaster.playerController.weaponHand.OnBreakWeapon();
+            GameMasterBehavior.Instance.playerController.weaponHand.OnBreakWeapon();
             Destroy(gameObject);
         }
     }

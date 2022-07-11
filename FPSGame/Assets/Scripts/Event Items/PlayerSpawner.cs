@@ -8,7 +8,7 @@ public class PlayerSpawner : MonoBehaviour
 
     private void Start()
     {
-        if (GameMasterBehavior.GameMaster.playerObject == null)
+        if (GameMasterBehavior.Instance.playerObject == null)
         {
             Instantiate(playerRefrence);
         }

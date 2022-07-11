@@ -4,17 +4,15 @@ using UnityEngine;
 
 public class GameMasterBehavior : MonoBehaviour
 {
-    public static GameMasterBehavior GameMaster { get; private set; }
+    public static GameMasterBehavior Instance { get; private set; }
     public static LayerMask ObjectLayer { get; private set; }
 
     public GameObject playerObject;
     public Player playerController;
 
-    
-
     private void Awake()
     {
-        GameMaster = this;
+        Instance = this;
     }
 
     private void Start()
