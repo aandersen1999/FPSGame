@@ -15,7 +15,7 @@ public class WaveController : MonoBehaviour
     private int amountToSpawn;
     private int spawned;
 
-    private bool activeSpawning = false;
+    public bool activeSpawning = false;
 
     private void Awake()
     {
@@ -25,11 +25,13 @@ public class WaveController : MonoBehaviour
     private void OnEnable()
     {
         EventManager.StartWave += startWave;
+        EventManager.StopWave += stopWave;
     }
 
     private void OnDisable()
     {
         EventManager.StartWave -= startWave;
+        EventManager.StopWave -= stopWave;
     }
 
     private void startWave()
@@ -44,6 +46,13 @@ public class WaveController : MonoBehaviour
         spawned = 0;
 
         StartCoroutine(WaveLoop());
+    }
+
+    private void stopWave()
+    {
+        //Will add code later to support creating a list of enemies to spawn
+        //For now, it will remain empty
+        StopAllCoroutines();
     }
 
     public void AddSpawner(Spawner spawner)

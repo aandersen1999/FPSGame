@@ -10,9 +10,15 @@ public class GameMasterBehavior : MonoBehaviour
     public GameObject playerObject;
     public Player playerController;
 
+    [System.NonSerialized]
+    public int totalEnemies = 0;
+
+    private WaveController wc;
+
     private void Awake()
     {
         Instance = this;
+        wc = GetComponent<WaveController>();
     }
 
     private void Start()
@@ -30,6 +36,14 @@ public class GameMasterBehavior : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.V))
         {
             EventManager.instance.StartWaveTrigger();
+        }
+
+        if (EventManager.instance.waveActive)
+        {
+            if(!wc.activeSpawning && totalEnemies <= 0)
+            {
+                EventManager.instance.StopWaveTrigger();
+            }
         }
     }
 }

@@ -57,6 +57,7 @@ public class EventManager : MonoBehaviour
     {
         if (waveActive)
         {
+            waveActive = false;
             StopWave?.Invoke();
         }
     }

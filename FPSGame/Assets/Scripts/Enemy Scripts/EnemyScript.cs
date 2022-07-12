@@ -24,6 +24,12 @@ public class EnemyScript : MonoBehaviour
     #region Monobehavior
     private void OnEnable()
     {
+        GameMasterBehavior.Instance.totalEnemies++;
+    }
+
+    private void OnDisable()
+    {
+        GameMasterBehavior.Instance.totalEnemies--;
     }
 
     private void Update()
