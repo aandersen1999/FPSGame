@@ -45,6 +45,14 @@ public class Effigy : MonoBehaviour
 
     }
 
+    public void Interact()
+    {
+        if (!isActive)
+        {
+            EventManager.instance.StartWaveTrigger();
+        }
+    }
+
     private void ToggleEffigy()
     {
         if (!midTransition)

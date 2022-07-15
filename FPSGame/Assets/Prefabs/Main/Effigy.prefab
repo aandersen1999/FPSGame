@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 8991278238997871354}
   - component: {fileID: 402473046}
   - component: {fileID: -3554885066885818814}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Effigy
   m_TagString: Untagged
   m_Icon: {fileID: 0}

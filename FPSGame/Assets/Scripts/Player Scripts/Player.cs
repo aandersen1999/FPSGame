@@ -197,11 +197,17 @@ public class Player : MonoBehaviour
 
     private void InteractObject()
     {
+        
         if(InteractableObject != null)
         {
+            //Will create a base class for this later because I know that this is inefficient, but for now...
             if (InteractableObject.GetComponent<InteractableWeapon>() != null)
             {
                 InteractableObject.GetComponent<InteractableWeapon>().PickUpWeapon();
+            }
+            else if(InteractableObject.GetComponent<Effigy>() != null)
+            {
+                InteractableObject.GetComponent<Effigy>().Interact();
             }
         }
     }

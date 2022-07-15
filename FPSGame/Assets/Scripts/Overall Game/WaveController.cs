@@ -64,7 +64,7 @@ public class WaveController : MonoBehaviour
         activeSpawning = true;
         for(spawned = 0; spawned <= amountToSpawn; spawned++)
         {
-            spawners[0].SpawnCreature(enemyContainer.Spectre);
+            spawners[0].SpawnCreature(enemyContainer.Decay);
             yield return new WaitForSeconds(1.0f);
         }
         activeSpawning = false;
@@ -74,16 +74,31 @@ public class WaveController : MonoBehaviour
 [System.Serializable]
 public struct EnemyContainer
 {
-    public List<GameObject> Decay;
-    public List<GameObject> Distortion;
+    [SerializeField]
+    private List<GameObject> decay;
+    [SerializeField]
+    private List<GameObject> distortion;
     public GameObject DistortionElite;
-    public List<GameObject> Shattered;
+    [SerializeField]
+    private List<GameObject> shattered;
     public GameObject ShatteredElite;
-    public List<GameObject> Undergrowth;
+    [SerializeField]
+    private List<GameObject> undergrowth;
     public GameObject UndergrowthElite;
     public GameObject Skitter;
     public GameObject Spectre;
     public GameObject Swamp;
     public GameObject WillOWisp;
     public GameObject Wraith;
+
+    public GameObject Decay { get { return ReturnFromList(decay); } }
+    public GameObject Distortion { get { return ReturnFromList(distortion); } }
+    public GameObject Shattered { get { return ReturnFromList(shattered); } }
+    public GameObject UnderGrowth { get { return ReturnFromList(undergrowth); } }
+
+    private GameObject ReturnFromList(List<GameObject> list)
+    {
+        int value = Random.Range(0, list.Count);
+        return list[value];
+    }
 }

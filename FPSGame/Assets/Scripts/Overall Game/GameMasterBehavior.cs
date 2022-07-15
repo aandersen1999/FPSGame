@@ -33,6 +33,7 @@ public class GameMasterBehavior : MonoBehaviour
             EnemyScript.playerPosition = playerObject.transform.position + Vector3.down;
         }
 
+        //Here for debug purposes
         if (Input.GetKeyDown(KeyCode.V))
         {
             EventManager.instance.StartWaveTrigger();

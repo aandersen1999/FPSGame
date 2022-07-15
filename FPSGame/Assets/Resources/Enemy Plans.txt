@@ -1,0 +1,12 @@
+Decay-Standard enemy. Walks fairly slowly towards objective
+Distortion-Beefy enemy. Always attempts to kill player
+Distortion Elite-Beefier and does more damage and can knock player back.
+Shattered-Proceeds towards objective slowly, but shoots shards towards player when in range.
+Shattered Elite-
+Skitter-Has extremely large health bar and the majority of the wave is focused on it
+Spectre-Does not deal damage to player and will heal other enemies
+Swamp-Stalks player and will attempt to ambush player can turn invisible(aside from the red eyes) to move around map, but can't attack in that state
+Undergrowth-Undergrowth will attempt to evade player and destroy objective
+Undergrowth Elite-
+Will O Wisp-May not be added
+Wraith- Does not take damage. Does not count towards enemies in the wave. Slowly approaches player and can insta kill upon touch.
