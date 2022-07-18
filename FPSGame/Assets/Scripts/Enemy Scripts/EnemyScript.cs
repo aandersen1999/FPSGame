@@ -19,7 +19,6 @@ public class EnemyScript : MonoBehaviour
     public delegate void DeathAction();
     public event DeathAction OnDeath;
 
-    public Type EnemyType;
 
     #region Monobehavior
     private void OnEnable()
@@ -44,7 +43,7 @@ public class EnemyScript : MonoBehaviour
         {
             health -= damage;
 
-            if (health < 0.0f)
+            if (health <= 0.0f)
             {
                 if (OnDeath != null)
                 {

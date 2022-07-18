@@ -113,7 +113,6 @@ public class HeldWeapon : MonoBehaviour
                             if (hit.transform.parent.TryGetComponent(out EnemyScript inst))
                             {
                                 inst.TakeDamage(damage);
-                                Debug.Log("Test");
                             }
                         }
                     }

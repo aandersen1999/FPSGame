@@ -9,6 +9,7 @@ public class GameMasterBehavior : MonoBehaviour
 
     public GameObject playerObject;
     public Player playerController;
+    public Vector3 EnemyTargetPosition;
 
     [System.NonSerialized]
     public int totalEnemies = 0;

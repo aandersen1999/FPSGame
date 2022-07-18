@@ -16,6 +16,7 @@ public class WaveController : MonoBehaviour
     private int spawned;
 
     public bool activeSpawning = false;
+    public bool paused = false;
 
     private void Awake()
     {
@@ -55,6 +56,13 @@ public class WaveController : MonoBehaviour
         StopAllCoroutines();
     }
 
+    private List<GameObject> CreateWaveQueue()
+    {
+        List<GameObject> _waveQueue = new List<GameObject>();
+
+        return _waveQueue;
+    }
+
     public void AddSpawner(Spawner spawner)
         => spawners.Add(spawner);
          
@@ -64,7 +72,8 @@ public class WaveController : MonoBehaviour
         activeSpawning = true;
         for(spawned = 0; spawned <= amountToSpawn; spawned++)
         {
-            spawners[0].SpawnCreature(enemyContainer.Decay);
+            if (!paused) { spawners[0].SpawnCreature(enemyContainer.Decay); }
+           
             yield return new WaitForSeconds(1.0f);
         }
         activeSpawning = false;

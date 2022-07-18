@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &829935815
 Transform:
@@ -108,7 +108,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &8991278238997871354
 Transform:
@@ -169,6 +169,10 @@ PrefabInstance:
     - target: {fileID: 1012234050983592, guid: 16e6d7d87ccd64bdab349c38ee97ac3e, type: 3}
       propertyPath: m_Name
       value: candles
+      objectReference: {fileID: 0}
+    - target: {fileID: 1012234050983592, guid: 16e6d7d87ccd64bdab349c38ee97ac3e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4145087232548426, guid: 16e6d7d87ccd64bdab349c38ee97ac3e, type: 3}
       propertyPath: m_RootOrder
@@ -242,6 +246,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: altar
       objectReference: {fileID: 0}
+    - target: {fileID: 1748977693201226, guid: 0bca4f4b07c4948c89cc31bd0ec6f278, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4460740677549590, guid: 0bca4f4b07c4948c89cc31bd0ec6f278, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -303,6 +311,10 @@ PrefabInstance:
     - target: {fileID: 1000013783810456, guid: 18f499c59234f234f9813b8580d75523, type: 3}
       propertyPath: m_Name
       value: cross-wood
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013783810456, guid: 18f499c59234f234f9813b8580d75523, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4000010070082586, guid: 18f499c59234f234f9813b8580d75523, type: 3}
       propertyPath: m_RootOrder
@@ -379,6 +391,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: stone-oval
       objectReference: {fileID: 0}
+    - target: {fileID: 126758, guid: 484d3cf124c98774f8060eabff39a104, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 487718, guid: 484d3cf124c98774f8060eabff39a104, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -453,6 +469,10 @@ PrefabInstance:
     - target: {fileID: 1000011306371230, guid: 3f922fc8f75d52a4594c3ac5a8b2ab8c, type: 3}
       propertyPath: m_Name
       value: stone-small
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000011306371230, guid: 3f922fc8f75d52a4594c3ac5a8b2ab8c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4000012670751206, guid: 3f922fc8f75d52a4594c3ac5a8b2ab8c, type: 3}
       propertyPath: m_RootOrder
@@ -529,6 +549,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: stone-pointy
       objectReference: {fileID: 0}
+    - target: {fileID: 1000012236178170, guid: a382adcd5fbae8b45bd99155dca0fbe1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4000013150887210, guid: a382adcd5fbae8b45bd99155dca0fbe1, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -603,6 +627,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 7ea765cb44447094ab0aef02257cb821, type: 3}
       propertyPath: m_Name
       value: Paint
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 7ea765cb44447094ab0aef02257cb821, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 7ea765cb44447094ab0aef02257cb821, type: 3}
       propertyPath: m_RootOrder
