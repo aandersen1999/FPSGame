@@ -29,8 +29,12 @@ public class EnemyScript : MonoBehaviour
     }
     #endregion
 
-    public float GetDistanceFromPlayer()
-        => Vector3.Distance(transform.position, GameMasterBehavior.Instance.playerObject.transform.position);
+    //Returns the distance Squared
+    public float GetDistanceFromPlayerSqr()
+    {
+        Vector3 reference = transform.position - GameMasterBehavior.Instance.playerObject.transform.position;
+        return reference.sqrMagnitude;
+    }
 
     public void TakeDamage(float damage)
     {

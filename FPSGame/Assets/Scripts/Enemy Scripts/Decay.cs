@@ -12,6 +12,13 @@ public class Decay : MonoBehaviour
 
     private Vector3 currentTarget;
 
+    //Distances
+    private const float dfp = 6.0f;
+    private const float attackDist = 1.8f;
+    //Squares the distances for efficiency purposes
+    private readonly float dfpSqr = dfp * dfp;
+    private readonly float attackDistSqr = attackDist * attackDist;
+
     private void Awake()
     {
         nma = GetComponent<NavMeshAgent>();
@@ -32,12 +39,12 @@ public class Decay : MonoBehaviour
     {
         nma.speed = speed;
         currentTarget = GameMasterBehavior.Instance.EnemyTargetPosition;
-        nma.destination = currentTarget;
+        
     }
 
     private void Update()
     {
-        if(es.GetDistanceFromPlayer() <= 6.0f)
+        if(es.GetDistanceFromPlayerSqr() <= dfpSqr)
         {
             currentTarget = GameMasterBehavior.Instance.playerObject.transform.position;
         }
@@ -45,8 +52,8 @@ public class Decay : MonoBehaviour
         {
             currentTarget = GameMasterBehavior.Instance.EnemyTargetPosition;
         }
+        nma.destination = currentTarget;
 
-        
     }
 
     private void Death()
