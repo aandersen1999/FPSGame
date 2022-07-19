@@ -13,9 +13,6 @@ public class EnemyScript : MonoBehaviour
     public float strength = 1.0f;
     public float poise = 10.0f;
 
-    public static Vector3 playerPosition = new Vector3();
-    public static float hordeAgression = 1.0f;
-
     public delegate void DeathAction();
     public event DeathAction OnDeath;
 
@@ -30,12 +27,10 @@ public class EnemyScript : MonoBehaviour
     {
         GameMasterBehavior.Instance.totalEnemies--;
     }
-
-    private void Update()
-    {
-        
-    }
     #endregion
+
+    public float GetDistanceFromPlayer()
+        => Vector3.Distance(transform.position, GameMasterBehavior.Instance.playerObject.transform.position);
 
     public void TakeDamage(float damage)
     {
@@ -61,4 +56,22 @@ public class EnemyScript : MonoBehaviour
             //Will add code later
         }
     }
+}
+
+public class EnemyLogicStats
+{
+    public bool awareOfPlayer;
+
+    public EnemyLogicStats()
+    {
+        awareOfPlayer = false;
+    }
+}
+
+public enum EnemyState : byte
+{
+    Idle,
+    Pursuing,
+    Action,
+    Retreating
 }

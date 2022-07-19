@@ -10,6 +10,8 @@ public class Decay : MonoBehaviour
     private NavMeshAgent nma;
     private EnemyScript es;
 
+    private Vector3 currentTarget;
+
     private void Awake()
     {
         nma = GetComponent<NavMeshAgent>();
@@ -28,8 +30,23 @@ public class Decay : MonoBehaviour
 
     private void Start()
     {
-        nma.destination = GameMasterBehavior.Instance.EnemyTargetPosition;
         nma.speed = speed;
+        currentTarget = GameMasterBehavior.Instance.EnemyTargetPosition;
+        nma.destination = currentTarget;
+    }
+
+    private void Update()
+    {
+        if(es.GetDistanceFromPlayer() <= 6.0f)
+        {
+            currentTarget = GameMasterBehavior.Instance.playerObject.transform.position;
+        }
+        else
+        {
+            currentTarget = GameMasterBehavior.Instance.EnemyTargetPosition;
+        }
+
+        
     }
 
     private void Death()

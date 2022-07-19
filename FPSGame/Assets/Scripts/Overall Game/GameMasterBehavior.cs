@@ -31,7 +31,6 @@ public class GameMasterBehavior : MonoBehaviour
     {
         if (playerObject != null)
         {
-            EnemyScript.playerPosition = playerObject.transform.position + Vector3.down;
         }
 
         //Here for debug purposes

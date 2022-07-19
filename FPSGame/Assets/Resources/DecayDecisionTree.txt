@@ -1,0 +1,15 @@
+Notes:
+Needs to decide if should persue player or target with more emphisis on pursuing target.
+If player gets too far, should give up pursuit
+If player is within 10 feet or so, they'll start pursuing
+if they are within a close distance, they will try to attack
+can't have the destination change every frame. It's way too expensive on the cpu. 
+
+var:
+target
+statemachine
+
+if player is 10 or so feet away(3 units or so)
+-pursue player
+	-
+!-pursue target

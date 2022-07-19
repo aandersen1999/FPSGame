@@ -25,7 +25,7 @@ public class SpectreBehavior : MonoBehaviour
     {
         EventManager.AIEventLongTrigger += DecisionTree;
 
-        movementSpeed = defaultMovementSpeed * EnemyScript.hordeAgression;
+
         StartCoroutine(GhostLightSpawn());
 
     }
@@ -46,7 +46,7 @@ public class SpectreBehavior : MonoBehaviour
 
     private void DecisionTree()
     {
-        if (Vector3.Distance(EnemyScript.playerPosition, transform.position) > 4.0f)
+        if (Vector3.Distance(Vector3.zero, transform.position) > 4.0f)
         {
             if(Random.value > .05f)
             {
@@ -90,7 +90,7 @@ public class SpectreBehavior : MonoBehaviour
     #region Decisions
     private void Teleport()
     {
-        transform.position = EnemyScript.playerPosition;
+
         state = SpectreState.Idle;
     }
     #endregion
