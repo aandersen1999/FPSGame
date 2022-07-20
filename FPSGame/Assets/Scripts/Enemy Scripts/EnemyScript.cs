@@ -16,6 +16,9 @@ public class EnemyScript : MonoBehaviour
     public delegate void DeathAction();
     public event DeathAction OnDeath;
 
+    [SerializeField]
+    private Vector3 hitboxSpawn = new Vector3(0, 1.0f, 1.6f);
+    public List<GameObject> hitBoxes;
 
     #region Monobehavior
     private void OnEnable()
@@ -34,6 +37,19 @@ public class EnemyScript : MonoBehaviour
     {
         Vector3 reference = transform.position - GameMasterBehavior.Instance.playerObject.transform.position;
         return reference.sqrMagnitude;
+    }
+
+    public float GetDistanceFromTarget(Vector3 target)
+    {
+        Vector3 reference = transform.position - target;
+        return reference.sqrMagnitude;
+    }
+
+    public void PutOutHitBox(int hitID, float _damage)
+    {
+        GameObject reference = Instantiate(hitBoxes[hitID], transform, false);
+        reference.transform.localPosition = hitboxSpawn;
+        reference.GetComponent<Hitbox>().damage = _damage;
     }
 
     public void TakeDamage(float damage)

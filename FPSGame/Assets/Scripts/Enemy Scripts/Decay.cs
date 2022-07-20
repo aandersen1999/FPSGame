@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class Decay : MonoBehaviour
 {
     public float speed = 2;
+    public EnemyState state = EnemyState.Pursuing;
 
     private NavMeshAgent nma;
     private EnemyScript es;
@@ -44,20 +45,41 @@ public class Decay : MonoBehaviour
 
     private void Update()
     {
-        if(es.GetDistanceFromPlayerSqr() <= dfpSqr)
+        switch (state)
         {
-            currentTarget = GameMasterBehavior.Instance.playerObject.transform.position;
+            case EnemyState.Pursuing:
+                currentTarget = (es.GetDistanceFromPlayerSqr() <= dfpSqr) ? GameMasterBehavior.Instance.playerObject.transform.position
+                                                                    : GameMasterBehavior.Instance.EnemyTargetPosition;
+
+                if (es.GetDistanceFromTarget(currentTarget) <= attackDistSqr)
+                {
+                    nma.speed = 0;
+                    es.PutOutHitBox(0, 5.0f);
+                    StartCoroutine(AttackTimer());
+                }
+                else
+                {
+                    nma.speed = speed;
+                }
+
+                nma.destination = currentTarget;
+                break;
+            default:
+                break;
         }
-        else
-        {
-            currentTarget = GameMasterBehavior.Instance.EnemyTargetPosition;
-        }
-        nma.destination = currentTarget;
+        
 
     }
 
     private void Death()
     {
         Destroy(gameObject);
+    }
+
+    private IEnumerator AttackTimer()
+    {
+        state = EnemyState.Action;
+        yield return new WaitForSeconds(2.0f);
+        state = EnemyState.Pursuing;
     }
 }

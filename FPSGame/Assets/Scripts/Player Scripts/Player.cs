@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     public float health = 100.0f;
     public WeaponHandBehavior weaponHand;
     public GameObject InteractableObject;
+    public BoxCollider hurtBox;
 
     #region Camera
     public Camera cam;
@@ -126,9 +127,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        Debug.DrawRay(transform.position, new Vector3(transform.forward.x * transform.forward.x,
-            transform.forward.y * transform.forward.y,
-            transform.forward.z * transform.forward.z) * 10, Color.yellow);
+        
     }
 
     private void FixedUpdate()

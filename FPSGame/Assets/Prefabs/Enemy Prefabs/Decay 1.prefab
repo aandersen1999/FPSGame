@@ -1834,7 +1834,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7417250807789321748}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 2.019025, y: 0, z: 14.347266}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 3457768957113139894}
@@ -1883,6 +1883,9 @@ MonoBehaviour:
   health: 50
   strength: 1
   poise: 10
+  hitboxSpawn: {x: 0, y: 1, z: 1.6}
+  hitBoxes:
+  - {fileID: 8165564225618922238, guid: fd0db48de8244044c9554954cbf1142e, type: 3}
 --- !u!195 &397963910
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1917,6 +1920,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b3c61a5bf4c2434a9d61bb83e5712a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 2
+  state: 1
 --- !u!1 &7533927772586774092
 GameObject:
   m_ObjectHideFlags: 0

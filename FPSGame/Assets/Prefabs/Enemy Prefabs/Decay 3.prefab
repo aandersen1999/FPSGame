@@ -1061,7 +1061,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3591409469162285100}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 3.0595908, y: 0.00000023841858, z: 13.7486515}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 8332498398596333269}
@@ -1110,6 +1110,9 @@ MonoBehaviour:
   health: 50
   strength: 1
   poise: 10
+  hitboxSpawn: {x: 0, y: 1, z: 1.6}
+  hitBoxes:
+  - {fileID: 8165564225618922238, guid: fd0db48de8244044c9554954cbf1142e, type: 3}
 --- !u!195 &8315017835546310338
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1131,7 +1134,7 @@ NavMeshAgent:
   m_Height: 2
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 2
 --- !u!114 &-8335635593876269837
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1144,6 +1147,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b3c61a5bf4c2434a9d61bb83e5712a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 2
+  state: 1
 --- !u!1 &3677372885174491522
 GameObject:
   m_ObjectHideFlags: 0
