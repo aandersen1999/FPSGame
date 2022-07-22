@@ -7,6 +7,7 @@ using UnityEditor;
 public static class HandleTextFile
 {
     const string FILE_NAME = "Quotes.txt";
+    private const string FearFILE_NAME = "fear.txt";
 
     public static bool GetQuotes(out List<string> output)
     {
@@ -29,5 +30,19 @@ public static class HandleTextFile
             Debug.LogError(e.Message);
         }
         return false;
+    }
+
+    public static void WriteFearFile()
+    {
+       using(StreamWriter file = new StreamWriter(FearFILE_NAME, false))
+       {
+            string line = "everything will be okay";
+
+            for(int i = 0; i < 536; i++)
+            {
+                file.WriteLine(line);
+            }
+       }
+        
     }
 }
