@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FearRoom : MonoBehaviour
 {
-    private const float Time = 141.0f;
+    private const float Time = 142.0f;
 
     private void Start()
     {
