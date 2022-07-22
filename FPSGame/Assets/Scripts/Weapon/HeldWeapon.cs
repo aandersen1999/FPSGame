@@ -179,14 +179,14 @@ public class HeldWeapon : MonoBehaviour
 
     private IEnumerator MuzzleFlash()
     {
-        float lightDegrade = muzzleFlashIntensity / 10.0f;
+        float lightDegrade = muzzleFlashIntensity / .15f;
 
         muzzleFlash.intensity = muzzleFlashIntensity;
 
         while (muzzleFlash.intensity > 0)
         {
-            muzzleFlash.intensity -= lightDegrade;
-            yield return new WaitForSeconds(.017f);
+            muzzleFlash.intensity -= lightDegrade * Time.deltaTime;
+            yield return null;
         }
     }
 }

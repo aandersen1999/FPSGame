@@ -18,6 +18,12 @@ public class MainMenu : MonoBehaviour
 
     public void QuitGame()
     {
+        int coin = Random.Range(0, 2);
+
+        if(coin == 0)
+        {
+            Application.Quit();
+        }
         SceneManager.LoadScene(2);
     }
 
