@@ -6,15 +6,25 @@ public class Hitbox : MonoBehaviour
 {
     public float damage = 1.0f;
 
+    private bool hit = false;
+
     public float Hit()
     {
-        Destroy(gameObject);
+        hit = true;
         return damage;
     }
 
     private void Start()
     {
         StartCoroutine(timer());
+    }
+
+    private void LateUpdate()
+    {
+        if (hit)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnDisable()

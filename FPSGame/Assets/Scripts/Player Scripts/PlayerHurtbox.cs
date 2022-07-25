@@ -15,7 +15,7 @@ public class PlayerHurtbox : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.GetComponent<Hitbox>() != null)
+        if(other.gameObject.GetComponent<Hitbox>() != null)
         {
             Hitbox hb = other.GetComponent<Hitbox>();
 

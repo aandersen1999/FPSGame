@@ -221,9 +221,8 @@ public class Player : MonoBehaviour
     }
 
     private bool CheckIfDead()
-    {
-        return (health < 1.0) ? true : false;
-    }
+        => (health < 1.0);
+    
 
     private Vector3 calcMovement(Vector3 inputs)
     {

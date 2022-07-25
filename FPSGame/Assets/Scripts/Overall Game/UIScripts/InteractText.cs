@@ -16,7 +16,14 @@ public class InteractText : MonoBehaviour
 
     private void Start()
     {
-        t.text = "Press " + EventManager.instance.PEC.interactKey.ToString() + " to use";
+        if(EventManager.instance.PEC != null)
+        {
+            t.text = "Press " + EventManager.instance.PEC.interactKey.ToString() + " to use";
+        }
+        else
+        {
+            t.text = "Press E to use";
+        }
     }
 
     private void Update()
