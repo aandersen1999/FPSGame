@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerObject: {fileID: 0}
   playerController: {fileID: 0}
+  EnemyTargetPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &6985247655022999620
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,23 +61,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waveQueue: []
   enemyContainer:
-    Decay:
+    decay:
     - {fileID: 7417250807789321748, guid: cc696c346e42e5746b25f7b0e8e4ee50, type: 3}
     - {fileID: 3591409469162285100, guid: f6585bf5262002340b5d39fbaac3a61a, type: 3}
     - {fileID: 1839665828990963046, guid: e6524a38355138a4b957c674b4dd3d53, type: 3}
-    Distortion:
+    distortion:
     - {fileID: 1629135373339807, guid: 25efcac8bad3db749ba40c275e012c78, type: 3}
     - {fileID: 7337367707441385641, guid: 2b1ddbccdf999934ebc5c8801ad08a20, type: 3}
     - {fileID: 4806047608104447157, guid: 1e9f13997fdd50e45ba0d6636c548bc7, type: 3}
     - {fileID: 1686180693468647462, guid: b8cb40e5c649e0047b49c92d000cb9b7, type: 3}
     DistortionElite: {fileID: 5967917205270126463, guid: a8184e2ae1c14514a86f21b8fa47bbf6, type: 3}
-    Shattered:
+    shattered:
     - {fileID: 1921229467115171526, guid: 926a4658769936a4bb6ed7eac95f13be, type: 3}
     - {fileID: 4657615418369553896, guid: 4cf756d8a2a48614b919c38f579a4f73, type: 3}
     - {fileID: 5243077621390626854, guid: 0b27748d851b55648989ba72da753359, type: 3}
     - {fileID: 3054557185522928127, guid: 2ada0045ba738a14bbd60100243cd8da, type: 3}
     ShatteredElite: {fileID: 2764628634450056885, guid: c595bd57d7aa36b46818ece7cdaf6787, type: 3}
-    Undergrowth:
+    undergrowth:
     - {fileID: 8209302578537711645, guid: bfe87998f60c96d45856e98cf97110e2, type: 3}
     - {fileID: 7037890360061786302, guid: 8698b0ed66427fc4482355de87b9f65f, type: 3}
     - {fileID: 2544195161094335207, guid: bb4b3957507d8004398a8e7918094421, type: 3}
@@ -87,3 +88,5 @@ MonoBehaviour:
     Swamp: {fileID: 1562596386092894106, guid: 6fc624213ff363142ada5446c0cf7c11, type: 3}
     WillOWisp: {fileID: 6225833807926146492, guid: 98d589fd9b7f12b4d935af2189ae7925, type: 3}
     Wraith: {fileID: 286090642734189890, guid: 1c8aeb6510ae33741bfa0d8ba7ee0ffc, type: 3}
+  activeSpawning: 0
+  paused: 0

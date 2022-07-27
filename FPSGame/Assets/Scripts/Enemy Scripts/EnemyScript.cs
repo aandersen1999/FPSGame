@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//In hindsight, it would've been better to not make this monobehavior
 public class EnemyScript : MonoBehaviour
 {
     public bool active = true;
@@ -39,17 +40,16 @@ public class EnemyScript : MonoBehaviour
         return reference.sqrMagnitude;
     }
 
-    public float GetDistanceFromTarget(Vector3 target)
+    public float GetDistanceFromTargetSqr(Vector3 target)
     {
         Vector3 reference = transform.position - target;
         return reference.sqrMagnitude;
     }
 
-    public void PutOutHitBox(int hitID, float _damage)
+    public void PutOutHitBox(int hitID)
     {
         GameObject reference = Instantiate(hitBoxes[hitID], transform, false);
         reference.transform.localPosition = hitboxSpawn;
-        reference.GetComponent<Hitbox>().damage = _damage;
     }
 
     public void TakeDamage(float damage)

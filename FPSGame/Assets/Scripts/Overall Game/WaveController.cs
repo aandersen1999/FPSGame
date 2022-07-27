@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,9 +19,12 @@ public class WaveController : MonoBehaviour
     public bool activeSpawning = false;
     public bool paused = false;
 
+    private const int spawnLimit = 20;
+
     private void Awake()
     {
         Instance = this;
+        waveQueue = CreateWaveQueue();
     }
 
     private void OnEnable()
@@ -51,14 +55,24 @@ public class WaveController : MonoBehaviour
 
     private void stopWave()
     {
-        //Will add code later to support creating a list of enemies to spawn
-        //For now, it will remain empty
+        waveQueue.Clear();
+        waveQueue = CreateWaveQueue();
+        amountToSpawn = waveQueue.Count;
         StopAllCoroutines();
     }
 
     private List<GameObject> CreateWaveQueue()
     {
         List<GameObject> _waveQueue = new List<GameObject>();
+        for(int i = 0; i < 20; i++)
+        {
+            _waveQueue.Add(enemyContainer.Decay);
+        }
+        for(int i = 0; i < 10; i++)
+        {
+            _waveQueue.Add(enemyContainer.Distortion);
+        }
+        _waveQueue = ShuffleScript.Shuffle(_waveQueue);
 
         return _waveQueue;
     }
@@ -70,9 +84,11 @@ public class WaveController : MonoBehaviour
     private IEnumerator WaveLoop()
     {
         activeSpawning = true;
-        for(spawned = 0; spawned <= amountToSpawn; spawned++)
+        for(spawned = 0; spawned < amountToSpawn; spawned++)
         {
-            if (!paused) { spawners[0].SpawnCreature(enemyContainer.Decay); }
+            if (!paused) { spawners[0].SpawnCreature(waveQueue[spawned]); }
+
+            paused = (spawned >= spawnLimit);
            
             yield return new WaitForSeconds(1.0f);
         }
@@ -107,7 +123,24 @@ public struct EnemyContainer
 
     private GameObject ReturnFromList(List<GameObject> list)
     {
-        int value = Random.Range(0, list.Count);
+        int value = UnityEngine.Random.Range(0, list.Count);
         return list[value];
+    }
+}
+
+static class ShuffleScript
+{
+    private static System.Random rng = new System.Random();
+
+    public static List<T> Shuffle<T>(List<T> list)
+    {
+        int n = list.Count;
+        while (n > 1)
+        {
+            n--;
+            int k = rng.Next(n + 1);
+            (list[n], list[k]) = (list[k], list[n]);
+        }
+        return list;
     }
 }

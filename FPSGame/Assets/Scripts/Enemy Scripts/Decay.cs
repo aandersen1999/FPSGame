@@ -51,10 +51,10 @@ public class Decay : MonoBehaviour
                 currentTarget = (es.GetDistanceFromPlayerSqr() <= dfpSqr) ? GameMasterBehavior.Instance.playerObject.transform.position
                                                                     : GameMasterBehavior.Instance.EnemyTargetPosition;
 
-                if (es.GetDistanceFromTarget(currentTarget) <= attackDistSqr)
+                if (es.GetDistanceFromTargetSqr(currentTarget) <= attackDistSqr)
                 {
                     nma.speed = 0;
-                    es.PutOutHitBox(0, 5.0f);
+                    es.PutOutHitBox(0);
                     StartCoroutine(AttackTimer());
                 }
                 else
@@ -63,6 +63,8 @@ public class Decay : MonoBehaviour
                 }
 
                 nma.destination = currentTarget;
+                break;
+            case EnemyState.Action:
                 break;
             default:
                 break;

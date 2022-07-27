@@ -1107,7 +1107,7 @@ MonoBehaviour:
   active: 1
   canTakeDamage: 1
   takesKnockback: 1
-  health: 50
+  health: 75
   strength: 1
   poise: 10
   hitboxSpawn: {x: 0, y: 1, z: 1.6}

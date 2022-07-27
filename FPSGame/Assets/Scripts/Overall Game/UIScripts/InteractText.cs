@@ -11,7 +11,7 @@ public class InteractText : MonoBehaviour
     private void Awake()
     {
         t = GetComponent<Text>();
-        t.color = new Color32(50, 50, 50, 0);
+        t.color = new Color32(255, 245, 59, 0);
     }
 
     private void Start()
@@ -37,7 +37,7 @@ public class InteractText : MonoBehaviour
         {
             if (!visible) 
             {
-                t.color = new Color32(50, 50, 50, 255);
+                t.color = new Color32(255, 245, 59, 255);
                 visible = true;
             }
         }
@@ -45,7 +45,7 @@ public class InteractText : MonoBehaviour
         {
             if (visible)
             {
-                t.color = new Color32(50, 50, 50, 0);
+                t.color = new Color32(255, 245, 59, 0);
                 visible = false;
             }
         }
