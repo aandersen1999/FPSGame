@@ -147,15 +147,10 @@ public class Player : MonoBehaviour
     }
 
     private void ToggleCrouch()
-    {
-        isSupposedToCrouch = !isSupposedToCrouch;
-    }
+        => isSupposedToCrouch = !isSupposedToCrouch;
 
     private void ToggleRun()
-    {
-        
-        wantsToRun = !wantsToRun;
-    }
+         => wantsToRun = !wantsToRun;
 
     private void Crouch()
     {

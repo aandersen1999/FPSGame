@@ -10,6 +10,12 @@ public class MainMenu : MonoBehaviour
     public Text EWBO;
     public AudioSource Music;
 
+
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.Confined;
+    }
+
     public void StartGame()
     {
         StartCoroutine(StartGameSequence());
