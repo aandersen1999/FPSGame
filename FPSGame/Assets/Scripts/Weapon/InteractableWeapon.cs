@@ -21,12 +21,20 @@ public class InteractableWeapon : MonoBehaviour
     private void Start()
     {
         model = transform.GetChild(0).gameObject;
+        float value;
 
         if(transform.parent != null)
         {
             transform.parent = null;
         }
-        transform.position = new Vector3(transform.position.x, .25f, transform.position.z);
+        if(ReturnY(out value))
+        {
+            transform.position = new Vector3(transform.position.x, value, transform.position.z);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void FixedUpdate()
@@ -51,5 +59,18 @@ public class InteractableWeapon : MonoBehaviour
 
         GameMasterBehavior.Instance.playerController.weaponHand.PickUpWeapon(ref createdWeapon);
         Destroy(gameObject);
+    }
+
+    private bool ReturnY(out float value)
+    {
+        RaycastHit hit;
+        value = 0f;
+
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit))
+        {
+            value = hit.point.y;
+            return true;
+        }
+        return false;
     }
 }
