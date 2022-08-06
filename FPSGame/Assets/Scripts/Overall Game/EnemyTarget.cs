@@ -28,6 +28,7 @@ public class EnemyTarget : MonoBehaviour
         if(health <= 0)
         {
             Destroy(gameObject);
+            GameMasterBehavior.Instance.TriggerGameOver();
         }
     }
 }

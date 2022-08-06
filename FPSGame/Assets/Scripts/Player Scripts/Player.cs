@@ -89,6 +89,8 @@ public class Player : MonoBehaviour
         pec.OnPressJump -= Jump;
         pec.OnPressCrouch -= ToggleCrouch;
         pec.OnPressRun -= ToggleRun;
+
+        Cursor.lockState = CursorLockMode.None;
     }
 
     private void Update()
@@ -203,6 +205,10 @@ public class Player : MonoBehaviour
             {
                 InteractableObject.GetComponent<Effigy>().Interact();
             }
+            else if(InteractableObject.GetComponent<Store>() != null)
+            {
+                InteractableObject.GetComponent<Store>().Interact(ref weaponHand);
+            }
         }
     }
 
@@ -213,6 +219,12 @@ public class Player : MonoBehaviour
         health = Mathf.Clamp(health, 0.0f, 100.0f);
 
         GUIScript.instance.TriggerHealth(health, CheckIfDead());
+        if (CheckIfDead())
+        {
+            GameMasterBehavior.Instance.TriggerGameOver();
+            lockCamera = true;
+            lockMovement = true;
+        }
     }
 
     private bool CheckIfDead()

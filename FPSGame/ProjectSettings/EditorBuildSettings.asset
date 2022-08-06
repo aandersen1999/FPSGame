@@ -8,13 +8,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main Menu.unity
     guid: 3f686c20c3ab1f347a0dbf3075dfcc77
-  - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/Scenes/DebugScenes/SpawnerDebug.unity
-    guid: c9306526fddbed143af6fad50bb9662b
+    path: Assets/Scenes/MainScene.unity
+    guid: 6ee976a219775b540a86a87e41006844
   - enabled: 1
     path: Assets/Scenes/FearRoom.unity
     guid: 6171035f742f99a42a83dd4eefbf838d
+  - enabled: 1
+    path: Assets/Scenes/FearGarden.unity
+    guid: a3ec7c010b3a321429e410fb170c0e31
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: 9c0e44bb43202a64db03adb14d0e3e8d
   m_configObjects: {}

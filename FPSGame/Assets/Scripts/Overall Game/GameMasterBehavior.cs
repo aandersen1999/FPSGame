@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameMasterBehavior : MonoBehaviour
 {
@@ -15,11 +16,22 @@ public class GameMasterBehavior : MonoBehaviour
     public int totalEnemies = 0;
 
     private WaveController wc;
+    private bool gameOver = false;
 
     private void Awake()
     {
         Instance = this;
         wc = GetComponent<WaveController>();
+    }
+
+    private void OnEnable()
+    {
+        EventManager.EventShortTrigger += CheckForGameOver;
+    }
+
+    private void OnDisable()
+    {
+        EventManager.EventShortTrigger -= CheckForGameOver;
     }
 
     private void Start()
@@ -33,10 +45,9 @@ public class GameMasterBehavior : MonoBehaviour
         {
         }
 
-        //Here for debug purposes
-        if (Input.GetKeyDown(KeyCode.V))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            EventManager.instance.StartWaveTrigger();
+            Application.Quit();
         }
 
         if (EventManager.instance.waveActive)
@@ -45,6 +56,17 @@ public class GameMasterBehavior : MonoBehaviour
             {
                 EventManager.instance.StopWaveTrigger();
             }
+        }
+    }
+
+    public void TriggerGameOver()
+        => gameOver = true;
+
+    private void CheckForGameOver()
+    {
+        if (gameOver)
+        {
+            SceneManager.LoadScene(4);
         }
     }
 }

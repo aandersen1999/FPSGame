@@ -11,6 +11,7 @@ public class EventManager : MonoBehaviour
     public delegate void Handler();
 
     public static event Handler AIEventLongTrigger;
+    public static event Handler EventShortTrigger;
     public static event Handler WaveWarmUp;
     public static event Handler StartWave;
     public static event Handler StopWave;
@@ -33,6 +34,7 @@ public class EventManager : MonoBehaviour
     private void OnEnable()
     {
         StartCoroutine(ActivateLongTimer());
+        StartCoroutine(ActiveShortTimer());
     }
 
     private void OnDisable()
@@ -69,6 +71,15 @@ public class EventManager : MonoBehaviour
         {
             yield return new WaitForSeconds(Long_Timer);
             AIEventLongTrigger?.Invoke();
+        }
+    }
+
+    private IEnumerator ActiveShortTimer()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(Short_Timer);
+            EventShortTrigger?.Invoke();
         }
     }
 

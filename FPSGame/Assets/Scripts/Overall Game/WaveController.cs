@@ -17,7 +17,9 @@ public class WaveController : MonoBehaviour
     private int spawned;
 
     public bool activeSpawning = false;
-    public bool paused = false;
+
+    private int DecaySpawn = 20;
+    private int DistSpawn = 10;
 
     private const int spawnLimit = 20;
 
@@ -47,7 +49,6 @@ public class WaveController : MonoBehaviour
             return;
         }
 
-        amountToSpawn = 10;
         spawned = 0;
 
         StartCoroutine(WaveLoop());
@@ -56,6 +57,8 @@ public class WaveController : MonoBehaviour
     private void stopWave()
     {
         waveQueue.Clear();
+        DecaySpawn += 5;
+        DistSpawn += 5;
         waveQueue = CreateWaveQueue();
         amountToSpawn = waveQueue.Count;
         StopAllCoroutines();
@@ -64,15 +67,17 @@ public class WaveController : MonoBehaviour
     private List<GameObject> CreateWaveQueue()
     {
         List<GameObject> _waveQueue = new List<GameObject>();
-        for(int i = 0; i < 20; i++)
+        for(int i = 0; i < DecaySpawn; i++)
         {
             _waveQueue.Add(enemyContainer.Decay);
         }
-        for(int i = 0; i < 10; i++)
+        for(int i = 0; i < DistSpawn; i++)
         {
             _waveQueue.Add(enemyContainer.Distortion);
         }
         _waveQueue = ShuffleScript.Shuffle(_waveQueue);
+
+        amountToSpawn = _waveQueue.Count;
 
         return _waveQueue;
     }
@@ -86,9 +91,12 @@ public class WaveController : MonoBehaviour
         activeSpawning = true;
         for(spawned = 0; spawned < amountToSpawn; spawned++)
         {
-            if (!paused) { spawners[0].SpawnCreature(waveQueue[spawned]); }
+            spawners[0].SpawnCreature(waveQueue[spawned]);
 
-            paused = (spawned >= spawnLimit);
+            while (GameMasterBehavior.Instance.totalEnemies >= spawnLimit)
+            {
+                yield return new WaitForSeconds(1.0f);
+            }
            
             yield return new WaitForSeconds(1.0f);
         }

@@ -10,6 +10,19 @@ public class GameOver : MonoBehaviour
 
     public void MainMenu()
     {
-        SceneManager.LoadScene(0);
+        int coin = Random.Range(0, 2);
+        if(coin == 0)
+        {
+            SceneManager.LoadScene(0);
+        }
+        else
+        {
+            SceneManager.LoadScene(3);
+        }
+    }
+
+    public void Retry()
+    {
+        SceneManager.LoadScene(1);
     }
 }
