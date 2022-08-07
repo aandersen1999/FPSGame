@@ -238,11 +238,11 @@ public class Player : MonoBehaviour
 
         if(runActive && stamina > 0)
         {
-            output = output * runSpeed;
+            output *= runSpeed;
         }
         else
         {
-            output = output * walkSpeed;
+            output *= walkSpeed;
         }
 
         output = (crouched) ? output * crouchModifier : output;

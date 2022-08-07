@@ -46,12 +46,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 416fb27eb2061254c8ddd4c58e0a1e23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bloomOn: 1
   weaponName: Rifle
   defaultDurability: 75
   clipSize: 10
   fireRate: 0.583
   randomKickBack: 3
   muzzleFlashIntensity: 1.5
+  damage: 45
+  knockBack: 0
+  bloom: 0
+  bulletsPerShot: 1
   durability: 75
   clip: 10
   currentState: 0

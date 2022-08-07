@@ -53,7 +53,7 @@ MonoBehaviour:
   fireRate: 1
   randomKickBack: 3
   muzzleFlashIntensity: 2.5
-  damage: 12
+  damage: 20
   knockBack: 0
   bloom: 3
   bulletsPerShot: 9
