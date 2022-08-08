@@ -54,6 +54,8 @@ public class Player : MonoBehaviour
     private PlayerEventController pec;
     private CharacterController cc;
 
+    
+    
     #region Monobehavior
     private void Awake()
     {
@@ -128,12 +130,6 @@ public class Player : MonoBehaviour
                 Crouch();
             }
         }
-
-        
-    }
-
-    private void FixedUpdate()
-    {
 
         
     }
@@ -277,28 +273,36 @@ public class Player : MonoBehaviour
 
     private void CalculateStamina(float x, float z)
     {
-        if (runActive)
+        if (EventManager.instance.waveActive)
         {
-            if(z != 0.0f || x != 0.0f)
+            if (runActive)
             {
-                stamina -= staminaDrain * Time.deltaTime;
+                if (z != 0.0f || x != 0.0f)
+                {
+                    stamina -= staminaDrain * Time.deltaTime;
+                }
+                else
+                {
+                    stamina += staminaGain * Time.deltaTime;
+                }
             }
             else
             {
-                stamina += staminaGain * Time.deltaTime;
+                if (z != 0.0f || x != 0.0f)
+                {
+                    stamina += (staminaGain * .5f) * Time.deltaTime;
+                }
+                else
+                {
+                    stamina += staminaGain * Time.deltaTime;
+                }
             }
         }
         else
         {
-            if (z != 0.0f || x != 0.0f)
-            {
-                stamina += (staminaGain * .5f) * Time.deltaTime;
-            }
-            else
-            {
-                stamina += staminaGain * Time.deltaTime;
-            }
+            stamina += staminaGain * Time.deltaTime;
         }
+        
 
         stamina = Mathf.Clamp(stamina, 0.0f, 100.0f);
 

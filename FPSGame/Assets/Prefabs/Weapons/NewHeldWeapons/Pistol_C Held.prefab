@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2208932607752853835
+--- !u!1 &541819854647843241
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,9 +8,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2208932607752853814}
-  - component: {fileID: 2208932607752853833}
-  - component: {fileID: 2208932607752853832}
+  - component: {fileID: 541819854647843284}
+  - component: {fileID: 541819854647843242}
+  - component: {fileID: 7795276282734941036}
   m_Layer: 31
   m_Name: Pistol_C Held
   m_TagString: Untagged
@@ -18,59 +18,31 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2208932607752853814
+--- !u!4 &541819854647843284
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2208932607752853835}
+  m_GameObject: {fileID: 541819854647843241}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1814121607682965717}
-  - {fileID: 7153512705905258265}
-  - {fileID: 7778241832539492776}
+  - {fileID: 4036533948956727}
+  - {fileID: 8819520517969211387}
+  - {fileID: 8273824402096951626}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!114 &2208932607752853833
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2208932607752853835}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 416fb27eb2061254c8ddd4c58e0a1e23, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bloomOn: 1
-  weaponName: Compact Pistol
-  defaultDurability: 75
-  clipSize: 8
-  fireRate: 0.283
-  randomKickBack: 3
-  muzzleFlashIntensity: 0.7
-  damage: 20
-  knockBack: 0
-  bloom: 0.1
-  bulletsPerShot: 1
-  durability: 75
-  clip: 8
-  currentState: 0
-  dropWeapon: {fileID: 718221663589988858, guid: ae858f5187043014185cba25029d5e9b, type: 3}
-  muzzleFlash: {fileID: 2964883759898022791}
---- !u!95 &2208932607752853832
+--- !u!95 &541819854647843242
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2208932607752853835}
+  m_GameObject: {fileID: 541819854647843241}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 35f114eeaa5c3444a85156c084d03f31, type: 2}
@@ -82,7 +54,32 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!1 &8702062486991861032
+--- !u!114 &7795276282734941036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 541819854647843241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5684d480fb10d1c44b35574fd8481b4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponName: Compact Pistol
+  damage: 20
+  knockBack: 0
+  dropWeapon: {fileID: 718221663589988858, guid: ae858f5187043014185cba25029d5e9b, type: 3}
+  clipSize: 8
+  clip: 8
+  fireRate: 0.283
+  randomKickBack: 3
+  muzzleFlashIntensity: 1
+  bloom: 0.1
+  bulletsPerShot: 1
+  ammoType: 0
+  muzzleFlash: {fileID: 3460515878882300773}
+--- !u!1 &7052836512040089034
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -90,7 +87,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7778241832539492776}
+  - component: {fileID: 8273824402096951626}
   m_Layer: 31
   m_Name: Bullet Spawner
   m_TagString: Untagged
@@ -98,26 +95,26 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7778241832539492776
+--- !u!4 &8273824402096951626
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8702062486991861032}
+  m_GameObject: {fileID: 7052836512040089034}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.009, z: -0.169}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 2208932607752853814}
+  m_Father: {fileID: 541819854647843284}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &2208932608055748414
+--- !u!1001 &541819855487870940
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 2208932607752853814}
+    m_TransformParent: {fileID: 541819854647843284}
     m_Modifications:
     - target: {fileID: -8953265987459359552, guid: 6fd8d38ef0df16f44879a379b9a1cef0, type: 3}
       propertyPath: m_Layer
@@ -237,17 +234,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6fd8d38ef0df16f44879a379b9a1cef0, type: 3}
---- !u!4 &1814121607682965717 stripped
+--- !u!4 &4036533948956727 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6fd8d38ef0df16f44879a379b9a1cef0, type: 3}
-  m_PrefabInstance: {fileID: 2208932608055748414}
+  m_PrefabInstance: {fileID: 541819855487870940}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &4345688335892713735
+--- !u!1001 &2696994601576337893
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 2208932607752853814}
+    m_TransformParent: {fileID: 541819854647843284}
     m_Modifications:
     - target: {fileID: 5648615528054286264, guid: 8cdc877946252a94cb454629ec465d6c, type: 3}
       propertyPath: m_Name
@@ -303,13 +300,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8cdc877946252a94cb454629ec465d6c, type: 3}
---- !u!4 &7153512705905258265 stripped
+--- !u!4 &8819520517969211387 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6847896285950279198, guid: 8cdc877946252a94cb454629ec465d6c, type: 3}
-  m_PrefabInstance: {fileID: 4345688335892713735}
+  m_PrefabInstance: {fileID: 2696994601576337893}
   m_PrefabAsset: {fileID: 0}
---- !u!108 &2964883759898022791 stripped
+--- !u!108 &3460515878882300773 stripped
 Light:
   m_CorrespondingSourceObject: {fileID: 1543501666273870464, guid: 8cdc877946252a94cb454629ec465d6c, type: 3}
-  m_PrefabInstance: {fileID: 4345688335892713735}
+  m_PrefabInstance: {fileID: 2696994601576337893}
   m_PrefabAsset: {fileID: 0}

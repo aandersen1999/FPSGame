@@ -63,7 +63,7 @@ MonoBehaviour:
   durabilty: 75
   clip: 10
   clipSize: 10
-  heldWeapon: {fileID: 8363523162681752572, guid: e8e007f2379f8a54cb30c9d8886c8681, type: 3}
+  heldWeapon: {fileID: 2880766900244419815, guid: e4ae9c2fbf25b6343a1befe4bb5e0938, type: 3}
 --- !u!1001 &2445768058133107265
 PrefabInstance:
   m_ObjectHideFlags: 0

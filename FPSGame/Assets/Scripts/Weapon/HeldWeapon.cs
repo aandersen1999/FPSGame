@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -26,7 +25,7 @@ public class HeldWeapon : MonoBehaviour
     public int durability = 100;
     public byte clip = 17;
 
-    public WeaponState currentState = WeaponState.Idle;
+    public D_WeaponState currentState = D_WeaponState.Idle;
 
     public GameObject dropWeapon;
     public Light muzzleFlash;
@@ -43,6 +42,7 @@ public class HeldWeapon : MonoBehaviour
     private void Start()
     {
         camTransRef = GameMasterBehavior.Instance.playerController.camTransform;
+        
     }
 
     private void OnEnable()
@@ -51,7 +51,7 @@ public class HeldWeapon : MonoBehaviour
         EventManager.instance.PEC.OnPressReload += ReloadStart;
         EventManager.instance.PEC.OnPressDrop += DropWeapon;
 
-        currentState = WeaponState.Swapping;
+        currentState = D_WeaponState.Swapping;
         anim.SetTrigger("Swapped");
     }
 
@@ -64,7 +64,7 @@ public class HeldWeapon : MonoBehaviour
 
     private void Update()
     {
-        if(clip <= 0 && currentState == WeaponState.Idle)
+        if(clip <= 0 && currentState == D_WeaponState.Idle)
         {
             ReloadStart();
         }
@@ -91,7 +91,7 @@ public class HeldWeapon : MonoBehaviour
 
     private void Attack()
     {
-        if(currentState == WeaponState.Idle)
+        if(currentState == D_WeaponState.Idle)
         {
             if(clip > 0)
             {
@@ -124,12 +124,12 @@ public class HeldWeapon : MonoBehaviour
 
     private void ReloadStart()
     {
-        if(clip < clipSize && currentState == WeaponState.Idle)
+        if(clip < clipSize && currentState == D_WeaponState.Idle)
         {
             anim.SetTrigger("Reload");
 
             clip = 0;
-            currentState = WeaponState.Reload;
+            currentState = D_WeaponState.Reload;
         }
     }
 
@@ -165,16 +165,16 @@ public class HeldWeapon : MonoBehaviour
     private void ReloadEnd()
     {
         clip = clipSize;
-        currentState = WeaponState.Idle;
+        currentState = D_WeaponState.Idle;
     }
 
-    private void SwapAnimEnd() => currentState = WeaponState.Idle;
+    private void SwapAnimEnd() => currentState = D_WeaponState.Idle;
 
     private IEnumerator FireRateWait()
     {
-        currentState = WeaponState.Fire;
+        currentState = D_WeaponState.Fire;
         yield return new WaitForSeconds(fireRate);
-        currentState = WeaponState.Idle;
+        currentState = D_WeaponState.Idle;
     }
 
     private IEnumerator MuzzleFlash()
@@ -192,16 +192,10 @@ public class HeldWeapon : MonoBehaviour
 }
 
 
-public enum WeaponState : byte
+public enum D_WeaponState : byte
 {
     Idle,
     Fire,
     Reload,
     Swapping
-}
-
-public class FireWeaponEventArgs : EventArgs
-{
-    public float Damage { get; set; }
-    public float KnockBack { get; set; }
 }

@@ -50,7 +50,7 @@ MonoBehaviour:
   durabilty: 75
   clip: 8
   clipSize: 8
-  heldWeapon: {fileID: 2208932607752853835, guid: 5b9a6abd75af211429816edd3f61fe89, type: 3}
+  heldWeapon: {fileID: 541819854647843241, guid: 9612750001f729c438a4c5cc83aacb10, type: 3}
 --- !u!65 &3307644970980212322
 BoxCollider:
   m_ObjectHideFlags: 0

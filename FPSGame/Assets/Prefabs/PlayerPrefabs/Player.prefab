@@ -163,7 +163,7 @@ CharacterController:
   m_Height: 2.5
   m_Radius: 0.5
   m_SlopeLimit: 45
-  m_StepOffset: 0
+  m_StepOffset: 0.01
   m_SkinWidth: 0.05
   m_MinMoveDistance: 0
   m_Center: {x: 0, y: 1.25, z: 0}
@@ -426,6 +426,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3100821191167732715}
     m_Modifications:
+    - target: {fileID: 8761812002508101534, guid: 44b87965c2bb185438868b27c26a865a, type: 3}
+      propertyPath: inventorySize
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8761812002566894208, guid: 44b87965c2bb185438868b27c26a865a, type: 3}
       propertyPath: m_Name
       value: WeaponHand

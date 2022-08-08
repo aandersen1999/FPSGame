@@ -18,10 +18,17 @@ public class GameMasterBehavior : MonoBehaviour
     private WaveController wc;
     private bool gameOver = false;
 
+    public Dictionary<AmmoType, short> Ammo = new Dictionary<AmmoType, short>();
+
     private void Awake()
     {
         Instance = this;
         wc = GetComponent<WaveController>();
+
+        foreach (AmmoType i in System.Enum.GetValues(typeof(AmmoType)))
+        {
+            Ammo[i] = short.MaxValue;
+        }
     }
 
     private void OnEnable()
@@ -32,11 +39,13 @@ public class GameMasterBehavior : MonoBehaviour
     private void OnDisable()
     {
         EventManager.EventShortTrigger -= CheckForGameOver;
+        
     }
 
     private void Start()
     {
         ObjectLayer = LayerMask.GetMask("Object");
+        
     }
 
     private void Update()
