@@ -15,6 +15,9 @@ public class GameMasterBehavior : MonoBehaviour
     [System.NonSerialized]
     public int totalEnemies = 0;
 
+    private bool paused = false;
+    public bool Paused { get { return paused; } }
+
     private WaveController wc;
     private bool gameOver = false;
 
@@ -22,6 +25,7 @@ public class GameMasterBehavior : MonoBehaviour
 
     private void Awake()
     {
+        Cursor.lockState = CursorLockMode.Locked;
         Instance = this;
         wc = GetComponent<WaveController>();
 
@@ -42,6 +46,22 @@ public class GameMasterBehavior : MonoBehaviour
         
     }
 
+    public void TriggerPause()
+    {
+        if (!paused)
+        {
+            Time.timeScale = 0;
+            paused = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
+        else
+        {
+            Time.timeScale = 1;
+            paused = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+    }
+
     private void Start()
     {
         ObjectLayer = LayerMask.GetMask("Object");
@@ -56,7 +76,7 @@ public class GameMasterBehavior : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Application.Quit();
+            //Application.Quit();
         }
 
         if (EventManager.instance.waveActive)

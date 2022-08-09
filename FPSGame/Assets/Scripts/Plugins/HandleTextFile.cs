@@ -36,7 +36,7 @@ public static class HandleTextFile
     {
        using(StreamWriter file = new StreamWriter(FearFILE_NAME, false))
        {
-            string line = "everything will be okay";
+            string line = "I wonder if I carve off all my skin, will I finally stop itching?";
 
             for(int i = 0; i < 536; i++)
             {

@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Store : MonoBehaviour
+public class Store : Interactable
 {
     public List<GameObject> weaponList;
 
-    public void Interact(ref WeaponHandBehavior wh)
+    public override void Interact()
     {
         int choice = Random.Range(0, weaponList.Count);
-        GameObject createdWeapon = Instantiate(weaponList[choice], wh.transform);
+        GameObject createdWeapon = Instantiate(weaponList[choice], GameMasterBehavior.Instance.playerController.weaponHand.transform);
 
-        wh.PickUpWeapon(ref createdWeapon);
+        GameMasterBehavior.Instance.playerController.weaponHand.PickUpWeapon(ref createdWeapon);
     }
 }

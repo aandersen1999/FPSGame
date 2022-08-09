@@ -97,6 +97,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        lockCamera = GameMasterBehavior.Instance.Paused;
         inAir = !cc.isGrounded;
 
         CheckAboveHead();
@@ -189,22 +190,14 @@ public class Player : MonoBehaviour
 
     private void InteractObject()
     {
-        
         if(InteractableObject != null)
         {
-            //Will create a base class for this later because I know that this is inefficient, but for now...
-            
-            if(InteractableObject.GetComponent<Effigy>() != null)
+            if(InteractableObject.TryGetComponent(out Interactable thing))
             {
-                InteractableObject.GetComponent<Effigy>().Interact();
-            }
-            else if(InteractableObject.GetComponent<Store>() != null)
-            {
-                InteractableObject.GetComponent<Store>().Interact(ref weaponHand);
-            }
-            else if(InteractableObject.GetComponent<Interactable>() != null)
-            {
-                InteractableObject.GetComponent<Interactable>().Interact();
+                if (thing.canInteract)
+                {
+                    thing.Interact();
+                }
             }
         }
     }
@@ -257,6 +250,13 @@ public class Player : MonoBehaviour
         if (Physics.Raycast(cam.transform.position, cam.transform.TransformDirection(Vector3.forward), out RaycastHit checker, checkObjectRange, GameMasterBehavior.ObjectLayer))
         {
             InteractableObject = checker.collider.gameObject;
+            if (InteractableObject.TryGetComponent(out Interactable thing))
+            {
+                if (!thing.canInteract)
+                {
+                    InteractableObject = null;
+                }
+            }  
         }
     }
     

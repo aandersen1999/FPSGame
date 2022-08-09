@@ -6,6 +6,7 @@ public class PlayerEventController : MonoBehaviour
 {
     public bool toggleCrouch = false;
     public bool toggleRun = false;
+    public bool active = true;
     #region Events
     public delegate void Action();
 
@@ -31,6 +32,7 @@ public class PlayerEventController : MonoBehaviour
     public KeyCode crouchKey = KeyCode.LeftControl;
     //Temporary key
     public KeyCode nextKey = KeyCode.Tab;
+    public KeyCode pauseKey = KeyCode.Escape;
     #endregion
 
     private void Awake()
@@ -40,52 +42,60 @@ public class PlayerEventController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(attackKey)) { OnPressAttack?.Invoke(); }
+        active = !GameMasterBehavior.Instance.Paused;
+        if (active)
+        {
+            if (Input.GetKey(attackKey)) { OnPressAttack?.Invoke(); }
 
-        if (Input.GetKeyDown(reloadKey)) { OnPressReload?.Invoke(); }
-        if (Input.GetKeyDown(jumpKey)) { OnPressJump?.Invoke(); }
-        if (Input.GetKeyDown(dropKey)) { OnPressDrop?.Invoke(); }
-        if (Input.GetKeyDown(interactKey)) 
-        { 
-            OnPressInteract?.Invoke();
-        }
-        if (Input.GetKeyDown(nextKey)) { OnPressNext?.Invoke(); }
+            if (Input.GetKeyDown(reloadKey)) { OnPressReload?.Invoke(); }
+            if (Input.GetKeyDown(jumpKey)) { OnPressJump?.Invoke(); }
+            if (Input.GetKeyDown(dropKey)) { OnPressDrop?.Invoke(); }
+            if (Input.GetKeyDown(interactKey))
+            {
+                OnPressInteract?.Invoke();
+            }
+            if (Input.GetKeyDown(nextKey)) { OnPressNext?.Invoke(); }
 
-        if (toggleCrouch)
-        {
-            if (Input.GetKeyDown(crouchKey))
+            if (toggleCrouch)
             {
-                OnPressCrouch?.Invoke();
+                if (Input.GetKeyDown(crouchKey))
+                {
+                    OnPressCrouch?.Invoke();
+                }
+            }
+            else
+            {
+                if (Input.GetKeyDown(crouchKey))
+                {
+                    OnPressCrouch?.Invoke();
+                }
+                if (Input.GetKeyUp(crouchKey))
+                {
+                    OnPressCrouch?.Invoke();
+                }
+            }
+            if (toggleRun)
+            {
+                if (Input.GetKeyDown(runKey))
+                {
+                    OnPressRun?.Invoke();
+                }
+            }
+            else
+            {
+                if (Input.GetKeyDown(runKey))
+                {
+                    OnPressRun?.Invoke();
+                }
+                if (Input.GetKeyUp(runKey))
+                {
+                    OnPressRun?.Invoke();
+                }
             }
         }
-        else
+        if (Input.GetKeyDown(pauseKey))
         {
-            if (Input.GetKeyDown(crouchKey))
-            {
-                OnPressCrouch?.Invoke();
-            }
-            if (Input.GetKeyUp(crouchKey))
-            {
-                OnPressCrouch?.Invoke();
-            }
-        }
-        if (toggleRun)
-        {
-            if (Input.GetKeyDown(runKey))
-            {
-                OnPressRun?.Invoke();
-            }
-        }
-        else
-        {
-            if (Input.GetKeyDown(runKey))
-            {
-                OnPressRun?.Invoke();
-            }
-            if (Input.GetKeyUp(runKey))
-            {
-                OnPressRun?.Invoke();
-            }
+            GameMasterBehavior.Instance.TriggerPause();
         }
     }
 }

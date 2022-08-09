@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Effigy : MonoBehaviour
+public class Effigy : Interactable
 {
     public Light candleLight;
     public MeshRenderer candleRender;
@@ -18,11 +18,16 @@ public class Effigy : MonoBehaviour
     private readonly Color TriggeredFire = new Color32(96, 45, 250, 255);
     private readonly Color TriggeredEmission = new Color32(44, 0, 136, 255);
 
-    private bool isActive = false;
     private bool midTransition = false;
 
-    private void Start()
+    protected new void Awake()
     {
+        base.Awake();
+    }
+
+    protected new void Start()
+    {
+        base.Start();
         FireMaterial = candleRender.materials[1];
     }
 
@@ -40,18 +45,19 @@ public class Effigy : MonoBehaviour
         EventManager.StopWave -= ToggleEffigy;
     }
 
-    private void Update()
+    protected new void Update()
     {
-
+        base.Update();
 
     }
 
-    public void Interact()
+    public override void Interact()
     {
-        if (!isActive)
+        if (canInteract)
         {
             EventManager.instance.StartWaveTrigger();
         }
+        base.Interact();
     }
 
     private void ToggleEffigy()
@@ -60,7 +66,7 @@ public class Effigy : MonoBehaviour
         {
             StartCoroutine(ChangeColor());
 
-            isActive = !isActive;
+            canInteract = !canInteract;
         }
     }
 
@@ -79,7 +85,7 @@ public class Effigy : MonoBehaviour
     {
 
         midTransition = true;
-        if (!isActive)
+        if (canInteract)
         {
             for (float timeReference = 0.0f; timeReference < transitionTime; timeReference += Time.deltaTime)
             {
