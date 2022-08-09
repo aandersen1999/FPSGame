@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WeaponHandBehavior : MonoBehaviour
 {
-    public byte inventorySize = 3;
+    public byte inventorySize = 2;
 
     public GameObject currentWeapon;
     public List<GameObject> inventory;
@@ -46,7 +46,7 @@ public class WeaponHandBehavior : MonoBehaviour
         {
             GameObject temp;
 
-            currentWeapon.GetComponent<HeldWeapon>().DropWeapon();
+            currentWeapon.GetComponent<Weapon>().Drop();
 
             temp = currentWeapon;
             currentWeapon = weapon;

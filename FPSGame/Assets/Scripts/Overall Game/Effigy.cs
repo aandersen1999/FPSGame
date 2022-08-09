@@ -25,6 +25,7 @@ public class Effigy : MonoBehaviour
     {
         FireMaterial = candleRender.materials[1];
     }
+
     private void OnEnable()
     {
         StartCoroutine(Flicker());

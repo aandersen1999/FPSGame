@@ -24,7 +24,7 @@ public class Weapon : MonoBehaviour
         camTrans = GameMasterBehavior.Instance.playerController.camTransform;
         if(dropWeapon == null)
         {
-            Debug.LogError($"{this} does not have a weapon to drop!");
+            Debug.LogWarning($"{this} does not have a weapon to drop!");
         }
     }
 
@@ -56,18 +56,24 @@ public class Weapon : MonoBehaviour
     /// <summary>
     /// Should be overridden, but maybe not
     /// </summary>
-    protected virtual void Drop()
+    public virtual void Drop()
     {
         GameObject dropped = Instantiate(dropWeapon, GameMasterBehavior.Instance.playerObject.transform);
         dropped.GetComponent<InteractableWeapon>().CreateWeapon(name, 17, 17, 100, 100);
         Destroy(gameObject);
     }
 
-    public virtual void CreateHeldWeapon(string name)
+    public virtual void CreateHeldWeapon(WeaponArgs args)
     {
-        this.name = name;
+        name = args.name;
     }
 
     public override string ToString()
         => weaponName;
+}
+
+public struct WeaponArgs
+{
+    public string name;
+    public short clip;
 }

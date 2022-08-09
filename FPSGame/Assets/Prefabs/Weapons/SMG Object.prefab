@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3122086142387799231}
   - component: {fileID: 2897780834571218216}
-  - component: {fileID: 6155493011114792553}
+  - component: {fileID: 7589515461782321665}
   m_Layer: 8
   m_Name: SMG Object
   m_TagString: Untagged
@@ -46,7 +46,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5, z: 0.5}
   m_Center: {x: 0, y: 0.25, z: 0}
---- !u!114 &6155493011114792553
+--- !u!114 &7589515461782321665
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -55,15 +55,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 8703345436704253592}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1cf409bf0c4c1dc4da18aaf92584145d, type: 3}
+  m_Script: {fileID: 11500000, guid: fef2f892a275a4840a88c7c84d1ae5fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponName: SMG
-  defaultDurabilty: 150
-  durabilty: 150
+  canInteract: 1
+  destroyType: 1
+  interactText: to pickup
+  timer: 5
+  objectName: SMG
   clip: 25
-  clipSize: 25
-  heldWeapon: {fileID: 100865525735643974, guid: 42975503e4909d6409ef5e04dcf82e1b, type: 3}
+  weapon: {fileID: 100865525735643974, guid: 42975503e4909d6409ef5e04dcf82e1b, type: 3}
 --- !u!1001 &3709865761850882912
 PrefabInstance:
   m_ObjectHideFlags: 0

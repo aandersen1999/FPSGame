@@ -193,17 +193,18 @@ public class Player : MonoBehaviour
         if(InteractableObject != null)
         {
             //Will create a base class for this later because I know that this is inefficient, but for now...
-            if (InteractableObject.GetComponent<InteractableWeapon>() != null)
-            {
-                InteractableObject.GetComponent<InteractableWeapon>().PickUpWeapon();
-            }
-            else if(InteractableObject.GetComponent<Effigy>() != null)
+            
+            if(InteractableObject.GetComponent<Effigy>() != null)
             {
                 InteractableObject.GetComponent<Effigy>().Interact();
             }
             else if(InteractableObject.GetComponent<Store>() != null)
             {
                 InteractableObject.GetComponent<Store>().Interact(ref weaponHand);
+            }
+            else if(InteractableObject.GetComponent<Interactable>() != null)
+            {
+                InteractableObject.GetComponent<Interactable>().Interact();
             }
         }
     }
@@ -252,10 +253,8 @@ public class Player : MonoBehaviour
     {
         InteractableObject = null;
 
-        RaycastHit checker;
-
         Debug.DrawRay(cam.transform.position, cam.transform.TransformDirection(Vector3.forward) * checkObjectRange, Color.yellow);
-        if (Physics.Raycast(cam.transform.position, cam.transform.TransformDirection(Vector3.forward), out checker, checkObjectRange, GameMasterBehavior.ObjectLayer))
+        if (Physics.Raycast(cam.transform.position, cam.transform.TransformDirection(Vector3.forward), out RaycastHit checker, checkObjectRange, GameMasterBehavior.ObjectLayer))
         {
             InteractableObject = checker.collider.gameObject;
         }
@@ -267,7 +266,7 @@ public class Player : MonoBehaviour
         float distance = 1.5f;
 
         Debug.DrawRay(cam.transform.position, Vector3.up * distance, Color.green);
-        canStand = Physics.Raycast(cam.transform.position, Vector3.up, out RaycastHit hit, distance) ? false : true;
+        canStand = Physics.Raycast(cam.transform.position, Vector3.up, distance) ? false : true;
     }
     #endregion
 

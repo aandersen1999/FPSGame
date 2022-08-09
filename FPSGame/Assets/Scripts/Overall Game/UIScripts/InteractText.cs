@@ -8,6 +8,11 @@ public class InteractText : MonoBehaviour
     private Text t;
     private bool visible;
 
+    private string followUp;
+    private string defaultText;
+
+    private GameObject interactable;
+
     private void Awake()
     {
         t = GetComponent<Text>();
@@ -18,7 +23,8 @@ public class InteractText : MonoBehaviour
     {
         if(EventManager.instance.PEC != null)
         {
-            t.text = "Press " + EventManager.instance.PEC.interactKey.ToString() + " to use";
+            followUp = $"Press {EventManager.instance.PEC.interactKey} ";
+            defaultText = $"Press {EventManager.instance.PEC.interactKey} to use";
         }
         else
         {
@@ -28,26 +34,34 @@ public class InteractText : MonoBehaviour
 
     private void Update()
     {
-        ToggleText(GameMasterBehavior.Instance.playerController.InteractableObject != null);
-    }
+        bool toggle = GameMasterBehavior.Instance.playerController.InteractableObject != null;
 
-    private void ToggleText(bool toggle)
-    {
         if (toggle)
         {
-            if (!visible) 
+            bool changed = GetChanged(GameMasterBehavior.Instance.playerController.InteractableObject);
+            if (changed || !visible)
             {
                 t.color = new Color32(255, 245, 59, 255);
                 visible = true;
+                t.text = interactable.TryGetComponent(out Interactable reference) ?
+                    followUp + reference.GetInteractText() : defaultText;
             }
         }
         else
         {
+            
             if (visible)
             {
                 t.color = new Color32(255, 245, 59, 0);
                 visible = false;
             }
         }
+    }
+
+    private bool GetChanged(GameObject obj)
+    {
+        bool changed = interactable != obj;
+        interactable = obj;
+        return changed;
     }
 }

@@ -69,7 +69,7 @@ MonoBehaviour:
   weaponName: Compact Pistol
   damage: 20
   knockBack: 0
-  dropWeapon: {fileID: 718221663589988858, guid: ae858f5187043014185cba25029d5e9b, type: 3}
+  dropWeapon: {fileID: 252088721202692424, guid: efa90981d44990b45ba145e0f0a358ab, type: 3}
   clipSize: 8
   clip: 8
   fireRate: 0.283

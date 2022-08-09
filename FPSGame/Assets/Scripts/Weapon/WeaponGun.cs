@@ -35,7 +35,7 @@ public class WeaponGun : Weapon
         base.Start();
         if(muzzleFlash == null)
         {
-            Debug.LogError($"{this} does not have a muzzleFlash!");
+            Debug.LogWarning($"{this} does not have a muzzleFlash!");
         }
     }
 
@@ -74,17 +74,21 @@ public class WeaponGun : Weapon
             StartCoroutine(FireRateWait());
             StartCoroutine(MuzzleFlash());
 
-            for(byte i = 0; i < bulletsPerShot; i++)
+            for(byte i = 0; i < bulletsPerShot; ++i)
             {
                 CheckHit();
             }
         }
     }
 
-    protected override void Drop()
+    public override void Drop()
     {
         GameObject dropped = Instantiate(dropWeapon, GameMasterBehavior.Instance.playerObject.transform);
-        dropped.GetComponent<InteractableWeapon>().CreateWeapon(name, (byte)clip, (byte)clipSize, 100, 100);
+        WeaponArgs args = new WeaponArgs();
+        args.clip = clip;
+        args.name = weaponName;
+
+        dropped.GetComponent<WeaponObject>().Create(args);
         Destroy(gameObject);
     }
 
@@ -111,10 +115,10 @@ public class WeaponGun : Weapon
 
     protected virtual void SwapAnimEnd() => state = GunState.Idle;
 
-    public void CreateHeldWeapon(string name, byte clip)
+    public override void CreateHeldWeapon(WeaponArgs args)
     {
-        base.CreateHeldWeapon(name);
-        this.clip = clip;
+        name = args.name;
+        clip = (short)Mathf.Min(args.clip, clipSize);
     }
 
     private bool CheckReload 

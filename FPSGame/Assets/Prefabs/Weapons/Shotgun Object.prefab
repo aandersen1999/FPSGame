@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5289848978988282274}
   - component: {fileID: 5665777791986605467}
-  - component: {fileID: 7082238714010718577}
+  - component: {fileID: 7469162933269998597}
   m_Layer: 8
   m_Name: Shotgun Object
   m_TagString: Untagged
@@ -46,7 +46,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5, z: 0.5}
   m_Center: {x: 0, y: 0.25, z: 0}
---- !u!114 &7082238714010718577
+--- !u!114 &7469162933269998597
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -55,15 +55,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 289779270932649277}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1cf409bf0c4c1dc4da18aaf92584145d, type: 3}
+  m_Script: {fileID: 11500000, guid: fef2f892a275a4840a88c7c84d1ae5fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponName: Shotgun
-  defaultDurabilty: 50
-  durabilty: 50
+  canInteract: 1
+  destroyType: 1
+  interactText: to Pick Up
+  timer: 5
+  objectName: Auto Shotgun
   clip: 10
-  clipSize: 10
-  heldWeapon: {fileID: 5880725816160161826, guid: 1c823cb564ded5a4fa69cd154063ee19, type: 3}
+  weapon: {fileID: 5880725816160161826, guid: 1c823cb564ded5a4fa69cd154063ee19, type: 3}
 --- !u!1001 &3658235182187490153
 PrefabInstance:
   m_ObjectHideFlags: 0
