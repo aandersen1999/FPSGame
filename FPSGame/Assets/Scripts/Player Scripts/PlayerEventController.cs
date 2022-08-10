@@ -40,6 +40,16 @@ public class PlayerEventController : MonoBehaviour
         EventManager.instance.PEC = this;
     }
 
+    private void OnEnable()
+    {
+        GameMasterBehavior.OnPause += PauseEvent;
+    }
+
+    private void OnDisable()
+    {
+        GameMasterBehavior.OnPause -= PauseEvent;
+    }
+
     private void Update()
     {
         active = !GameMasterBehavior.Instance.Paused;
@@ -97,5 +107,10 @@ public class PlayerEventController : MonoBehaviour
         {
             GameMasterBehavior.Instance.TriggerPause();
         }
+    }
+
+    private void PauseEvent(bool pause)
+    {
+        active = !pause;
     }
 }

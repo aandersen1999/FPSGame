@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GUIScript : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class GUIScript : MonoBehaviour
     #endregion
 
     public static GUIScript instance;
+    public Image pauseMenu;
 
     public List<string> quotes;
     public bool quotesFound = false;
@@ -32,11 +34,13 @@ public class GUIScript : MonoBehaviour
     private void OnEnable()
     {
         EventManager.WaveWarmUp += TriggerQuoteEvent;
+        GameMasterBehavior.OnPause += PauseEvent;
     }
 
     private void OnDisable()
     {
         EventManager.WaveWarmUp -= TriggerQuoteEvent;
+        GameMasterBehavior.OnPause -= PauseEvent;
     }
 
     public void TriggerQuoteEvent()
@@ -61,6 +65,35 @@ public class GUIScript : MonoBehaviour
         args.health = _health;
         args.dead = _dead;
         UpdateHealth?.Invoke(args);
+    }
+
+    private void PauseEvent(bool pause)
+    {
+        if (pause)
+        {
+            pauseMenu.gameObject.SetActive(true);
+        }
+        else
+        {
+            pauseMenu.gameObject.SetActive(false);
+        }
+    }
+
+    public void Resume()
+    {
+        GameMasterBehavior.Instance.TriggerPause();
+    }
+
+    public void BackToMainMenu()
+    {
+        GameMasterBehavior.OnPause -= PauseEvent;
+        GameMasterBehavior.Instance.TriggerPause();
+        GameMasterBehavior.Instance.BackToMainMenu();
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }
 

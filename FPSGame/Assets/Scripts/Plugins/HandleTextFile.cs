@@ -38,7 +38,7 @@ public static class HandleTextFile
        {
             string line = "I wonder if I carve off all my skin, will I finally stop itching?";
 
-            for(int i = 0; i < 536; i++)
+            for(int i = 0; i < 536; ++i)
             {
                 file.WriteLine(line);
             }

@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class GameMasterBehavior : MonoBehaviour
 {
+    public delegate void PauseHandle(bool pause);
+    public static event PauseHandle OnPause;
+
     public static GameMasterBehavior Instance { get; private set; }
     public static LayerMask ObjectLayer { get; private set; }
 
@@ -19,15 +22,17 @@ public class GameMasterBehavior : MonoBehaviour
     public bool Paused { get { return paused; } }
 
     private WaveController wc;
+    private AudioSource Music;
     private bool gameOver = false;
 
     public Dictionary<AmmoType, short> Ammo = new Dictionary<AmmoType, short>();
 
     private void Awake()
     {
-        Cursor.lockState = CursorLockMode.Locked;
         Instance = this;
         wc = GetComponent<WaveController>();
+        Music = GetComponent<AudioSource>();
+        Music.ignoreListenerPause = true;
 
         foreach (AmmoType i in System.Enum.GetValues(typeof(AmmoType)))
         {
@@ -50,15 +55,17 @@ public class GameMasterBehavior : MonoBehaviour
     {
         if (!paused)
         {
-            Time.timeScale = 0;
+            Music.Play();
+            Time.timeScale = 1;
             paused = true;
-            Cursor.lockState = CursorLockMode.None;
+            OnPause?.Invoke(paused);
         }
         else
         {
+            Music.Stop();
             Time.timeScale = 1;
             paused = false;
-            Cursor.lockState = CursorLockMode.Locked;
+            OnPause?.Invoke(paused);
         }
     }
 
@@ -90,6 +97,11 @@ public class GameMasterBehavior : MonoBehaviour
 
     public void TriggerGameOver()
         => gameOver = true;
+
+    public void BackToMainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
 
     private void CheckForGameOver()
     {

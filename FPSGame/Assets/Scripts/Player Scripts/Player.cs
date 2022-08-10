@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     public Camera cam;
     public Light eyeSight;
     public Transform camTransform;
+    public AudioListener audioListener;
     
     public bool lockCamera = false;
     public bool lockMovement = false;
@@ -83,6 +84,7 @@ public class Player : MonoBehaviour
         pec.OnPressJump += Jump;
         pec.OnPressCrouch += ToggleCrouch;
         pec.OnPressRun += ToggleRun;
+        GameMasterBehavior.OnPause += PauseEvent;
     }
 
     private void OnDisable()
@@ -91,6 +93,7 @@ public class Player : MonoBehaviour
         pec.OnPressJump -= Jump;
         pec.OnPressCrouch -= ToggleCrouch;
         pec.OnPressRun -= ToggleRun;
+        GameMasterBehavior.OnPause -= PauseEvent;
 
         Cursor.lockState = CursorLockMode.None;
     }
@@ -309,5 +312,13 @@ public class Player : MonoBehaviour
         {
             runActive = false;
         }
+    }
+
+    private void PauseEvent(bool pause)
+    {
+        lockCamera = pause;
+        lockMovement = pause;
+        Cursor.lockState = pause ? CursorLockMode.None : CursorLockMode.Locked;
+        AudioListener.pause = pause;
     }
 }
