@@ -20,6 +20,7 @@ public class GameMasterBehavior : MonoBehaviour
 
     private bool paused = false;
     public bool Paused { get { return paused; } }
+    public bool canPause = true;
 
     private WaveController wc;
     private AudioSource Music;
@@ -53,19 +54,22 @@ public class GameMasterBehavior : MonoBehaviour
 
     public void TriggerPause()
     {
-        if (!paused)
+        if (canPause)
         {
-            Music.Play();
-            Time.timeScale = 1;
-            paused = true;
-            OnPause?.Invoke(paused);
-        }
-        else
-        {
-            Music.Stop();
-            Time.timeScale = 1;
-            paused = false;
-            OnPause?.Invoke(paused);
+            if (!paused)
+            {
+                Music.Play();
+                Time.timeScale = 0;
+                paused = true;
+                OnPause?.Invoke(paused);
+            }
+            else
+            {
+                Music.Stop();
+                Time.timeScale = 1;
+                paused = false;
+                OnPause?.Invoke(paused);
+            }
         }
     }
 
@@ -81,9 +85,9 @@ public class GameMasterBehavior : MonoBehaviour
         {
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.V))
         {
-            //Application.Quit();
+            EventManager.instance.StartWaveTrigger();
         }
 
         if (EventManager.instance.waveActive)

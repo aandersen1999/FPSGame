@@ -23,21 +23,31 @@ public class PlayerEventController : MonoBehaviour
     #endregion
 
     #region Keys
-    public KeyCode runKey = KeyCode.LeftShift;
-    public KeyCode attackKey = KeyCode.Mouse0;
-    public KeyCode reloadKey = KeyCode.R;
-    public KeyCode dropKey = KeyCode.Q;
-    public KeyCode interactKey = KeyCode.E;
-    public KeyCode jumpKey = KeyCode.Space;
-    public KeyCode crouchKey = KeyCode.LeftControl;
+    public KeyCode runKey = EditControls.binds[Keys.Run];
+    public KeyCode attackKey = EditControls.binds[Keys.Attack];
+    public KeyCode reloadKey = EditControls.binds[Keys.Reload];
+    public KeyCode dropKey = EditControls.binds[Keys.Drop];
+    public KeyCode interactKey = EditControls.binds[Keys.Use];
+    public KeyCode jumpKey = EditControls.binds[Keys.Jump];
+    public KeyCode crouchKey = EditControls.binds[Keys.Crouch];
     //Temporary key
-    public KeyCode nextKey = KeyCode.Tab;
-    public KeyCode pauseKey = KeyCode.Escape;
+    public KeyCode nextKey = EditControls.binds[Keys.Swap];
+    public KeyCode pauseKey = EditControls.binds[Keys.Pause];
     #endregion
 
     private void Awake()
     {
         EventManager.instance.PEC = this;
+
+        runKey = EditControls.binds[Keys.Run];
+        attackKey = EditControls.binds[Keys.Attack];
+        reloadKey = EditControls.binds[Keys.Reload];
+        dropKey = EditControls.binds[Keys.Drop];
+        interactKey = EditControls.binds[Keys.Use];
+        jumpKey = EditControls.binds[Keys.Jump];
+        crouchKey = EditControls.binds[Keys.Crouch];
+        nextKey = EditControls.binds[Keys.Swap];
+        pauseKey = EditControls.binds[Keys.Pause];
     }
 
     private void OnEnable()
@@ -113,4 +123,5 @@ public class PlayerEventController : MonoBehaviour
     {
         active = !pause;
     }
+
 }

@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
 
     [Range(60.0f, 100.0f)]
     public float fov = 60.0f;
-    public float mouseSensitivity = 2f;
+    public float mouseSensitivity = 2.0f;
     public float maxLookAngle = 70.0f;
     public float eyeSightRange = 7.0f;
 
@@ -65,6 +65,7 @@ public class Player : MonoBehaviour
 
         cam.fieldOfView = fov;
         camTransform = cam.transform;
+        mouseSensitivity = EditControls.mouseSensitity;
 
         GameMasterBehavior.Instance.playerObject = gameObject;
         GameMasterBehavior.Instance.playerController = this;
@@ -75,7 +76,10 @@ public class Player : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         eyeSight.range = eyeSightRange;
 
-        GUIScript.instance.TriggerHealth(health, CheckIfDead());
+        if(GUIScript.instance != null)
+        {
+            GUIScript.instance.TriggerHealth(health, CheckIfDead());
+        }
     }
 
     private void OnEnable()
@@ -120,7 +124,7 @@ public class Player : MonoBehaviour
         {
             Run(wantsToRun);
 
-            Vector3 movement = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+            Vector3 movement = new Vector3(CustomInput.GetHorizontal(), 0, CustomInput.GetVertical());
             if (inAir)
             {
                 verticalVelocity += gravity * Time.deltaTime;

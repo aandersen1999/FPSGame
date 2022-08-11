@@ -11,12 +11,14 @@ public class WaveController : MonoBehaviour
     [SerializeField]
     public EnemyContainer enemyContainer;
 
+    public bool activeSpawning = false;
+    public int spawnAtATime = 1;
+
     private List<Spawner> spawners = new List<Spawner>();
 
     private int amountToSpawn;
     private int spawned;
 
-    public bool activeSpawning = false;
 
     private int DecaySpawn = 20;
     private int DistSpawn = 10;
@@ -89,9 +91,16 @@ public class WaveController : MonoBehaviour
     private IEnumerator WaveLoop()
     {
         activeSpawning = true;
-        for(spawned = 0; spawned < amountToSpawn; spawned++)
+        for(spawned = 0; spawned < amountToSpawn; )
         {
-            spawners[0].SpawnCreature(waveQueue[spawned]);
+            for(int i = 0; i < spawnAtATime; ++i)
+            {
+                spawners[0].SpawnCreature(waveQueue[spawned++]);
+                if(spawned >= amountToSpawn || GameMasterBehavior.Instance.totalEnemies >= spawnLimit)
+                {
+                    break;
+                }
+            }
 
             while (GameMasterBehavior.Instance.totalEnemies >= spawnLimit)
             {

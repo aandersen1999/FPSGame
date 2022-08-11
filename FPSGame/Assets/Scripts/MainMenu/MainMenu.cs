@@ -9,10 +9,11 @@ public class MainMenu : MonoBehaviour
     public Image Panel;
     public Text EWBO;
     public AudioSource Music;
-
+    public GameObject Options;
 
     private void Start()
     {
+        Options.SetActive(false);
         Cursor.lockState = CursorLockMode.Confined;
     }
 
@@ -20,6 +21,11 @@ public class MainMenu : MonoBehaviour
     {
         StartCoroutine(StartGameSequence());
         StartCoroutine(QuietMusic());
+    }
+
+    public void OpenOptionsMenu()
+    {
+        Options.SetActive(true);
     }
 
     public void QuitGame()
