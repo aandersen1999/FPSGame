@@ -23,7 +23,7 @@ public class GUIScript : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        quotesFound = HandleTextFile.GetQuotes(out quotes);
+        //quotesFound = HandleTextFile.GetQuotes(out quotes);
     }
 
     private void Start()

@@ -137,13 +137,18 @@ public class WeaponGun : Weapon
     {
         if (Physics.Raycast(camTrans.position, GetBloom(camTrans), out RaycastHit hit))
         {
-            if (hit.transform.parent != null)
+            if(hit.transform.TryGetComponent(out Hurtbox hb))
             {
-                if (hit.transform.parent.TryGetComponent(out EnemyScript inst))
-                {
-                    inst.TakeDamage(damage);
-                }
+                hb.Hurt(damage, knockBack);
             }
+
+            /*if (hit.transform.parent != null)
+            {
+                if (hit.transform.parent.TryGetComponent(out Hurtbox inst))
+                {
+                    inst.Hurt(damage, knockBack);
+                }
+            }*/
         }
     }
 

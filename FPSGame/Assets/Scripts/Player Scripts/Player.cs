@@ -74,7 +74,8 @@ public class Player : MonoBehaviour
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        eyeSight.range = eyeSightRange;
+        if(eyeSight != null) { eyeSight.range = eyeSightRange; }
+        
 
         if(GUIScript.instance != null)
         {

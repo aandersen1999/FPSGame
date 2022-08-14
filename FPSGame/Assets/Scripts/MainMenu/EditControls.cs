@@ -69,7 +69,7 @@ public class EditControls : MonoBehaviour
 
     public Dictionary<Keys, KeyCode> MenuKeys = new Dictionary<Keys, KeyCode>();
 
-    private const float ySeperation = 35;
+    private const float ySeperation = 45;
 
     private void OnEnable()
     {

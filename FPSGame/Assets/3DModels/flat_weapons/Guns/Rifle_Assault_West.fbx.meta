@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: M_PCL_Flat_Palette
-    second: {fileID: 2100000, guid: e7855fec1cfc72146be46d3ab4b224c3, type: 2}
+    second: {fileID: 2100000, guid: 036e71c3873f29045b009e2ea71edefa, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0

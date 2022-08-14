@@ -25,6 +25,7 @@ public class PauseAbyss : MonoBehaviour
 
     private void Update()
     {
+        
         if (growing)
         {
             rect.localScale += changer * Time.unscaledDeltaTime;
@@ -43,5 +44,6 @@ public class PauseAbyss : MonoBehaviour
                 growing = true;
             }
         }
+        
     }
 }

@@ -8,13 +8,35 @@ public class MainMenu : MonoBehaviour
 {
     public Image Panel;
     public Text EWBO;
+    public Text Version;
     public AudioSource Music;
     public GameObject Options;
 
+    private bool starting = false;
+    
     private void Start()
     {
         Options.SetActive(false);
         Cursor.lockState = CursorLockMode.Confined;
+        Version.text = Application.version;
+    }
+
+    private void Update()
+    {
+        if (starting)
+        {
+            if (Input.anyKeyDown)
+            {
+                StopAllCoroutines();
+                Panel.color = Color.black;
+                Music.Stop();
+                SceneManager.LoadScene(1);
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.BackQuote))
+        {
+            SceneManager.LoadScene(5);
+        }
     }
 
     public void StartGame()
@@ -41,6 +63,7 @@ public class MainMenu : MonoBehaviour
 
     private IEnumerator StartGameSequence()
     {
+        starting = true;
         Panel.raycastTarget = true;
 
         Color tmpP = Panel.color;

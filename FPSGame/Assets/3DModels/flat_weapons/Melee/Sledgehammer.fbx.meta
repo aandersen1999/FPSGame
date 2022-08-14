@@ -3,7 +3,12 @@ guid: 370065f542fc9e241acfca5aa705e1ab
 ModelImporter:
   serializedVersion: 20101
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_PCL_Flat_Palette
+    second: {fileID: 2100000, guid: 939bff7db90ed454eac98dc9bd003046, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
