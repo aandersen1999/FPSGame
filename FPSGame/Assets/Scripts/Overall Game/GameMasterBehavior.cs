@@ -10,6 +10,7 @@ public class GameMasterBehavior : MonoBehaviour
 
     public static GameMasterBehavior Instance { get; private set; }
     public static LayerMask ObjectLayer { get; private set; }
+    public static LayerMask BoxLayer { get; private set; }
 
     public GameObject playerObject;
     public Player playerController;
@@ -76,7 +77,7 @@ public class GameMasterBehavior : MonoBehaviour
     private void Start()
     {
         ObjectLayer = LayerMask.GetMask("Object");
-        
+        BoxLayer = LayerMask.GetMask("Enemies");
     }
 
     private void Update()

@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3316302611131052774}
-  - component: {fileID: 2548638858137130027}
   - component: {fileID: 5165538818835360311}
+  - component: {fileID: 6480158029226924779}
   m_Layer: 31
   m_Name: Rifle Held
   m_TagString: Untagged
@@ -34,31 +34,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!114 &2548638858137130027
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2880766900244419815}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5684d480fb10d1c44b35574fd8481b4e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponName: Rifle
-  damage: 60
-  knockBack: 0
-  dropWeapon: {fileID: 8430092619083795212, guid: 38b4ba2dfff36454b9c754007b22d2ab, type: 3}
-  clipSize: 5
-  clip: 5
-  fireRate: 0.583
-  randomKickBack: 3
-  muzzleFlashIntensity: 1.5
-  bloom: 0
-  bulletsPerShot: 1
-  ammoType: 6
-  muzzleFlash: {fileID: 4604217064848928923}
 --- !u!95 &5165538818835360311
 Animator:
   serializedVersion: 3
@@ -78,6 +53,32 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6480158029226924779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2880766900244419815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dd72fdb29d8d3d47898cf1bf8fa27c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponName: Rifle
+  damage: 60
+  knockBack: 0
+  dropWeapon: {fileID: 8430092619083795212, guid: 38b4ba2dfff36454b9c754007b22d2ab, type: 3}
+  clipSize: 5
+  clip: 5
+  fireRate: 0.583
+  randomKickBack: 3
+  muzzleFlashIntensity: 1.5
+  bloom: 0
+  bulletsPerShot: 1
+  ammoType: 6
+  muzzleFlash: {fileID: 4604217064848928923}
+  through: 3
 --- !u!1001 &3066645204382970395
 PrefabInstance:
   m_ObjectHideFlags: 0

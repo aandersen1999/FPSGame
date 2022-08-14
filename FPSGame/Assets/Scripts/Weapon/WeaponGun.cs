@@ -125,7 +125,7 @@ public class WeaponGun : Weapon
         => clip < clipSize && state == GunState.Idle && GameMasterBehavior.Instance.Ammo[ammoType] > 0;
 
 
-    private Vector3 GetBloom(Transform trans)
+    protected Vector3 GetBloom(Transform trans)
     {
         Transform dummy = trans;
         dummy.eulerAngles += new Vector3(Random.Range(-bloom, bloom), Random.Range(-bloom, bloom), 0.0f);
@@ -133,7 +133,7 @@ public class WeaponGun : Weapon
         return dummy.forward;
     }
 
-    private void CheckHit()
+    protected virtual void CheckHit()
     {
         if (Physics.Raycast(camTrans.position, GetBloom(camTrans), out RaycastHit hit))
         {
@@ -141,14 +141,6 @@ public class WeaponGun : Weapon
             {
                 hb.Hurt(damage, knockBack);
             }
-
-            /*if (hit.transform.parent != null)
-            {
-                if (hit.transform.parent.TryGetComponent(out Hurtbox inst))
-                {
-                    inst.Hurt(damage, knockBack);
-                }
-            }*/
         }
     }
 

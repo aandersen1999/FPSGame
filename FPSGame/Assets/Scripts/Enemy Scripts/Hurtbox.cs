@@ -21,7 +21,6 @@ public class Hurtbox : MonoBehaviour
     }
     public void Hurt(float damage, float knockBack)
     {
-        Debug.Log($"Took {damage * damageModifier}");
         hbm.SendDamage(damage * damageModifier, knockBack * knockBackModifier);
     }
 }
