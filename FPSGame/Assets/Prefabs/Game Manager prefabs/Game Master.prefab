@@ -48,6 +48,7 @@ MonoBehaviour:
   playerObject: {fileID: 0}
   playerController: {fileID: 0}
   EnemyTargetPosition: {x: 0, y: 0, z: 0}
+  canPause: 1
 --- !u!114 &6985247655022999620
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73,7 +74,7 @@ MonoBehaviour:
     - {fileID: 1686180693468647462, guid: b8cb40e5c649e0047b49c92d000cb9b7, type: 3}
     DistortionElite: {fileID: 5967917205270126463, guid: a8184e2ae1c14514a86f21b8fa47bbf6, type: 3}
     shattered:
-    - {fileID: 1921229467115171526, guid: 926a4658769936a4bb6ed7eac95f13be, type: 3}
+    - {fileID: 1013471767900254740, guid: 926a4658769936a4bb6ed7eac95f13be, type: 3}
     - {fileID: 4657615418369553896, guid: 4cf756d8a2a48614b919c38f579a4f73, type: 3}
     - {fileID: 5243077621390626854, guid: 0b27748d851b55648989ba72da753359, type: 3}
     - {fileID: 3054557185522928127, guid: 2ada0045ba738a14bbd60100243cd8da, type: 3}

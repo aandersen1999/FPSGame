@@ -15,11 +15,18 @@ public class PlayerHurtbox : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        //I'm gonna make this better I swear
         if(other.gameObject.GetComponent<Hitbox>() != null)
         {
             Hitbox hb = other.GetComponent<Hitbox>();
 
             character.TakeDamage(hb.Hit());
+        }
+        if(other.gameObject.GetComponent<Projectiles>() != null)
+        {
+            Projectiles pb = other.GetComponent<Projectiles>();
+            character.TakeDamage(pb.damage);
+            Destroy(pb.gameObject);
         }
     }
 }

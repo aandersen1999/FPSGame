@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameMasterBehavior : MonoBehaviour
-{
+{ 
     public delegate void PauseHandle(bool pause);
     public static event PauseHandle OnPause;
 
@@ -15,6 +15,7 @@ public class GameMasterBehavior : MonoBehaviour
     public GameObject playerObject;
     public Player playerController;
     public Vector3 EnemyTargetPosition;
+    public int waveNum = 1;
 
     [System.NonSerialized]
     public int totalEnemies = 0;
@@ -96,6 +97,7 @@ public class GameMasterBehavior : MonoBehaviour
             if(!wc.activeSpawning && totalEnemies <= 0)
             {
                 EventManager.instance.StopWaveTrigger();
+                ++waveNum;
             }
         }
     }

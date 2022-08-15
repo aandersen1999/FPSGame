@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class Distortion : MonoBehaviour
 {
     public float speed = 3.5f;
+    public float attackTime = 1.0f;
     //private DistState distState = DistState.seekPlayer;
     private EnemyState state = EnemyState.Pursuing;
 
@@ -74,7 +75,7 @@ public class Distortion : MonoBehaviour
     private IEnumerator AttackTimer()
     {
         state = EnemyState.Action;
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(attackTime);
         state = EnemyState.Pursuing;
     }
 }

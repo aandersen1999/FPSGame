@@ -20,8 +20,9 @@ public class WaveController : MonoBehaviour
     private int spawned;
 
 
-    private int DecaySpawn = 20;
+    private int DecaySpawn = 15;
     private int DistSpawn = 10;
+    private int ShatteredSpawn = 5;
 
     private const int spawnLimit = 20;
 
@@ -61,6 +62,7 @@ public class WaveController : MonoBehaviour
         waveQueue.Clear();
         DecaySpawn += 5;
         DistSpawn += 5;
+        ShatteredSpawn += 2;
         waveQueue = CreateWaveQueue();
         amountToSpawn = waveQueue.Count;
         StopAllCoroutines();
@@ -76,6 +78,10 @@ public class WaveController : MonoBehaviour
         for(int i = 0; i < DistSpawn; i++)
         {
             _waveQueue.Add(enemyContainer.Distortion);
+        }
+        for(int i = 0; i < ShatteredSpawn; ++i)
+        {
+            _waveQueue.Add(enemyContainer.Shattered);
         }
         _waveQueue = ShuffleScript.Shuffle(_waveQueue);
 
