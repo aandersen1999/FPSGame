@@ -66,7 +66,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: SMG
-  damage: 20
+  damage: 12
   knockBack: 0
   dropWeapon: {fileID: 8703345436704253592, guid: 3e81d73a6bfce3340bf70a98a0750d0d, type: 3}
   clipSize: 25

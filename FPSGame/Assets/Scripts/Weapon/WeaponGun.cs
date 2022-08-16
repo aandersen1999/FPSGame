@@ -51,6 +51,7 @@ public class WeaponGun : Weapon
     {
         base.OnDisable();
         EventManager.instance.PEC.OnPressReload -= ReloadStart;
+        muzzleFlash.intensity = 0.0f;
     }
 
     protected new void Update()
@@ -129,7 +130,7 @@ public class WeaponGun : Weapon
     {
         Transform dummy = trans;
         dummy.eulerAngles += new Vector3(Random.Range(-bloom, bloom), Random.Range(-bloom, bloom), 0.0f);
-        Debug.DrawRay(dummy.position, dummy.forward * 10, Color.red, 5.0f);
+        Debug.DrawRay(dummy.position, dummy.forward * 100, Color.red, 5.0f);
         return dummy.forward;
     }
 

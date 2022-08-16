@@ -105,6 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49ee049e135eb274987a77c017d522e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 100
   health: 100
   weaponHand: {fileID: 5949362763640785371}
   InteractableObject: {fileID: 0}
@@ -112,6 +113,7 @@ MonoBehaviour:
   cam: {fileID: 3100821191167732713}
   eyeSight: {fileID: 3100821191810699568}
   camTransform: {fileID: 0}
+  audioListener: {fileID: 0}
   lockCamera: 0
   lockMovement: 0
   fov: 60
@@ -123,9 +125,10 @@ MonoBehaviour:
   walkSpeed: 4
   runSpeed: 9
   jumpHeight: 6
+  maxStamina: 100
   stamina: 100
-  staminaDrain: 14
-  staminaGain: 7
+  staminaDrain: 7
+  staminaGain: 10
   crouchModifier: 0.5
 --- !u!114 &3100821189919631806
 MonoBehaviour:
@@ -141,6 +144,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   toggleCrouch: 0
   toggleRun: 0
+  active: 1
   runKey: 304
   attackKey: 323
   reloadKey: 114
@@ -149,6 +153,7 @@ MonoBehaviour:
   jumpKey: 32
   crouchKey: 306
   nextKey: 9
+  pauseKey: 27
 --- !u!143 &3100821189919631747
 CharacterController:
   m_ObjectHideFlags: 0

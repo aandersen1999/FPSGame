@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public float maxHealth = 100.0f;
     public float health = 100.0f;
     public WeaponHandBehavior weaponHand;
     public GameObject InteractableObject;
@@ -39,9 +40,10 @@ public class Player : MonoBehaviour
     public float walkSpeed = 4.0f;
     public float runSpeed = 6.0f;
     public float jumpHeight = 5.0f;
+    public float maxStamina = 100.0f;
     public float stamina = 100.0f;
     public float staminaDrain = 14.0f;
-    public float staminaGain = 7.0f;
+    public float staminaGain = 14.0f;
     public float crouchModifier = .5f;
 
     private float verticalVelocity;
@@ -81,6 +83,7 @@ public class Player : MonoBehaviour
         {
             GUIScript.instance.TriggerHealth(health, CheckIfDead());
         }
+        GUIScript.instance.stamina.ChangeMaxStamina(maxStamina);
     }
 
     private void OnEnable()
@@ -214,7 +217,7 @@ public class Player : MonoBehaviour
     {
         health -= damage;
 
-        health = Mathf.Clamp(health, 0.0f, 100.0f);
+        health = Mathf.Clamp(health, 0.0f, maxHealth);
 
         GUIScript.instance.TriggerHealth(health, CheckIfDead());
         if (CheckIfDead())
@@ -311,7 +314,7 @@ public class Player : MonoBehaviour
         }
         
 
-        stamina = Mathf.Clamp(stamina, 0.0f, 100.0f);
+        stamina = Mathf.Clamp(stamina, 0.0f, maxStamina);
 
         if(stamina == 0.0f)
         {

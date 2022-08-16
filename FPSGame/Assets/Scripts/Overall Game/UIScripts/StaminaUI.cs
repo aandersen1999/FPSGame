@@ -16,4 +16,9 @@ public class StaminaUI : MonoBehaviour
     {
         meter.value = GameMasterBehavior.Instance.playerController.stamina;
     }
+
+    public void ChangeMaxStamina(float max)
+    {
+        meter.maxValue = max;
+    }
 }

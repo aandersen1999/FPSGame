@@ -78,7 +78,7 @@ MonoBehaviour:
   bulletsPerShot: 1
   ammoType: 6
   muzzleFlash: {fileID: 4604217064848928923}
-  through: 3
+  through: 4
 --- !u!1001 &3066645204382970395
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -67,7 +67,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: Compact Pistol
-  damage: 20
+  damage: 22
   knockBack: 0
   dropWeapon: {fileID: 252088721202692424, guid: efa90981d44990b45ba145e0f0a358ab, type: 3}
   clipSize: 8

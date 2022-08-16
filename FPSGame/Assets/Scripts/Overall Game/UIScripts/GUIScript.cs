@@ -20,6 +20,8 @@ public class GUIScript : MonoBehaviour
     public List<string> quotes;
     public bool quotesFound = false;
 
+    public StaminaUI stamina;
+
     private void Awake()
     {
         instance = this;

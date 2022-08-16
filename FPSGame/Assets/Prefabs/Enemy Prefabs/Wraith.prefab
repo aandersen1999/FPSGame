@@ -1,5 +1,64 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &581136604
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 581136605}
+  - component: {fileID: 581136607}
+  - component: {fileID: 581136606}
+  m_Layer: 9
+  m_Name: Wraith HurtBox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &581136605
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 581136604}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 286090642734158188}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &581136607
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 581136604}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5091013, y: 1.6350498, z: 0.40080804}
+  m_Center: {x: 0.0011770129, y: 0.94945115, z: 0.012551706}
+--- !u!114 &581136606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 581136604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad479e8173db95545b8a704f0dd8d3c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageModifier: 1
+  knockBackModifier: 1
 --- !u!1 &286090641301199239
 GameObject:
   m_ObjectHideFlags: 0
@@ -5022,14 +5081,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 286090642734189836}
-  m_LocalRotation: {x: 7.3202403e-19, y: 0.014864251, z: -5.278673e-17, w: 0.99988955}
-  m_LocalPosition: {x: -0.000000020633887, y: 0.0000000190735, z: 0.098678015}
+  m_LocalRotation: {x: -0.00000011441408, y: 0.61523604, z: 0.000000092264955, w: 0.788343}
+  m_LocalPosition: {x: -0.00000012293457, y: -0.00000023655132, z: 0.09867808}
   m_LocalScale: {x: 0.99999934, y: 1, z: 0.99999934}
   m_Children:
   - {fileID: 286090642734158112}
   m_Father: {fileID: 286090642734158128}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 75.938, z: 0}
 --- !u!1 &286090642734189838
 GameObject:
   m_ObjectHideFlags: 0
@@ -5430,6 +5489,10 @@ GameObject:
   - component: {fileID: 286090642734158178}
   - component: {fileID: 286090642724847306}
   - component: {fileID: 622279981}
+  - component: {fileID: 1195361927}
+  - component: {fileID: 1195361928}
+  - component: {fileID: 1195361929}
+  - component: {fileID: 1195361930}
   m_Layer: 9
   m_Name: Wraith
   m_TagString: Untagged
@@ -5498,6 +5561,80 @@ MonoBehaviour:
   secondsBetweenSwap: 0.25
   animate: 1
   randomAnimate: 1
+--- !u!114 &1195361927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 286090642734189890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e92d9b79bc3d7945894309ea095e0e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1195361928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 286090642734189890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1964ac840ac5e34ba560bc1cb4bdf6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3
+  attackDist: 1.8
+  timeBetweenAttack: 1
+  MainTarget: 1
+  state: 3
+  floater: {fileID: 1204659795}
+  meshTrans: {fileID: 0}
+--- !u!114 &1195361929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 286090642734189890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d30d17f650dabe42af6803eb35e4b41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  active: 1
+  canTakeDamage: 0
+  takesKnockback: 0
+  health: 100
+  strength: 1
+  poise: 10
+  hitboxSpawn: {x: 0, y: 1, z: 1.6}
+  hitBoxes:
+  - {fileID: 4095506241007096568, guid: 277b475c0b0cdac4fbd043ce2f46e10b, type: 3}
+--- !u!195 &1195361930
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 286090642734189890}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 2
 --- !u!1 &286090642734189892
 GameObject:
   m_ObjectHideFlags: 0
@@ -5791,6 +5928,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 286090642734158188}
+  - component: {fileID: 1204659795}
   m_Layer: 9
   m_Name: Wraith
   m_TagString: Untagged
@@ -5810,9 +5948,24 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 286090642734158126}
+  - {fileID: 581136605}
   m_Father: {fileID: 286090642734158178}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1204659795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 286090642734189900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dcb7c2bf50ba8e448c428de72864f17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ampli: 0.05
+  freq: 1
 --- !u!1 &286090642734189902
 GameObject:
   m_ObjectHideFlags: 0
@@ -6309,14 +6462,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 286090642734189934}
-  m_LocalRotation: {x: 8.407741e-19, y: 0.014864265, z: -5.2784188e-17, w: 0.99988955}
-  m_LocalPosition: {x: -0.000000035223927, y: -1.0777618e-14, z: 0.098678015}
+  m_LocalRotation: {x: 0.42813188, y: 0.5162119, z: -0.45693117, w: 0.5843306}
+  m_LocalPosition: {x: -0.00000030547372, y: 0.00000023007391, z: 0.09867797}
   m_LocalScale: {x: 0.9999992, y: 1, z: 0.9999992}
   m_Children:
   - {fileID: 286090642734158082}
   m_Father: {fileID: 286090642734158098}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 76.431, y: 64.648, z: -23.083}
 --- !u!1 &286090642734189936
 GameObject:
   m_ObjectHideFlags: 0

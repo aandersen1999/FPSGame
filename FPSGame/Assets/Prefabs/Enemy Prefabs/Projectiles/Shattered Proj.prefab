@@ -61,8 +61,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 25
-  damage: 8
-  stdDeviation: 2.5
+  damage: 5
+  stdDeviation: 1
   speed: 25
   heatSeeking: 0
 --- !u!122 &9133192451009961204

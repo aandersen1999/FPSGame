@@ -13,6 +13,7 @@ public class WaveController : MonoBehaviour
 
     public bool activeSpawning = false;
     public int spawnAtATime = 1;
+    public byte wraiths = 1;
 
     private List<Spawner> spawners = new List<Spawner>();
 
@@ -24,7 +25,7 @@ public class WaveController : MonoBehaviour
     private int DistSpawn = 10;
     private int ShatteredSpawn = 5;
 
-    private const int spawnLimit = 20;
+    public int spawnLimit = 10;
 
     private void Awake()
     {
@@ -63,6 +64,8 @@ public class WaveController : MonoBehaviour
         DecaySpawn += 5;
         DistSpawn += 5;
         ShatteredSpawn += 2;
+        spawnLimit += 2;
+        spawnLimit = Mathf.Min(spawnLimit, 30);
         waveQueue = CreateWaveQueue();
         amountToSpawn = waveQueue.Count;
         StopAllCoroutines();
@@ -77,11 +80,27 @@ public class WaveController : MonoBehaviour
         }
         for(int i = 0; i < DistSpawn; i++)
         {
-            _waveQueue.Add(enemyContainer.Distortion);
+            if (UnityEngine.Random.Range(0, 10) == 9)
+            {
+                _waveQueue.Add(enemyContainer.DistortionElite);
+            }
+            else
+            {
+                _waveQueue.Add(enemyContainer.Distortion);
+            }
+            
         }
         for(int i = 0; i < ShatteredSpawn; ++i)
         {
-            _waveQueue.Add(enemyContainer.Shattered);
+            if(UnityEngine.Random.Range(0, 10) == 9)
+            {
+                _waveQueue.Add(enemyContainer.ShatteredElite);
+            }
+            else
+            {
+                _waveQueue.Add(enemyContainer.Shattered);
+            }
+            
         }
         _waveQueue = ShuffleScript.Shuffle(_waveQueue);
 
@@ -97,6 +116,11 @@ public class WaveController : MonoBehaviour
     private IEnumerator WaveLoop()
     {
         activeSpawning = true;
+        for(int i = 0; i < wraiths; ++i)
+        {
+            spawners[0].SpawnCreature(enemyContainer.Wraith);
+        }
+        GameMasterBehavior.Instance.totalEnemies -= wraiths;
         for(spawned = 0; spawned < amountToSpawn; )
         {
             for(int i = 0; i < spawnAtATime; ++i)

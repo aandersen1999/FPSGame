@@ -66,7 +66,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: Auto Shotgun
-  damage: 15
+  damage: 25
   knockBack: 0
   dropWeapon: {fileID: 289779270932649277, guid: 5cdf3815d5e7fac458086fa3d8390874, type: 3}
   clipSize: 10
@@ -74,7 +74,7 @@ MonoBehaviour:
   fireRate: 1
   randomKickBack: 3
   muzzleFlashIntensity: 2.5
-  bloom: 3
+  bloom: 2
   bulletsPerShot: 9
   ammoType: 4
   muzzleFlash: {fileID: 8417163112556037999}
