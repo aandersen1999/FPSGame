@@ -1203,7 +1203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0654eaf1b6693a647b16e39b509625b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 8
+  speed: 10
   attackTime: 1
 --- !u!114 &3319439611250649511
 MonoBehaviour:
@@ -1232,7 +1232,7 @@ MonoBehaviour:
   active: 1
   canTakeDamage: 1
   takesKnockback: 1
-  health: 130
+  health: 205
   strength: 1
   poise: 10
   hitboxSpawn: {x: 0, y: 1, z: 1.6}

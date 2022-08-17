@@ -14,6 +14,7 @@ public class GameMasterBehavior : MonoBehaviour
 
     public GameObject playerObject;
     public Player playerController;
+    public EnemyTarget enemyTarget;
     public Vector3 EnemyTargetPosition;
     public int waveNum = 1;
 

@@ -53,6 +53,7 @@ public class Decay : MonoBehaviour
 
                 if (es.GetDistanceFromTargetSqr(currentTarget) <= attackDistSqr)
                 {
+                    transform.LookAt(currentTarget);
                     nma.speed = 0;
                     es.PutOutHitBox(0);
                     StartCoroutine(AttackTimer());
@@ -81,7 +82,7 @@ public class Decay : MonoBehaviour
     private IEnumerator AttackTimer()
     {
         state = EnemyState.Action;
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(1.0f);
         state = EnemyState.Pursuing;
     }
 }

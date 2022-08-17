@@ -79,6 +79,7 @@ MonoBehaviour:
   bulletsPerShot: 1
   ammoType: 0
   muzzleFlash: {fileID: 3460515878882300773}
+  bulletHole: {fileID: 2800000, guid: 519b65b3ffd90234e86081229b6e7caa, type: 3}
 --- !u!1 &7052836512040089034
 GameObject:
   m_ObjectHideFlags: 0

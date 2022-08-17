@@ -19,6 +19,7 @@ public class WeaponGun : Weapon
 
     public AmmoType ammoType = AmmoType.C_Ammo;
     public Light muzzleFlash;
+    public Texture2D bulletHole;
 
     private float lightDegrade;
     private GunState state = GunState.Idle;
@@ -138,10 +139,12 @@ public class WeaponGun : Weapon
     {
         if (Physics.Raycast(camTrans.position, GetBloom(camTrans), out RaycastHit hit))
         {
+            Debug.Log(hit.collider);
             if(hit.transform.TryGetComponent(out Hurtbox hb))
             {
                 hb.Hurt(damage, knockBack);
             }
+            
         }
     }
 

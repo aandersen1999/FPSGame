@@ -9,6 +9,7 @@ public class EnemyTarget : MonoBehaviour
     private void Awake()
     {
         GameMasterBehavior.Instance.EnemyTargetPosition = transform.position;
+        GameMasterBehavior.Instance.enemyTarget = this;
     }
 
     private void OnTriggerEnter(Collider other)

@@ -50,6 +50,7 @@ public class Distortion : MonoBehaviour
                 currentTarget = GameMasterBehavior.Instance.playerObject.transform.position;
                 if(es.GetDistanceFromTargetSqr(currentTarget) <= attackDistSqr)
                 {
+                    transform.LookAt(currentTarget);
                     nma.speed = 0;
                     es.PutOutHitBox(0);
                     StartCoroutine(AttackTimer());
