@@ -658,6 +658,7 @@ Transform:
   m_Children:
   - {fileID: 5530066790148090429}
   - {fileID: 4638908768521556559}
+  - {fileID: 5042941316335790590}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -698,6 +699,8 @@ MonoBehaviour:
   health: 165
   strength: 1
   poise: 10
+  bloodColor: {r: 0.3647059, g: 0.5176471, b: 0.5411765, a: 1}
+  BloodSplatter: {fileID: 5042941316335790576}
   hitboxSpawn: {x: 0, y: 1, z: 1.6}
   hitBoxes: []
 --- !u!114 &6441153249140313990
@@ -2252,6 +2255,73 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 1574948085698260990, guid: 2b69fc553a4a7b7418cb31a3f6f2035f, type: 3}
   m_PrefabInstance: {fileID: 4508167565200718634}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4916601842501228077
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3248854227664276495}
+    m_Modifications:
+    - target: {fileID: 128184617554739152, guid: fec2d9ab8075dd640bd2117ede996b81, type: 3}
+      propertyPath: m_Name
+      value: Blood Spatter
+      objectReference: {fileID: 0}
+    - target: {fileID: 128184617554739155, guid: fec2d9ab8075dd640bd2117ede996b81, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 128184617554739155, guid: fec2d9ab8075dd640bd2117ede996b81, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 128184617554739155, guid: fec2d9ab8075dd640bd2117ede996b81, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.204
+      objectReference: {fileID: 0}
+    - target: {fileID: 128184617554739155, guid: fec2d9ab8075dd640bd2117ede996b81, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 128184617554739155, guid: fec2d9ab8075dd640bd2117ede996b81, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 128184617554739155, guid: fec2d9ab8075dd640bd2117ede996b81, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 128184617554739155, guid: fec2d9ab8075dd640bd2117ede996b81, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 128184617554739155, guid: fec2d9ab8075dd640bd2117ede996b81, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 128184617554739155, guid: fec2d9ab8075dd640bd2117ede996b81, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 128184617554739155, guid: fec2d9ab8075dd640bd2117ede996b81, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 128184617554739155, guid: fec2d9ab8075dd640bd2117ede996b81, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fec2d9ab8075dd640bd2117ede996b81, type: 3}
+--- !u!4 &5042941316335790590 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 128184617554739155, guid: fec2d9ab8075dd640bd2117ede996b81, type: 3}
+  m_PrefabInstance: {fileID: 4916601842501228077}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &5042941316335790576 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 128184617554739165, guid: fec2d9ab8075dd640bd2117ede996b81, type: 3}
+  m_PrefabInstance: {fileID: 4916601842501228077}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5226629486506902938
 PrefabInstance:

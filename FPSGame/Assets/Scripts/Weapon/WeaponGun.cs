@@ -21,8 +21,11 @@ public class WeaponGun : Weapon
     public Light muzzleFlash;
     public Texture2D bulletHole;
 
+    private short ammoFired = 0;
+
     private float lightDegrade;
     private GunState state = GunState.Idle;
+    
 
     #region Monobehavior
     protected new void Awake()
@@ -72,6 +75,7 @@ public class WeaponGun : Weapon
             anim.SetTrigger("Fire");
 
             clip--;
+            ++ammoFired;
 
             StartCoroutine(FireRateWait());
             StartCoroutine(MuzzleFlash());
@@ -108,11 +112,11 @@ public class WeaponGun : Weapon
     protected virtual void ReloadEnd()
     {
         short ammoToLoad = (short)Mathf.Min(clipSize, GameMasterBehavior.Instance.Ammo[ammoType]);
-        //temporarily commented out
-        //GameMasterBehavior.Instance.Ammo[ammoType] -= ammoToLoad;
+        GameMasterBehavior.Instance.Ammo[ammoType] -= (short)Mathf.Min(ammoFired, GameMasterBehavior.Instance.Ammo[ammoType]); ;
 
         clip = ammoToLoad;
         state = GunState.Idle;
+        ammoFired = 0;
     }
 
     protected virtual void SwapAnimEnd() => state = GunState.Idle;
@@ -139,7 +143,6 @@ public class WeaponGun : Weapon
     {
         if (Physics.Raycast(camTrans.position, GetBloom(camTrans), out RaycastHit hit))
         {
-            Debug.Log(hit.collider);
             if(hit.transform.TryGetComponent(out Hurtbox hb))
             {
                 hb.Hurt(damage, knockBack);

@@ -17,9 +17,28 @@ public class EnemyScript : MonoBehaviour
     public delegate void DeathAction();
     public event DeathAction OnDeath;
 
+    public Color bloodColor;
+    public ParticleSystem BloodSplatter;
+
     [SerializeField]
     private Vector3 hitboxSpawn = new Vector3(0, 1.0f, 1.6f);
     public List<GameObject> hitBoxes;
+
+    private bool BloodLauncherExists = true;
+
+    private void Awake()
+    {
+        if(BloodSplatter == null)
+        {
+            Debug.LogWarning($"{gameObject} has no blood particle system present!");
+            BloodLauncherExists = false;
+        }
+        else
+        {
+            var main = BloodSplatter.main;
+            main.startColor = bloodColor;
+        }
+    }
 
     #region Monobehavior
     private void OnEnable()
@@ -57,6 +76,7 @@ public class EnemyScript : MonoBehaviour
         if (canTakeDamage)
         {
             health -= damage;
+            EmitBlood((int)(damage / 2));
 
             if (health <= 0.0f)
             {
@@ -74,6 +94,14 @@ public class EnemyScript : MonoBehaviour
         if (takesKnockback)
         {
             //Will add code later
+        }
+    }
+
+    private void EmitBlood(int particles)
+    {
+        if (BloodLauncherExists)
+        {
+            BloodSplatter.Emit(particles);
         }
     }
 }

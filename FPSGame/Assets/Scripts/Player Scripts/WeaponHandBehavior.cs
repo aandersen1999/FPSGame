@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class WeaponHandBehavior : MonoBehaviour
 {
+    public delegate void Action();
+    public event Action ChangeGun;
+
     public byte inventorySize = 2;
 
     public GameObject currentWeapon;
@@ -52,6 +55,7 @@ public class WeaponHandBehavior : MonoBehaviour
             currentWeapon = weapon;
             inventory[inventory.IndexOf(temp)] = currentWeapon;
         }
+        ChangeGun?.Invoke();
     }
 
     public void OnBreakWeapon()
@@ -61,6 +65,7 @@ public class WeaponHandBehavior : MonoBehaviour
         if (inventory.Count > 1) { NextWeapon(); }
         inventory.Remove(storeCurrent);
         inventory.TrimExcess();
+        ChangeGun?.Invoke();
     }
 
     private void DropWeapon()
@@ -73,6 +78,7 @@ public class WeaponHandBehavior : MonoBehaviour
             inventory.Remove(storeCurrent);
             inventory.TrimExcess();
         }
+        ChangeGun?.Invoke();
     }
     
     private void SwapCurrentWeapon(int index)
@@ -83,6 +89,8 @@ public class WeaponHandBehavior : MonoBehaviour
 
         storeCurrent.SetActive(false);
         currentWeapon.SetActive(true);
+
+        ChangeGun?.Invoke();
     }
 
     private void NextWeapon()
@@ -94,6 +102,7 @@ public class WeaponHandBehavior : MonoBehaviour
             if (nextWeaponIndex >= inventory.Count) { SwapCurrentWeapon(0); }
             else { SwapCurrentWeapon(nextWeaponIndex); }
         }
+        ChangeGun?.Invoke();
     }
 
     private void PrevWeapon()
@@ -105,5 +114,6 @@ public class WeaponHandBehavior : MonoBehaviour
             if (prevWeaponIndex < 0) { SwapCurrentWeapon(inventory.Count - 1); }
             else { SwapCurrentWeapon(prevWeaponIndex); }
         }
+        ChangeGun?.Invoke();
     }
 }
