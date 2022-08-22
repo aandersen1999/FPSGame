@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
     private float yaw = 0.0f;
     private float pitch = 0.0f;
 
-    private readonly float checkObjectRange = 3.0f;
+    private const float checkObjectRange = 3.0f;
     #endregion
 
     #region Movement
@@ -82,8 +82,8 @@ public class Player : MonoBehaviour
         if(GUIScript.instance != null)
         {
             GUIScript.instance.TriggerHealth(health, CheckIfDead());
+            GUIScript.instance.stamina.ChangeMaxStamina(maxStamina);
         }
-        GUIScript.instance.stamina.ChangeMaxStamina(maxStamina);
     }
 
     private void OnEnable()

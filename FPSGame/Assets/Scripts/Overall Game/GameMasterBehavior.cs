@@ -40,7 +40,7 @@ public class GameMasterBehavior : MonoBehaviour
 
         foreach (AmmoType i in System.Enum.GetValues(typeof(AmmoType)))
         {
-            Ammo[i] = short.MaxValue;
+            Ammo[i] = 20;
         }
     }
 

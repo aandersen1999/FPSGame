@@ -2725,6 +2725,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9162097310091384309}
+  - component: {fileID: 1722316975}
   m_Layer: 5
   m_Name: Ammo
   m_TagString: Untagged
@@ -2754,3 +2755,17 @@ RectTransform:
   m_AnchoredPosition: {x: -29, y: 25}
   m_SizeDelta: {x: 250, y: 100}
   m_Pivot: {x: 1, y: 0}
+--- !u!114 &1722316975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6773901117008076557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52fb4a8f6400c3b44806faf04b3aed45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentAmmo: {fileID: 1110026871}
+  pool: {fileID: 1715611730}

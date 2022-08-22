@@ -8,6 +8,7 @@ using UnityEngine;
 /// </summary>
 public class RifleGun : WeaponGun
 {
+    
     public byte through;
 
     private readonly CompareDistance c = new CompareDistance();
@@ -31,7 +32,7 @@ public class RifleGun : WeaponGun
 
 public class CompareDistance : IComparer
 {
-    int IComparer.Compare(object x, object y)
+    public int Compare(object x, object y)
     {
         RaycastHit hitX = (RaycastHit)x;
         RaycastHit hitY = (RaycastHit)y;
