@@ -21,10 +21,10 @@ public class WeaponGun : Weapon
     public Light muzzleFlash;
     public Texture2D bulletHole;
 
-    private short ammoFired = 0;
+    protected short ammoFired = 0;
 
     private float lightDegrade;
-    private GunState state = GunState.Idle;
+    protected GunState state = GunState.Idle;
     
 
     #region Monobehavior
@@ -127,7 +127,7 @@ public class WeaponGun : Weapon
         clip = (short)Mathf.Min(args.clip, clipSize);
     }
 
-    private bool CheckReload 
+    protected bool CheckReload 
         => clip < clipSize && state == GunState.Idle && GameMasterBehavior.Instance.Ammo[ammoType] > 0;
 
 
@@ -152,14 +152,14 @@ public class WeaponGun : Weapon
     }
 
     //Will replace later to make it anim based
-    private IEnumerator FireRateWait()
+    protected IEnumerator FireRateWait()
     {
         state = GunState.Fire;
         yield return new WaitForSeconds(fireRate);
         state = GunState.Idle;
     }
 
-    private IEnumerator MuzzleFlash()
+    protected IEnumerator MuzzleFlash()
     {
         muzzleFlash.intensity = muzzleFlashIntensity;
 
