@@ -21,7 +21,6 @@ public class WeaponGun : Weapon
     public Light muzzleFlash;
     public Texture2D bulletHole;
 
-    protected short ammoFired = 0;
 
     private float lightDegrade;
     protected GunState state = GunState.Idle;
@@ -75,7 +74,6 @@ public class WeaponGun : Weapon
             anim.SetTrigger("Fire");
 
             clip--;
-            ++ammoFired;
 
             StartCoroutine(FireRateWait());
             StartCoroutine(MuzzleFlash());
@@ -103,7 +101,7 @@ public class WeaponGun : Weapon
         if (CheckReload)
         {
             anim.SetTrigger("Reload");
-
+            GameMasterBehavior.Instance.Ammo[ammoType] += clip;
             clip = 0;
             state = GunState.Reload;
         }
@@ -112,11 +110,10 @@ public class WeaponGun : Weapon
     protected virtual void ReloadEnd()
     {
         short ammoToLoad = (short)Mathf.Min(clipSize, GameMasterBehavior.Instance.Ammo[ammoType]);
-        GameMasterBehavior.Instance.Ammo[ammoType] -= (short)Mathf.Min(ammoFired, GameMasterBehavior.Instance.Ammo[ammoType]); ;
+        GameMasterBehavior.Instance.Ammo[ammoType] -= (short)Mathf.Min(ammoToLoad, GameMasterBehavior.Instance.Ammo[ammoType]); ;
 
         clip = ammoToLoad;
         state = GunState.Idle;
-        ammoFired = 0;
     }
 
     protected virtual void SwapAnimEnd() => state = GunState.Idle;

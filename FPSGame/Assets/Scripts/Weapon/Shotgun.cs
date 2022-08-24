@@ -14,7 +14,6 @@ public class Shotgun : WeaponGun
             anim.SetTrigger("Fire");
 
             clip--;
-            ++ammoFired;
 
             StartCoroutine(FireRateWait());
             StartCoroutine(MuzzleFlash());

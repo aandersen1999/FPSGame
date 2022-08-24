@@ -65,7 +65,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33460b6cc2790a941980e783ebb2e865, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponName: Unknown
+  weaponName: Pump-Action Shotgun
   damage: 30
   knockBack: 0
   dropWeapon: {fileID: 7010046430476521156, guid: 621e0fc2013de2f43858d869bfb2fbf3, type: 3}

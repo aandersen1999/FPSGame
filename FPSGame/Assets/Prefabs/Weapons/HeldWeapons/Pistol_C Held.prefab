@@ -70,8 +70,8 @@ MonoBehaviour:
   damage: 22
   knockBack: 0
   dropWeapon: {fileID: 252088721202692424, guid: efa90981d44990b45ba145e0f0a358ab, type: 3}
-  clipSize: 8
-  clip: 8
+  clipSize: 17
+  clip: 17
   fireRate: 0.283
   randomKickBack: 3
   muzzleFlashIntensity: 1

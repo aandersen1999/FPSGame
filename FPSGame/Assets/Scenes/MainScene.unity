@@ -1102,22 +1102,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 3100821191167732713, guid: 951d95b5b3b948f48ad879220a9e94a7, type: 3}
-      propertyPath: m_ClearFlags
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3100821191167732713, guid: 951d95b5b3b948f48ad879220a9e94a7, type: 3}
-      propertyPath: m_BackGroundColor.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3100821191167732713, guid: 951d95b5b3b948f48ad879220a9e94a7, type: 3}
-      propertyPath: m_BackGroundColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3100821191167732713, guid: 951d95b5b3b948f48ad879220a9e94a7, type: 3}
-      propertyPath: m_BackGroundColor.r
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 951d95b5b3b948f48ad879220a9e94a7, type: 3}
 --- !u!1001 &1350113795
@@ -1663,6 +1647,18 @@ PrefabInstance:
       propertyPath: interactText
       value: to shop
       objectReference: {fileID: 0}
+    - target: {fileID: 396757613, guid: f720665fa9ba8c24e85536f86d7addc7, type: 3}
+      propertyPath: weaponList.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 396757613, guid: f720665fa9ba8c24e85536f86d7addc7, type: 3}
+      propertyPath: weaponList.Array.data[4]
+      value: 
+      objectReference: {fileID: 9061350804769905370, guid: f2ae4ce76ef53fe4d9d32a3386999405, type: 3}
+    - target: {fileID: 396757613, guid: f720665fa9ba8c24e85536f86d7addc7, type: 3}
+      propertyPath: weaponList.Array.data[5]
+      value: 
+      objectReference: {fileID: 5712528838536809140, guid: a99c14d103145ef4baeb45bc5dc7f891, type: 3}
     - target: {fileID: 7118810856347605431, guid: f720665fa9ba8c24e85536f86d7addc7, type: 3}
       propertyPath: m_Name
       value: Store

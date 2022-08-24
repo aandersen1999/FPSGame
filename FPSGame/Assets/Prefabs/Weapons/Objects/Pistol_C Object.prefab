@@ -63,7 +63,7 @@ MonoBehaviour:
   interactText: to Pick Up
   timer: 5
   objectName: Compact Pistol
-  clip: 8
+  clip: 17
   weapon: {fileID: 541819854647843241, guid: 9612750001f729c438a4c5cc83aacb10, type: 3}
 --- !u!1001 &252088720894446126
 PrefabInstance:

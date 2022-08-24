@@ -63,7 +63,7 @@ MonoBehaviour:
   interactText: to pickup
   timer: 5
   objectName: Assault Rifle
-  clip: 0
+  clip: 30
   weapon: {fileID: 5712528838536809140, guid: a99c14d103145ef4baeb45bc5dc7f891, type: 3}
 --- !u!1001 &7441017120756708652
 PrefabInstance:
