@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 {
     public float maxHealth = 100.0f;
     public float health = 100.0f;
+    public uint souls = 0;
     public WeaponHandBehavior weaponHand;
     public GameObject InteractableObject;
     public BoxCollider hurtBox;
@@ -226,6 +227,19 @@ public class Player : MonoBehaviour
             lockCamera = true;
             lockMovement = true;
         }
+    }
+
+    public void AddSouls(ushort souls)
+    {
+        this.souls += souls;
+        GUIScript.instance.UpdateSoulsCount(this.souls);
+    }
+
+    public void RemoveSouls(uint souls)
+    {
+        souls = (uint)Mathf.Min((int)souls, (int)this.souls);
+        this.souls -= souls;
+        GUIScript.instance.UpdateSoulsCount(this.souls);
     }
 
     private bool CheckIfDead()

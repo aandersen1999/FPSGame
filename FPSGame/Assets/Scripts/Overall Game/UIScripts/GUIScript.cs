@@ -21,6 +21,7 @@ public class GUIScript : MonoBehaviour
     public bool quotesFound = false;
 
     public StaminaUI stamina;
+    public Text SoulsCounts;
 
     private void Awake()
     {
@@ -96,6 +97,11 @@ public class GUIScript : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void UpdateSoulsCount(uint count)
+    {
+        SoulsCounts.text = count.ToString();
     }
 }
 
