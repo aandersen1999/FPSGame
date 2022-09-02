@@ -6,6 +6,8 @@ public class Souls : PickUp
 {
     public ushort amount;
 
+    
+
     public override string GetInteractText()
     {
         return $"{interactText} {amount} {objectName}";
@@ -15,5 +17,10 @@ public class Souls : PickUp
     {
         GameMasterBehavior.Instance.playerController.AddSouls(amount);
         base.Interact();
+    }
+
+    public void ChangeAmount(ushort amount)
+    {
+        this.amount = amount;
     }
 }

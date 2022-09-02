@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/FearGarden.unity
+- path: Assets/Scenes/DebugScenes/InteractableObjectDebug.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

@@ -477,8 +477,12 @@ MonoBehaviour:
   health: 35
   strength: 1
   poise: 10
+  chanceToDropSouls: 1
+  averageAmount: 20
+  offSet: 5
   bloodColor: {r: 0.8, g: 0.44705883, b: 0.02745098, a: 1}
   BloodSplatter: {fileID: 8931091861254226691}
+  soulsPrefab: {fileID: 1866984142676707628, guid: 69880b7f01003534d9a4a79380b0cf8c, type: 3}
   hitboxSpawn: {x: 0, y: 1, z: 1.6}
   hitBoxes:
   - {fileID: 8165564225618922238, guid: fd0db48de8244044c9554954cbf1142e, type: 3}

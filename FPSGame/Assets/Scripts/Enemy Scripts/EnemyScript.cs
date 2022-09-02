@@ -14,11 +14,16 @@ public class EnemyScript : MonoBehaviour
     public float strength = 1.0f;
     public float poise = 10.0f;
 
+    public float chanceToDropSouls = .3f;
+    public ushort averageAmount = 20;
+    public ushort offSet = 5;
+
     public delegate void DeathAction();
     public event DeathAction OnDeath;
 
     public Color bloodColor;
     public ParticleSystem BloodSplatter;
+    public GameObject soulsPrefab;
 
     [SerializeField]
     private Vector3 hitboxSpawn = new Vector3(0, 1.0f, 1.6f);
@@ -80,6 +85,8 @@ public class EnemyScript : MonoBehaviour
 
             if (health <= 0.0f)
             {
+                canTakeDamage = false;
+                CreateSouls();
                 if (OnDeath != null)
                 {
                     OnDeath();
@@ -89,6 +96,7 @@ public class EnemyScript : MonoBehaviour
                     Destroy(gameObject);
                     Debug.LogWarning("No event present for death: " + gameObject.ToString());
                 }
+                
             }
         }
         if (takesKnockback)
@@ -102,6 +110,17 @@ public class EnemyScript : MonoBehaviour
         if (BloodLauncherExists)
         {
             BloodSplatter.Emit(particles);
+        }
+    }
+
+    private void CreateSouls()
+    {
+        if(UnityEngine.Random.Range(0.0f, 1.0f) <= chanceToDropSouls)
+        {
+            GameObject souls = Instantiate(soulsPrefab, transform.position + Vector3.up * 2, transform.rotation);
+            souls.transform.parent = null;
+
+            souls.GetComponent<Souls>().ChangeAmount((ushort)UnityEngine.Random.Range(averageAmount - offSet, averageAmount + offSet));
         }
     }
 }
