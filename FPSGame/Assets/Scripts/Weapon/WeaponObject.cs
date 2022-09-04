@@ -34,7 +34,7 @@ public class WeaponObject : PickUp
 
         weaponObject.GetComponent<Weapon>().CreateHeldWeapon(args);
 
-        GameMasterBehavior.Instance.playerController.weaponHand.PickUpWeapon(ref weaponObject);
+        GameMasterBehavior.Instance.playerController.weaponHand.PickUpWeapon(weaponObject);
         base.Interact();
     }
 

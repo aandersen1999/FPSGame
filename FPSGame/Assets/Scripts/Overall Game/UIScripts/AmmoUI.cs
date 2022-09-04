@@ -36,10 +36,10 @@ public class AmmoUI : MonoBehaviour
 
     private void Update()
     {
-        if(gunRef != null)
-        {
-            UpdateDisplay();
-        }
+        
+       
+        UpdateDisplay();
+        
     }
 
     private void OnGunChange()

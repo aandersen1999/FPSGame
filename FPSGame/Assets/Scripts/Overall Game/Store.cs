@@ -11,6 +11,6 @@ public class Store : Interactable
         int choice = Random.Range(0, weaponList.Count);
         GameObject createdWeapon = Instantiate(weaponList[choice], GameMasterBehavior.Instance.playerController.weaponHand.transform);
 
-        GameMasterBehavior.Instance.playerController.weaponHand.PickUpWeapon(ref createdWeapon);
+        GameMasterBehavior.Instance.playerController.weaponHand.PickUpWeapon(createdWeapon);
     }
 }

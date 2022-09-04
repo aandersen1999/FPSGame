@@ -17,7 +17,13 @@ public class WeaponHandBehavior : MonoBehaviour
     #region Monobehavior
     private void Start()
     {
-
+        if(transform.childCount != 0)
+        {
+            for(int i = 0; i < transform.childCount; ++i)
+            {
+                PickUpWeapon(transform.GetChild(i).gameObject);
+            }
+        }
     }
 
     private void OnEnable()
@@ -33,7 +39,7 @@ public class WeaponHandBehavior : MonoBehaviour
     }
     #endregion
 
-    public void PickUpWeapon(ref GameObject weapon)
+    public void PickUpWeapon(GameObject weapon)
     {
         if (inventory.Count < inventorySize)
         {

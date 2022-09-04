@@ -60,7 +60,7 @@ public class InteractableWeapon : MonoBehaviour
 
         createdWeapon.GetComponent<WeaponGun>().CreateHeldWeapon(args);
 
-        GameMasterBehavior.Instance.playerController.weaponHand.PickUpWeapon(ref createdWeapon);
+        GameMasterBehavior.Instance.playerController.weaponHand.PickUpWeapon(createdWeapon);
         Destroy(gameObject);
     }
 
