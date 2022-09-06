@@ -31,6 +31,7 @@ public class EnemyScript : MonoBehaviour
 
     private bool BloodLauncherExists = true;
 
+    #region Monobehavior
     private void Awake()
     {
         if(BloodSplatter == null)
@@ -45,7 +46,7 @@ public class EnemyScript : MonoBehaviour
         }
     }
 
-    #region Monobehavior
+    
     private void OnEnable()
     {
         GameMasterBehavior.Instance.totalEnemies++;
@@ -54,6 +55,11 @@ public class EnemyScript : MonoBehaviour
     private void OnDisable()
     {
         GameMasterBehavior.Instance.totalEnemies--;
+    }
+
+    private void OnDestroy()
+    {
+        CreateSouls();
     }
     #endregion
 
@@ -86,7 +92,7 @@ public class EnemyScript : MonoBehaviour
             if (health <= 0.0f)
             {
                 canTakeDamage = false;
-                CreateSouls();
+                
                 if (OnDeath != null)
                 {
                     OnDeath();
@@ -115,9 +121,9 @@ public class EnemyScript : MonoBehaviour
 
     private void CreateSouls()
     {
-        if(UnityEngine.Random.Range(0.0f, 1.0f) <= chanceToDropSouls)
+        if(UnityEngine.Random.Range(0.0f, 0.0f) <= chanceToDropSouls)
         {
-            GameObject souls = Instantiate(soulsPrefab, transform.position + Vector3.up * 2, transform.rotation);
+            GameObject souls = Instantiate(soulsPrefab, transform.position + Vector3.up * .25f, transform.rotation);
             souls.transform.parent = null;
 
             souls.GetComponent<Souls>().ChangeAmount((ushort)UnityEngine.Random.Range(averageAmount - offSet, averageAmount + offSet));

@@ -19,8 +19,8 @@ public class WeaponGun : Weapon
 
     public AmmoType ammoType = AmmoType.C_Ammo;
     public Light muzzleFlash;
-    public Texture2D bulletHole;
     public TrailRenderer bulletTrail;
+    private const float trailVelocity = 700.0f;
 
     private float lightDegrade;
     protected GunState state = GunState.Idle;
@@ -40,8 +40,6 @@ public class WeaponGun : Weapon
         {
             Debug.LogWarning($"{this} does not have a muzzleFlash!");
         }
-        //bulletTrail.enabled = false;
-        Debug.Log(bulletTrail.positionCount);
     }
 
     protected new void OnEnable()
@@ -146,8 +144,9 @@ public class WeaponGun : Weapon
             {
                 hb.Hurt(damage, knockBack);
             }
-            
-            StartCoroutine(BulletTrail(muzzleFlash.transform.position, hit.point));
+
+            TrailRenderer trailRef = Instantiate(bulletTrail, muzzleFlash.transform.position, Quaternion.identity);
+            StartCoroutine(SpawnTrail(trailRef, hit));
             
         }
     }
@@ -169,40 +168,22 @@ public class WeaponGun : Weapon
             muzzleFlash.intensity -= lightDegrade * Time.deltaTime;
             yield return null;
         }
-        //bulletTrail.enabled = false;
     }
 
-    protected IEnumerator BulletTrail(Vector3 start, Vector3 end)
+    protected IEnumerator SpawnTrail(TrailRenderer trail, RaycastHit hit)
     {
-        /*bulletTrail.emitting = true;
-        bulletTrail.AddPosition(start);
-        bulletTrail.emitting = false;
+        float time = 0;
+        Vector3 initPosition = trail.transform.position;
 
-        yield return new WaitForSeconds(.035f);
+        while(time < 1)
+        {
+            trail.transform.position = Vector3.Lerp(initPosition, hit.point, time);
+            time += (Time.deltaTime / hit.distance) * trailVelocity;
 
-        bulletTrail.emitting = true;
-        bulletTrail.AddPosition(Vector3.Lerp(start, end, .25f));
-        bulletTrail.emitting = false;
-
-        yield return new WaitForSeconds(.035f);
-
-        bulletTrail.emitting = true;
-        bulletTrail.AddPosition(Vector3.Lerp(start, end, .5f));
-        bulletTrail.emitting = false;
-
-        yield return new WaitForSeconds(.035f);
-
-        bulletTrail.emitting = true;
-        bulletTrail.AddPosition(Vector3.Lerp(start, end, .75f));
-        bulletTrail.emitting = false;
-
-        yield return new WaitForSeconds(.035f);
-        */
-        bulletTrail.emitting = true;
-        bulletTrail.AddPosition(start);
-        bulletTrail.AddPosition(end);
-        bulletTrail.emitting = false;
-        yield return null;
+            yield return null;
+        }
+        trail.transform.position = hit.point;
+        Destroy(trail.gameObject, trail.time);
     }
 }
 

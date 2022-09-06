@@ -61,7 +61,7 @@ public class PickUp : Interactable
     {
         value = 0f;
 
-        if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out RaycastHit hit))
+        if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out RaycastHit hit, GameMasterBehavior.DefaultLayer))
         {
             value = hit.point.y;
             return true;

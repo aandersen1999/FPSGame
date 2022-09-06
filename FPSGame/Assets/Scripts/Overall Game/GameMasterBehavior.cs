@@ -11,6 +11,7 @@ public class GameMasterBehavior : MonoBehaviour
     public static GameMasterBehavior Instance { get; private set; }
     public static LayerMask ObjectLayer { get; private set; }
     public static LayerMask BoxLayer { get; private set; }
+    public static LayerMask DefaultLayer { get; private set; }
 
     public GameObject playerObject;
     public Player playerController;
@@ -47,11 +48,13 @@ public class GameMasterBehavior : MonoBehaviour
     private void OnEnable()
     {
         EventManager.EventShortTrigger += CheckForGameOver;
+        EventManager.StopWave += OnWaveStop;
     }
 
     private void OnDisable()
     {
         EventManager.EventShortTrigger -= CheckForGameOver;
+        EventManager.StopWave -= OnWaveStop;
         
     }
 
@@ -80,6 +83,7 @@ public class GameMasterBehavior : MonoBehaviour
     {
         ObjectLayer = LayerMask.GetMask("Object");
         BoxLayer = LayerMask.GetMask("Enemies");
+        DefaultLayer = LayerMask.GetMask("Default");
     }
 
     private void Update()
@@ -117,6 +121,11 @@ public class GameMasterBehavior : MonoBehaviour
         {
             SceneManager.LoadScene(4);
         }
+    }
+
+    private void OnWaveStop()
+    {
+        totalEnemies = 0;
     }
 }
 

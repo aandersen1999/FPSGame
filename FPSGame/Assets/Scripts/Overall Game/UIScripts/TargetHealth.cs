@@ -16,6 +16,7 @@ public class TargetHealth : MonoBehaviour
     private void Start()
     {
         target = GameMasterBehavior.Instance.enemyTarget;
+        healthSlider.maxValue = target.health;
     }
 
     private void Update()

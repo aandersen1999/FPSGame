@@ -78,9 +78,9 @@ MonoBehaviour:
   health: 65
   strength: 1
   poise: 10
-  chanceToDropSouls: 1
+  chanceToDropSouls: 0.3
   averageAmount: 20
-  offSet: 5
+  offSet: 4
   bloodColor: {r: 0.33333334, g: 0, b: 0, a: 1}
   BloodSplatter: {fileID: 2253393519263827561}
   soulsPrefab: {fileID: 1866984142676707628, guid: 69880b7f01003534d9a4a79380b0cf8c, type: 3}

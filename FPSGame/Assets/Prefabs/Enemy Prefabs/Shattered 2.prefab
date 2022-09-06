@@ -1438,8 +1438,8 @@ MonoBehaviour:
   health: 55
   strength: 1
   poise: 10
-  chanceToDropSouls: 1
-  averageAmount: 20
+  chanceToDropSouls: 0.5
+  averageAmount: 25
   offSet: 5
   bloodColor: {r: 0.3647059, g: 0.5176471, b: 0.5411765, a: 1}
   BloodSplatter: {fileID: 6775568978095809681}

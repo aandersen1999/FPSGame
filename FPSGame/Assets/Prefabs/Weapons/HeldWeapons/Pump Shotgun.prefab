@@ -78,7 +78,7 @@ MonoBehaviour:
   bulletsPerShot: 9
   ammoType: 4
   muzzleFlash: {fileID: 7542399189669572737}
-  bulletHole: {fileID: 0}
+  bulletTrail: {fileID: 134984429129346268, guid: 5c16ed5076f43ea4bb7a659e0a30a88d, type: 3}
 --- !u!1001 &9061350804282631579
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -274,11 +274,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6847896285950279198, guid: 8cdc877946252a94cb454629ec465d6c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.009
+      value: 0.058
       objectReference: {fileID: 0}
     - target: {fileID: 6847896285950279198, guid: 8cdc877946252a94cb454629ec465d6c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.169
+      value: 0.479
       objectReference: {fileID: 0}
     - target: {fileID: 6847896285950279198, guid: 8cdc877946252a94cb454629ec465d6c, type: 3}
       propertyPath: m_LocalRotation.w

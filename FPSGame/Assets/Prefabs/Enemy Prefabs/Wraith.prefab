@@ -5610,6 +5610,12 @@ MonoBehaviour:
   health: 100
   strength: 1
   poise: 10
+  chanceToDropSouls: 0
+  averageAmount: 20
+  offSet: 5
+  bloodColor: {r: 0, g: 0, b: 0, a: 0}
+  BloodSplatter: {fileID: 0}
+  soulsPrefab: {fileID: 0}
   hitboxSpawn: {x: 0, y: 1, z: 1.6}
   hitBoxes:
   - {fileID: 4095506241007096568, guid: 277b475c0b0cdac4fbd043ce2f46e10b, type: 3}

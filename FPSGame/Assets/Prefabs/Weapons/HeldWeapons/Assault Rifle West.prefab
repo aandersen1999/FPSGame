@@ -78,7 +78,7 @@ MonoBehaviour:
   bulletsPerShot: 1
   ammoType: 2
   muzzleFlash: {fileID: 3014792947750501989}
-  bulletHole: {fileID: 0}
+  bulletTrail: {fileID: 134984429129346268, guid: 5c16ed5076f43ea4bb7a659e0a30a88d, type: 3}
 --- !u!1001 &4376703482648804581
 PrefabInstance:
   m_ObjectHideFlags: 0
