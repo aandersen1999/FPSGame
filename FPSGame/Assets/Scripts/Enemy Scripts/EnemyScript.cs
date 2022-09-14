@@ -30,6 +30,7 @@ public class EnemyScript : MonoBehaviour
     public List<GameObject> hitBoxes;
 
     private bool BloodLauncherExists = true;
+    private bool killedByDamage = false;
 
     #region Monobehavior
     private void Awake()
@@ -59,7 +60,10 @@ public class EnemyScript : MonoBehaviour
 
     private void OnDestroy()
     {
-        CreateSouls();
+        if (killedByDamage)
+        {
+            CreateSouls();
+        }
     }
     #endregion
 
@@ -92,6 +96,7 @@ public class EnemyScript : MonoBehaviour
             if (health <= 0.0f)
             {
                 canTakeDamage = false;
+                killedByDamage = true;
                 
                 if (OnDeath != null)
                 {
