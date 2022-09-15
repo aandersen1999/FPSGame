@@ -120,7 +120,7 @@ public class WaveController : MonoBehaviour
         {
             spawners[0].SpawnCreature(enemyContainer.Wraith);
         }
-        GameMasterBehavior.Instance.totalEnemies -= wraiths;
+        //GameMasterBehavior.Instance.totalEnemies -= wraiths;
         for(spawned = 0; spawned < amountToSpawn; )
         {
             for(int i = 0; i < spawnAtATime; ++i)

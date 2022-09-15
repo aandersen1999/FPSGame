@@ -74,7 +74,7 @@ MonoBehaviour:
   fireRate: 1
   randomKickBack: 3
   muzzleFlashIntensity: 2.5
-  bloom: 2
+  bloom: 1.5
   bulletsPerShot: 9
   ammoType: 4
   muzzleFlash: {fileID: 8417163112556037999}

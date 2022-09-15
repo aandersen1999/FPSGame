@@ -31,6 +31,8 @@ public class EnemyScript : MonoBehaviour
 
     private bool BloodLauncherExists = true;
     private bool killedByDamage = false;
+    [SerializeField]
+    private bool countsInPool = true;
 
     #region Monobehavior
     private void Awake()
@@ -50,12 +52,18 @@ public class EnemyScript : MonoBehaviour
     
     private void OnEnable()
     {
-        GameMasterBehavior.Instance.totalEnemies++;
+        if (countsInPool)
+        {
+            GameMasterBehavior.Instance.totalEnemies++;
+        }
     }
 
     private void OnDisable()
     {
-        GameMasterBehavior.Instance.totalEnemies--;
+        if (countsInPool)
+        {
+            GameMasterBehavior.Instance.totalEnemies--;
+        }
     }
 
     private void OnDestroy()

@@ -5619,6 +5619,7 @@ MonoBehaviour:
   hitboxSpawn: {x: 0, y: 1, z: 1.6}
   hitBoxes:
   - {fileID: 4095506241007096568, guid: 277b475c0b0cdac4fbd043ce2f46e10b, type: 3}
+  countsInPool: 0
 --- !u!195 &1195361930
 NavMeshAgent:
   m_ObjectHideFlags: 0
