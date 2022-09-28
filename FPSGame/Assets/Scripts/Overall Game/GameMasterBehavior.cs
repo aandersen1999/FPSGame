@@ -48,13 +48,11 @@ public class GameMasterBehavior : MonoBehaviour
     private void OnEnable()
     {
         EventManager.EventShortTrigger += CheckForGameOver;
-        EventManager.StopWave += OnWaveStop;
     }
 
     private void OnDisable()
     {
         EventManager.EventShortTrigger -= CheckForGameOver;
-        EventManager.StopWave -= OnWaveStop;
         
     }
 
@@ -123,10 +121,7 @@ public class GameMasterBehavior : MonoBehaviour
         }
     }
 
-    private void OnWaveStop()
-    {
-        totalEnemies = 0;
-    }
+   
 }
 
 
