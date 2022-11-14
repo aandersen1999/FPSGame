@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [Header("Player stats")]
     public float maxHealth = 100.0f;
     public float health = 100.0f;
     public uint souls = 0;
@@ -12,6 +13,7 @@ public class Player : MonoBehaviour
     public BoxCollider hurtBox;
 
     #region Camera
+    [Header("Camera Variables")]
     public Camera cam;
     public Light eyeSight;
     public Transform camTransform;
@@ -33,8 +35,8 @@ public class Player : MonoBehaviour
     #endregion
 
     #region Movement
-    public bool crouched;
-    public bool runActive;
+    private bool crouched;
+    private bool runActive;
     private bool isSupposedToCrouch = false;
     private bool wantsToRun = false;
 
@@ -54,6 +56,9 @@ public class Player : MonoBehaviour
     private bool inAir = true;
     private bool canStand = true;
     #endregion
+
+    [SerializeField] private bool drawGizmos = true;
+    [SerializeField] private float itemCollectionRadius = 3.0f;
 
     private PlayerEventController pec;
     private CharacterController cc;
@@ -127,6 +132,7 @@ public class Player : MonoBehaviour
         }
         if (!lockMovement)
         {
+            PickUpItem();
             Run(wantsToRun);
 
             Vector3 movement = new Vector3(CustomInput.GetHorizontal(), 0, CustomInput.GetVertical());
@@ -145,6 +151,21 @@ public class Player : MonoBehaviour
         }
 
         
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (drawGizmos)
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawRay(cam.transform.position, cam.transform.TransformDirection(Vector3.forward) * checkObjectRange);
+
+            Gizmos.color = Color.green;
+            Gizmos.DrawRay(cam.transform.position, Vector3.up * 1.5f);
+
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, itemCollectionRadius);
+        }
     }
     #endregion
 
@@ -214,6 +235,19 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void PickUpItem()
+    {
+        Collider[] hit = new Collider[3];
+        int num = Physics.OverlapSphereNonAlloc(transform.position, itemCollectionRadius, hit, GameMasterBehavior.ObjectLayer);
+        for(int i = 0; i < num; ++i)
+        {
+            if (hit[i].TryGetComponent(out Souls obj))
+            {
+                obj.Interact();
+            }
+        }
+    }
+
     public void TakeDamage(float damage)
     {
         health -= damage;
@@ -271,7 +305,6 @@ public class Player : MonoBehaviour
     {
         InteractableObject = null;
 
-        Debug.DrawRay(cam.transform.position, cam.transform.TransformDirection(Vector3.forward) * checkObjectRange, Color.yellow);
         if (Physics.Raycast(cam.transform.position, cam.transform.TransformDirection(Vector3.forward), out RaycastHit checker, checkObjectRange, GameMasterBehavior.ObjectLayer))
         {
             InteractableObject = checker.collider.gameObject;
@@ -290,7 +323,7 @@ public class Player : MonoBehaviour
     {
         float distance = 1.5f;
 
-        Debug.DrawRay(cam.transform.position, Vector3.up * distance, Color.green);
+        
         canStand = Physics.Raycast(cam.transform.position, Vector3.up, distance) ? false : true;
     }
     #endregion
